@@ -2,9 +2,9 @@
   "name": "toxin",
   "version": "1.0.0",
   "description": "Учебный проект для изучения frontend разработки.",
-  "main": "index.js",
+  "private": true,
   "scripts": {
-    "dev": "webpack serve --open --mode development",
+    "dev": "webpack serve --open",
     "build": "webpack --mode production"
   },
   "repository": {
@@ -22,11 +22,17 @@
     "@babel/core": "^7.16.0",
     "@babel/preset-env": "^7.16.4",
     "babel-loader": "^8.2.3",
+    "css-loader": "^6.5.1",
+    "html-webpack-plugin": "^5.5.0",
     "path": "^0.12.7",
     "pug": "^3.0.2",
+    "style-loader": "^3.3.1",
     "webpack": "^5.64.4",
     "webpack-cli": "^4.9.1",
-    "webpack-dev-server": "^4.5.0"
+    "webpack-dev-server": "^4.5.0",
+    "webpack-node-externals": "^3.0.0"
   },
-  "dependencies": {}
+  "dependencies": {
+    "resolve-cwd": "^3.0.0"
+  }
 }

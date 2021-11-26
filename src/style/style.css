@@ -1,0 +1,18 @@
+@font-face {
+  font-family: "DancingScript-Regular";
+  src: url("../fonts/DancingScript-Regular.eot");
+  src: local("☺"), url("../fonts/DancingScript-Regular.woff") format("woff"),
+    url("../fonts/DancingScript-Regular.ttf") format("truetype"),
+    url("../fonts/DancingScript-Regular.svg") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+h1 {
+  color: red;
+  text-align: center;
+  height: 300px;
+  font-family: "DancingScript-Regular", Aril, sans-serif;
+  font-weight: normal;
+  background: url("../img/kaka.png") no-repeat 50% 50%;
+  background-size: contain;
+}
