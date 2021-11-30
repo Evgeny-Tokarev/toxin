@@ -2,10 +2,11 @@ const path = require("path");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
+
 module.exports = {
-    mode: 'development',    
+    context: path.resolve(__dirname,'src'),
     entry: {
-        app: "./src/index.js"
+        app: "./index.js"
     },
     devtool: 'inline-source-map',
     devServer: {
@@ -13,13 +14,17 @@ module.exports = {
       },
     plugins: [
         new HtmlWebpackPlugin({
-            title: 'Development'
+            title: 'Development',
+            template: "./index.html"
         }),
-        new MiniCssExtractPlugin()
+        new MiniCssExtractPlugin({
+          filename: "[name].[contenthash].css",
+
+        })
 
       ],
     output: {
-        filename: "[name].js",
+        filename: "[name].[contenthash].js",
         path: path.resolve(__dirname,"dist"),
         clean: true,
         charset: true
