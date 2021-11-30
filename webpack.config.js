@@ -26,15 +26,16 @@ module.exports = {
     },
     
     module: {
-        rules: [{
+        rules: [
+          {
             test: /\.js$/,
             loader: "babel-loader",
             exclude: "/node-modules/"
-        },
-        {
-            test: /\.css$/i,
-            use: [MiniCssExtractPlugin.loader, "css-loader"],
           },
+          // {
+          //   test: /\.css$/i,
+          //   use: [MiniCssExtractPlugin.loader, "css-loader"],
+          // },
           {
             test: /\.s[ac]ss$/i,
             use: [
@@ -46,13 +47,16 @@ module.exports = {
                 },
               },
               {
+                loader: "postcss-loader",
+              },
+              {
                 loader: "sass-loader",
                 options: {
                   sourceMap: true,
                 },
               },
             ]
-          }
+          },
           {
             test: /\.(png|svg|jpg|jpeg|gif)$/i,
             type: 'asset/resource',

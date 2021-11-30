@@ -15,3 +15,8 @@ h1 {
   background: url("../img/kaka.png") no-repeat 50% 50%;
   background-size: contain;
 }
+@media (min-resolution: 2dppx) {
+  .heading {
+    display: flex;
+  }
+}
