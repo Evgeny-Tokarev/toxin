@@ -4,18 +4,16 @@
   "description": "Учебный проект для изучения frontend разработки.",
   "private": true,
   "scripts": {
-    "dev": "webpack serve --open --mode development",
-    "build": "webpack --mode production"
+    "dev": "cross-env NODE_ENV=development webpack serve --open --config webpack.dev.js",
+    "build": "cross-env NODE_ENV=production webpack --config webpack.prod.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Evgeny-Tokarev/toxin.git"
   },
-  
   "browserslist": [
     "last 3 versions"
-    ]
-  ,
+  ],
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -27,6 +25,8 @@
     "@babel/core": "^7.16.0",
     "@babel/preset-env": "^7.16.4",
     "babel-loader": "^8.2.3",
+    "copy-webpack-plugin": "^10.0.0",
+    "cross-env": "^7.0.3",
     "css-loader": "^6.5.1",
     "html-webpack-plugin": "^5.5.0",
     "mini-css-extract-plugin": "^2.4.5",
@@ -45,6 +45,6 @@
     "webpack-node-externals": "^3.0.0"
   },
   "dependencies": {
-    "resolve-cwd": "^3.0.0"
+    "jquery": "^3.6.0"
   }
 }
