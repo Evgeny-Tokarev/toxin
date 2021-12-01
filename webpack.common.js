@@ -1,15 +1,30 @@
 const path = require("path");
+const fs = require("fs");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
-const ESLintPlugin = require('eslint-webpack-plugin');
-
+const ESLintPlugin = require("eslint-webpack-plugin");
 
 const isDev = process.env.NODE_ENV === "development";
+const PATHS = {
+  src: path.join(__dirname, "/src"),
+  dist: path.join(__dirname, "/dist"),
+};
+const isDir = (dirPath) => {
+  return fs.existsSync(dirPath) && fs.lstatSync(dirPath).isDirectory();
+};
 
-console.log(isDev);
+const PAGES_DIR = `${PATHS.src}/pages/`;
+
+const PAGES = fs
+  .readdirSync(PAGES_DIR)
+  .map((dirName) => {
+    return path.join(PAGES_DIR, dirName);
+  })
+  .filter(isDir);
+console.log(PAGES);
 
 module.exports = {
   context: path.resolve(__dirname, "src"),
@@ -21,12 +36,12 @@ module.exports = {
       chunks: "all",
     },
     minimize: !isDev,
-    minimizer: [ new CssMinimizerPlugin(),new TerserPlugin()],
+    minimizer: [new CssMinimizerPlugin(), new TerserPlugin()],
   },
   plugins: [
     new HtmlWebpackPlugin({
       template: "./index.html",
-      minify: !isDev
+      minify: !isDev,
     }),
     new MiniCssExtractPlugin({
       filename: "[name].[contenthash].css",
@@ -37,8 +52,8 @@ module.exports = {
     new MiniCssExtractPlugin(),
     new TerserPlugin(),
     new ESLintPlugin({
-      extensions: ['js']
-    })
+      extensions: ["js"],
+    }),
   ],
   output: {
     filename: "[name].[contenthash].js",
@@ -52,10 +67,12 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: "/node-modules/",
-        use: { loader: "babel-loader",
-        options: {
-          sourceMap: true,
-        },}    
+        use: {
+          loader: "babel-loader",
+          options: {
+            sourceMap: true,
+          },
+        },
       },
       // {
       //   test: /\.css$/i,

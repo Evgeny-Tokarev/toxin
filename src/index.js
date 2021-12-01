@@ -1,4 +1,4 @@
-import * as $ from "jquery";
+// import * as $ from "jquery";
 import "./js/common.js";
 import "./style/style.scss";
 import "./img/kaka.png";
