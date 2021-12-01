@@ -2,7 +2,13 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
+const TerserPlugin = require("terser-webpack-plugin");
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
+const ESLintPlugin = require('eslint-webpack-plugin');
+
+
 const isDev = process.env.NODE_ENV === "development";
+
 console.log(isDev);
 
 module.exports = {
@@ -14,11 +20,13 @@ module.exports = {
     splitChunks: {
       chunks: "all",
     },
+    minimize: !isDev,
+    minimizer: [ new CssMinimizerPlugin(),new TerserPlugin()],
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: "Development",
       template: "./index.html",
+      minify: !isDev
     }),
     new MiniCssExtractPlugin({
       filename: "[name].[contenthash].css",
@@ -26,6 +34,11 @@ module.exports = {
     new CopyPlugin({
       patterns: [{ from: "./img/icons8-webpack-64.png", to: "../dist" }],
     }),
+    new MiniCssExtractPlugin(),
+    new TerserPlugin(),
+    new ESLintPlugin({
+      extensions: ['js']
+    })
   ],
   output: {
     filename: "[name].[contenthash].js",
@@ -38,8 +51,11 @@ module.exports = {
     rules: [
       {
         test: /\.js$/,
-        loader: "babel-loader",
         exclude: "/node-modules/",
+        use: { loader: "babel-loader",
+        options: {
+          sourceMap: true,
+        },}    
       },
       // {
       //   test: /\.css$/i,
@@ -57,6 +73,9 @@ module.exports = {
           },
           {
             loader: "postcss-loader",
+            options: {
+              sourceMap: true,
+            },
           },
           {
             loader: "sass-loader",
