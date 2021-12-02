@@ -16,15 +16,18 @@ const isDir = (dirPath) => {
   return fs.existsSync(dirPath) && fs.lstatSync(dirPath).isDirectory();
 };
 
-// const PAGES_DIR = `${PATHS.src}/pages/`;
+const PAGES_DIR = `${PATHS.src}/pages/`;
 
-// const PAGES = fs
-//   .readdirSync(PAGES_DIR)
-//   .map((dirName) => {
-//     return path.join(PAGES_DIR, dirName);
-//   })
-//   .filter(isDir);
-// console.log(PAGES);
+const PAGES = fs
+  .readdirSync(PAGES_DIR)
+  .map((dirName) => {
+    return path.join(PAGES_DIR, dirName);
+  })
+  .filter(isDir);
+console.log(PAGES);
+// const pugs = PAGES.map(page => {
+//   fs.readdirSync(page).filter(fileName => fileName.endsWith('.pug'))
+// }
 
 module.exports = {
   context: path.resolve(__dirname, "src"),
