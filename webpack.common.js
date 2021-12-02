@@ -16,15 +16,15 @@ const isDir = (dirPath) => {
   return fs.existsSync(dirPath) && fs.lstatSync(dirPath).isDirectory();
 };
 
-const PAGES_DIR = `${PATHS.src}/pages/`;
+// const PAGES_DIR = `${PATHS.src}/pages/`;
 
-const PAGES = fs
-  .readdirSync(PAGES_DIR)
-  .map((dirName) => {
-    return path.join(PAGES_DIR, dirName);
-  })
-  .filter(isDir);
-console.log(PAGES);
+// const PAGES = fs
+//   .readdirSync(PAGES_DIR)
+//   .map((dirName) => {
+//     return path.join(PAGES_DIR, dirName);
+//   })
+//   .filter(isDir);
+// console.log(PAGES);
 
 module.exports = {
   context: path.resolve(__dirname, "src"),
@@ -49,7 +49,6 @@ module.exports = {
     new CopyPlugin({
       patterns: [{ from: "./img/icons8-webpack-64.png", to: "../dist" }],
     }),
-    new MiniCssExtractPlugin(),
     new TerserPlugin(),
     new ESLintPlugin({
       extensions: ["js"],
@@ -74,10 +73,6 @@ module.exports = {
           },
         },
       },
-      // {
-      //   test: /\.css$/i,
-      //   use: [MiniCssExtractPlugin.loader, "css-loader"],
-      // },
       {
         test: /\.s[ac]ss$/i,
         use: [
