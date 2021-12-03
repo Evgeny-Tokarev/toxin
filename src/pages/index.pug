@@ -1,0 +1,13 @@
+extends layout/no-header
+block variables 
+  - var pageTitle= "Page title"
+block content
+  h1.title Pug - node template engine
+    #container.col
+      if youAreUsingPug
+        p You are amazing
+      else
+        p Get on it!
+      p.
+        Pug is a terse and simple templating language with a
+        strong focus #[a(href="#" class="class-for-link")]on performance and powerful features.

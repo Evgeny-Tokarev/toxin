@@ -1,7 +1,20 @@
 {
   "parser": "@babel/eslint-parser",
   "rules": {
-    "no-unused-vars": "warn"
+    "no-unused-vars": "error",
+    "no-var": "error",
+    "prefer-const": "error",
+    "no-new-object": "error",
+    "object-shorthand": "error",
+    "quote-props": ["error", "as-needed"],
+    "no-prototype-builtins": "error",
+    "prefer-object-spread": "error",
+    "no-array-constructor": "error",
+    "array-callback-return": "error",
+    "prefer-destructuring": ["error", {"object": true, "array": true}],
+    "quotes": ["error", "single", { "allowTemplateLiterals": true,"avoidEscape": true }],
+    "prefer-template": "error",
+    "template-curly-spacing": "error"
   }
   // "extends": ["eslint:recommended"]
 }
