@@ -12,14 +12,4 @@ h1 {
   height: 300px;
   font-family: "DancingScript-Regular", Aril, sans-serif;
   font-weight: normal;
-  background: url("../img/kaka.png") no-repeat 50% 50%;
-  background-size: contain;
-}
-@media (min-resolution: 2dppx) {
-  .heading {
-    display: flex;
-  }
-}
-.new_p {
-  color: green;
 }
