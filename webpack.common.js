@@ -1,16 +1,16 @@
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const CopyPlugin = require('copy-webpack-plugin');
-const TerserPlugin = require('terser-webpack-plugin');
-const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
-const ESLintPlugin = require('eslint-webpack-plugin');
-const glob = require('glob');
+const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const CopyPlugin = require("copy-webpack-plugin");
+const TerserPlugin = require("terser-webpack-plugin");
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
+const ESLintPlugin = require("eslint-webpack-plugin");
+const glob = require("glob");
 
-const isDev = process.env.NODE_ENV === 'development';
+const isDev = process.env.NODE_ENV === "development";
 const PATHS = {
-  src: path.join(__dirname, '/src'),
-  dist: path.join(__dirname, '/dist'),
+  src: path.join(__dirname, "/src"),
+  dist: path.join(__dirname, "/dist"),
 };
 
 const PAGES_DIR = `${PATHS.src}/pages`;
@@ -19,48 +19,48 @@ const PAGES = glob.sync(`${PAGES_DIR}/**/*.pug`);
 console.log(PAGES);
 
 module.exports = {
-  context: path.resolve(__dirname, 'src'),
+  context: path.resolve(__dirname, "src"),
   entry: {
-    app: './index.js',
+    app: "./index.js",
   },
   optimization: {
     splitChunks: {
-      chunks: 'all',
+      chunks: "all",
     },
     minimize: !isDev,
     minimizer: [new CssMinimizerPlugin(), new TerserPlugin()],
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './index.pug',
-      filename: 'index.html',
+      template: "./index.pug",
+      filename: "index.html",
       minify: !isDev,
     }),
     ...PAGES.map(
       (page) =>
         new HtmlWebpackPlugin({
           template: page,
-          filename: `${page
-            .split('/')
+          filename: `[contenthash]${page
+            .split("/")
             .slice(-1)
-            .join('/')
-            .replace(/\.pug/, '.html')}`,
+            .join("/")
+            .replace(/\.pug/, ".html")}`,
         })
     ),
     new MiniCssExtractPlugin({
-      filename: '[name].[contenthash].css',
+      filename: "[name].[contenthash].css",
     }),
     new CopyPlugin({
-      patterns: [{ from: './img/icons8-webpack-64.png', to: '../dist' }],
+      patterns: [{ from: "./img/icons8-webpack-64.png", to: "../dist" }],
     }),
     new TerserPlugin(),
     new ESLintPlugin({
-      extensions: ['js'],
+      extensions: ["js"],
     }),
   ],
   output: {
-    filename: '[name].[contenthash].js',
-    path: path.resolve(__dirname, 'dist'),
+    filename: "[name].[contenthash].js",
+    path: path.resolve(__dirname, "dist"),
     clean: true,
     charset: true,
   },
@@ -69,9 +69,9 @@ module.exports = {
     rules: [
       {
         test: /\.js$/,
-        exclude: '/node-modules/',
+        exclude: "/node-modules/",
         use: {
-          loader: 'babel-loader',
+          loader: "babel-loader",
           options: {
             sourceMap: true,
           },
@@ -79,26 +79,26 @@ module.exports = {
       },
       {
         test: /\.pug$/,
-        use: ['pug-loader'],
+        use: ["pug-loader"],
       },
       {
         test: /\.s[ac]ss$/i,
         use: [
-          isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
+          isDev ? "style-loader" : MiniCssExtractPlugin.loader,
           {
-            loader: 'css-loader',
+            loader: "css-loader",
             options: {
               sourceMap: true,
             },
           },
           {
-            loader: 'postcss-loader',
+            loader: "postcss-loader",
             options: {
               sourceMap: true,
             },
           },
           {
-            loader: 'sass-loader',
+            loader: "sass-loader",
             options: {
               sourceMap: true,
             },
@@ -107,11 +107,11 @@ module.exports = {
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
-        type: 'asset/resource',
+        type: "asset/resource",
       },
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/i,
-        type: 'asset/resource',
+        type: "asset/resource",
       },
     ],
   },
