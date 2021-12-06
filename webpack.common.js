@@ -42,7 +42,7 @@ module.exports = {
           template: page,
           filename: `${page
             .split('/')
-            .slice(-2)
+            .slice(-1)
             .join('/')
             .replace(/\.pug/, '.html')}`,
         })

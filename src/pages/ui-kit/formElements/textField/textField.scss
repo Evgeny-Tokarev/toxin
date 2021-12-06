@@ -1,3 +1,12 @@
-.plain-texfield {
+.plain-textfield {
   width: 320px;
+  height: 44px;
+  background: #ffffff;
+  border: 1px solid rgba(31, 32, 65, 0.25);
+  border-radius: 4px;
+  padding: 13px 15px;
+  &::placeholder {
+    font-family: "Montserrat", Arial, sans-serif;
+    font-size: 1rem;
+  }
 }
