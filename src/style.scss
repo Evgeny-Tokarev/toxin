@@ -1,5 +1,5 @@
-@import "./pages/ui-kit/formElements/textField/textField.scss";
-
+@import "./pages/ui-kit/formElements/formElements.scss";
+@import "./reset.scss";
 @font-face {
   font-family: "Montserrat";
   src: url("./fonts/Montserrat-Regular.woff") format("woff"),
@@ -17,5 +17,9 @@
   font-style: normal;
 }
 html {
+  font-family: "Montserrat", Arial, sans-serif;
   font-size: 14px;
+}
+* {
+  box-sizing: border-box;
 }

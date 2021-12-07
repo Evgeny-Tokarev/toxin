@@ -19,9 +19,17 @@ const PAGES = glob.sync(`${PAGES_DIR}/**/*.pug`);
 console.log(PAGES);
 
 module.exports = {
+  target: "web",
   context: path.resolve(__dirname, "src"),
   entry: {
     app: "./index.js",
+  },
+  devServer: {
+    liveReload: true,
+    static: [
+      {
+        directory: path.join(__dirname, '../dist'),
+      },]
   },
   optimization: {
     splitChunks: {

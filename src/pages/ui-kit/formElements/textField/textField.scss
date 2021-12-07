@@ -4,9 +4,12 @@
   background: #ffffff;
   border: 1px solid rgba(31, 32, 65, 0.25);
   border-radius: 4px;
-  padding: 13px 15px;
+  padding: 0 15px;
   &::placeholder {
     font-family: "Montserrat", Arial, sans-serif;
     font-size: 1rem;
+    line-height: 18px;
+    vertical-align: bottom;
+    color: rgba(31, 32, 65, 0.25);
   }
 }

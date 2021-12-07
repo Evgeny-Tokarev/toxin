@@ -1,3 +1,3 @@
-mixin textField
-  input.plain-textfield(type='text')
-+textField
+mixin textField(opt)
+  input.plain-textfield(type!=opt.type placeholder=opt.placeholder)
++textField({type: "email",placeholder:"Email"})
