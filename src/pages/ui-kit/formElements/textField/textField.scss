@@ -17,7 +17,7 @@
     }
   }
   &::before {
-    content: "Text Field";
+    content: attr(data-before);
     width: 180px;
     height: 18px;
     position: absolute;
@@ -27,5 +27,18 @@
     color: #1f2041;
     top: -21px;
     left: 0px;
+  }
+  &::after {
+    content: "Default";
+    width: 180px;
+    height: 18px;
+    position: absolute;
+    font-size: 12px;
+    text-transform: uppercase;
+    text-align: right;
+    font-weight: 400;
+    color: rgba(31, 32, 65, 0.5);
+    top: -23px;
+    right: 0px;
   }
 }

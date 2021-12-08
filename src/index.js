@@ -1,6 +1,4 @@
-import * as $ from 'jquery';
-
-import './style.scss';
-import './img/main-icon.svg';
-
-$(p).html='qwerty'
+// import * as $ from 'jquery';
+import "./reset.scss";
+import "./style.scss";
+import "./img/main-icon.svg";

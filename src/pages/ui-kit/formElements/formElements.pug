@@ -1,4 +1,6 @@
 include textField/textField.pug
 section.form-elements
   img.main-icon(src=('./main-icon.svg') alt='main-icon' height=48 width=48)
-  +textField({type: "email",placeholder:"Email"})
+  +textField({type: "email",placeholder:"Email", before:"text field", after:"default"})
+  +textField({type: "email",placeholder:"Email", before:"text field", after:"hover/focus"})
+   

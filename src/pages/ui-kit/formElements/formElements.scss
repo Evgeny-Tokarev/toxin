@@ -9,6 +9,6 @@
   left: 30px;
   top: 30px;
 }
-.form-elements__textField::before {
-  content: "Text Field";
+.form-elements .plain-texfield {
+  margin-bottom: 40px;
 }
