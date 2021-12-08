@@ -43,6 +43,7 @@
     "postcss-loader": "^6.2.1",
     "postcss-preset-env": "^7.0.1",
     "pug": "^3.0.2",
+    "pug-html-loader": "^1.1.5",
     "pug-loader": "^2.4.0",
     "sass": "^1.43.5",
     "sass-loader": "^12.3.0",

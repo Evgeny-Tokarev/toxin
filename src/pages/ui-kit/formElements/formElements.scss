@@ -1,5 +1,14 @@
 @import "./textField/textField.scss";
 
 .form-elements {
+  position: relative;
   padding: 163px 141px;
+}
+.main-icon {
+  position: absolute;
+  left: 30px;
+  top: 30px;
+}
+.form-elements__textField::before {
+  content: "Text Field";
 }
