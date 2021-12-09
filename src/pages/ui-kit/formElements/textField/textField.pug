@@ -1,4 +1,3 @@
 mixin textField(opt)
-  .plain-textfield(data-before=opt.before data-after=opt.after)
-    input.plain-textfield__input(type!=opt.type placeholder=opt.placeholder)
-//- +textField({type: "email",placeholder:"Email"})
+  .input-wrapper(class=opt.class data-before=opt.before data-after=opt.after)
+    input.input-wrapper__input(type!=opt.type placeholder=opt.placeholder value=opt.value)

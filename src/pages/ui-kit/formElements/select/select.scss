@@ -1,0 +1,8 @@
+.input-wrapper {
+  select {
+    appearance: none;
+    &::before {
+      content: "&#8964;";
+    }
+  }
+}

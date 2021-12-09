@@ -9,6 +9,9 @@
   left: 30px;
   top: 30px;
 }
-.form-elements .plain-texfield {
+.form-elements__input-wrapper {
   margin-bottom: 40px;
+}
+.form-elements__input-wrapper:last-child {
+  margin-bottom: 0;
 }
