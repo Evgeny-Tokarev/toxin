@@ -1,7 +1,7 @@
 mixin select(opt)
   .input-wrapper(class=opt.class data-before=opt.before data-after=opt.after)
-    select.input-wrapper__input(type!=opt.type placeholder=opt.placeholder value=opt.value guests=opt.guests)
+    select.input-wrapper__input(type!=opt.type placeholder=opt.placeholder value=opt.value)
       - var n = 0;
-        
-          while n < guests
-            option()= n++
+        option= "Сколько гостей" 
+        while n < opt.guests
+          option(value!=n)= n++
