@@ -1,3 +1,5 @@
-mixin textField(opt)
-  .input-wrapper(class=opt.class data-before=opt.before data-after=opt.after)
-    input.input-wrapper__input(type!=opt.type placeholder=opt.placeholder value=opt.value)
+include ../input/input-bar
+mixin text-field(opt)
+  +input-bar({left_heading:opt.left_heading,right_heading: opt.right_heading})
+    
+    
