@@ -1,12 +1,10 @@
-include ./bemto/bemto_webpack
+include ../node_modules/bemto.pug/bemto_webpack
 doctype html
 html(lang="ru")
   head
     meta(charset="utf-8")
     title= "Toxin"
   body
-    +b.newBlock
-      +e.child
     include pages/ui-kit/formElements/formElements.pug
     
       

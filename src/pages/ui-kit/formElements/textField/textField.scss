@@ -1,55 +1,13 @@
 @import "../../colors&type/colors&type.scss";
-.input-wrapper {
-  width: 320px;
-  height: 44px;
-  position: relative;
-  .input-wrapper__input {
-    width: 320px;
-    height: 44px;
-    background: #ffffff;
-    border: 1px solid $Dark-Shade-25;
-    border-radius: 4px;
-    padding: 0 14px;
-    @include Body-text();
-    cursor: pointer;
-    color: $Dark-Shade-75;
-    &::placeholder {
-      @include Body-text();
-      color: $Dark-Shade-25;
+.input {
+  display: flex;
+  flex-direction: column;
+  &__body {
+    .input__field {
+      height: 44px;
     }
-    &:hover,
-    &:focus {
-      color: $Dark-Shade-75;
-      border: 1px solid $Dark-Shade-50;
-      outline: none;
-      letter-spacing: -0.2px;
+    .input__field_default {
+      width: 320px;
     }
-  }
-  &::before {
-    @include Label-text();
-    content: attr(data-before);
-    width: 180px;
-    height: 18px;
-    position: absolute;
-    color: $Dark-Shade-100;
-    top: -21px;
-    left: 0px;
-  }
-  &::after {
-    content: attr(data-after);
-    width: 180px;
-    height: 18px;
-    position: absolute;
-    font-size: 12px;
-    text-transform: uppercase;
-    text-align: right;
-    font-weight: 400;
-    color: $Dark-Shade-50;
-    top: -24px;
-    right: 0px;
-  }
-  &:hover:after,
-  &:focus:after {
-    top: -20px;
   }
 }

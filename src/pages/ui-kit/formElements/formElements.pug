@@ -1,8 +1,7 @@
 include textField/textField.pug
-include input/input-bar
 //- include select/select.pug
 //- include ../../../bemto/bemto.pug
 section.form-elements
   img.main-icon(src=('./main-icon.svg') alt='main-icon' height=48 width=48)
-  +input-bar({left_heading:"text field", right_heading: "default"})
+  +text-field({left_heading:"text field", right_heading: "default"})
     
