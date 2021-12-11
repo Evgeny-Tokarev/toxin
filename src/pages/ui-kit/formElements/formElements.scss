@@ -4,16 +4,13 @@
 
 .form-elements {
   position: relative;
-  padding: 163px 141px;
+  padding: 143px 141px;
 }
 .main-icon {
   position: absolute;
   left: 30px;
   top: 30px;
 }
-.form-elements__input-wrapper {
-  margin-bottom: 40px;
-}
-.form-elements__input-wrapper:last-child {
-  margin-bottom: 0;
+.form-elements .input {
+  margin-bottom: 19px;
 }

@@ -1,7 +1,10 @@
 include textField/textField.pug
+include dropdown/dropdown.pug
 //- include select/select.pug
 //- include ../../../bemto/bemto.pug
 section.form-elements
   img.main-icon(src=('./main-icon.svg') alt='main-icon' height=48 width=48)
-  +text-field({left_heading:"text field", right_heading: "default"})
+  +text-field({left_heading:"text field", right_heading: "default",placeholder: "Email", type: "Email"})
+  +text-field({left_heading:"text field", right_heading: "Hover / Focus", value: "This is pretty awesome"})
+  +dropdown({left_heading:"dropdown", options: ["first","second"]})
     

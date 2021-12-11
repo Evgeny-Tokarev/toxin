@@ -1,0 +1,11 @@
+include ../input-header/input-header
+mixin dropdown(opt)
+  +b.input()
+    +input-header({left_heading:opt.left_heading,right_heading: opt.right_heading,modifier:"default"})
+    +e.body 
+      +e.SELECT.field_default()
+       - var n = 0;
+
+          while n < opt.options.length
+            +e.OPTION(value!=n)= opt.options[n++]
+              +e.subdir= ldd

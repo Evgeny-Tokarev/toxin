@@ -4,7 +4,23 @@
   flex-direction: column;
   &__body {
     .input__field {
+      @include Body-text();
       height: 44px;
+      border: 1px solid $Dark-Shade-25;
+      border-radius: 4px;
+      padding: 0 14px;
+      color: $Dark-Shade-75;
+      &::placeholder {
+        font-size: 1rem;
+        line-height: 18px;
+        vertical-align: bottom;
+        color: $Dark-Shade-25;
+      }
+      &:hover,
+      &:focus {
+        border: 1px solid $Dark-Shade-50;
+        outline: none;
+      }
     }
     .input__field_default {
       width: 320px;
