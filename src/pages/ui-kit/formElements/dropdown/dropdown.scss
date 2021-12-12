@@ -1,0 +1,63 @@
+@import '../../colors&type/colors&type.scss';
+@import '../blanks/input-body/input-body.scss';
+.input {
+    @include input-body();
+    &__inner {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    &__button {
+        border-left: 2px solid $Dark-Shade-50;
+        border-bottom: 2px solid $Dark-Shade-50;
+        width: 8px;
+        height: 8px;
+        transform: rotate(-45deg);
+        margin-top: -5px;
+        margin-right: 4px;
+    }
+    &__description {
+        border: 1px solid $Dark-Shade-50;
+        border-radius: 0 0 4px 4px;
+    }
+}
+.select-list {
+    &__item {
+        @include Label-text;
+        height: 39px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 7px 0 15px;
+    }
+    &__item_hidden {
+        height: 0;
+    }
+    &__handler {
+        width: 92px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    &__button {
+        width: 30px;
+        height: 30px;
+        border: 1px solid $Dark-Shade-50;
+        border-radius: 50%;
+        font-size: 18px;
+        font-weight: 400;
+        color: $Dark-Shade-50;
+        &_disabled {
+            border-color: $Dark-Shade-5;
+        }
+    }
+    &__button_type_disabled {
+        border-color: $Dark-Shade-5;
+    }
+    &__item_hidden * {
+        height: 0;
+        font-size: 0;
+    }
+}

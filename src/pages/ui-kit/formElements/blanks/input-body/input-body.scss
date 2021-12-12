@@ -1,0 +1,34 @@
+@import '../../../colors&type/colors&type.scss';
+@mixin input-body {
+    .input__body {
+        display: flex;
+        flex-direction: column;
+    }
+    .input__field {
+        display: flex;
+        width: 100%;
+        @include Body-text();
+        height: 44px;
+        border: 1px solid $Dark-Shade-25;
+        border-radius: 4px;
+        padding: 0 14px;
+        color: $Dark-Shade-75;
+
+        &::placeholder {
+            font-size: 1rem;
+            line-height: 18px;
+            vertical-align: bottom;
+            color: $Dark-Shade-25;
+        }
+        &:hover,
+        &:focus {
+            border: 1px solid $Dark-Shade-50;
+            outline: none;
+        }
+    }
+    .input__field_expanded {
+        border-radius: 4px 4px 0 0;
+        border-color: $Dark-Shade-50;
+        border-bottom: none;
+    }
+}

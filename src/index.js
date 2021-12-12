@@ -1,5 +1,5 @@
-// import * as $ from 'jquery';
-import './reset.scss';
-import './style.scss';
-import './pages/ui-kit/colors&type/colors&type.scss';
-import './img/main-icon.svg';
+import './reset.scss'
+import './style.scss'
+import './pages/ui-kit/colors&type/colors&type.scss'
+import './img/main-icon.svg'
+import './pages/ui-kit/formElements/dropdown/dropdown.js'

@@ -1,11 +1,19 @@
-include ../input-header/input-header
+include ../blanks/input-header/input-header
 mixin dropdown(opt)
-  +b.input()
+  +b.input(class="input_320")
     +input-header({left_heading:opt.left_heading,right_heading: opt.right_heading,modifier:"default"})
-    +e.body 
-      +e.SELECT.field_default()
-       - var n = 0;
-
-          while n < opt.options.length
-            +e.OPTION(value!=n)= opt.options[n++]
-              +e.subdir= ldd
+    +e.body()
+      +e.field._expanded()
+        +e.inner()
+          +e.placeholder()= opt.inner_text
+          +e.BUTTON.button(type!=opt.button-type)
+      +e.description_hidden
+        +b.UL.select-list
+          - var n=0
+            each item in opt.items
+              +e.LI.item
+                +e.SPAN.name= item
+                +e.handler
+                  +e.BUTTON.button_type_decrease._type_disabled= "-"
+                  +e.item-value= 0
+                  +e.BUTTON.button_type_increase= "+"
