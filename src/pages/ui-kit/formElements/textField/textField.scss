@@ -1,13 +1,10 @@
-@import "../../colors&type/colors&type.scss";
-@import "../blanks/input-body/input-body.scss";
+@import '../../colors&type/colors&type.scss';
+@import '../blanks/input-body/input-body.scss';
 .input {
-  display: flex;
-  flex-direction: column;
-  @include input-body();
-  .input__body_default {
-    width: 320px;
-  }
+    display: flex;
+    flex-direction: column;
+    @include input-body();
 }
 .input_320 {
-  width: 320px;
+    width: 320px;
 }

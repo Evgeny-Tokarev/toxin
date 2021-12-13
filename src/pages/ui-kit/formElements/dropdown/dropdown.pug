@@ -3,11 +3,11 @@ mixin dropdown(opt)
   +b.input(class="input_320")
     +input-header({left_heading:opt.left_heading,right_heading: opt.right_heading,modifier:"default"})
     +e.body()
-      +e.field._expanded()
+      +e.field
         +e.inner()
-          +e.placeholder()= opt.inner_text
+          +e.placeholder(data-value!=opt.inner_text)= opt.inner_text
           +e.BUTTON.button(type!=opt.button-type)
-      +e.description_hidden
+      +e.description
         +b.UL.select-list
           - var n=0
             each item in opt.items
