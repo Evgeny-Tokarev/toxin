@@ -1,40 +1,51 @@
 import * as $ from 'jquery'
-const list = $('.select-list')
-const decrButtons = $('.select-list__button_type_decrease')
-const incrButtons = $('.select-list__button_type_increase')
-const listValues = $('.select-list__item-value')
-const valueArr = [];
+// const list = $('.select-list')
+// const decrButtons = $('.select-list__button_type_decrease')
+// const incrButtons = $('.select-list__button_type_increase')
+// const listValues = $('.select-list__item-value')
+// const valueArr = []
 
 // При клике на 'input__button' добавляем модифицированный класс 'input__body_expanded' для '.input__body'
 const View = {
     presenter: null,
-    registerPresenter: function(presenter) {
-        this.presenter = presenter;
+    registerPresenter(presenter) {
+        this.presenter = presenter
     },
-    init: function(input) {
-        input.on('click', function(e) {
-            if (($(e.target).hasClass('input__button'))) { 
-                e.stopPropagation();
-                this.expandList();
-                
+    init(input) {
+        console.log(input)
+        const self = this
+        input = $(input)
+        input.on('click', function (e) {
+            console.log(this)
+            if ($(e.target).hasClass('input__button')) {
+                e.stopPropagation()
+                self.expandList(input)
             }
-        });
+        })
     },
-    expandList: function() {
-        $('.input__body').toggleClass('input__body_expanded');
+    expandList(input) {
+        $(input).find('.input__body').toggleClass('input__body_expanded')
     },
-    setListItems: function(list) {
-        list.each((i, listItem) => {
-            this.$('.select-list__name').text(list.name);
-            list.increaseButtonDisabled ? this.$('.select-list__button_type_increase').addClass('select-list__button_type_disabled') : this.$('.select-list__button_type_increase').removeClass('select-list__button_type_disabled');
-            this.$('.select-list__item-value').text(list.value);
-                })
-
+    setListItems(list) {
+        list.each(() => {
+            console.log(i)
+            $(this).find('.select-list__name').text(list.name)
+            list.increaseButtonDisabled
+                ? $(this)
+                      .find('.select-list__button_type_increase')
+                      .addClass('select-list__button_type_disabled')
+                : $(this)
+                      .find('.select-list__button_type_increase')
+                      .removeClass('select-list__button_type_disabled')
+            $(this).find('.select-list__item-value').text(list.value)
+        })
     },
 }
-const view = Object.create(View);
 
-view.init($('.input'));
+$('.input').each(function () {
+    const view = Object.create(View)
+    view.init(this)
+})
 // Логика работы кнопок + и - в пунктах меню
 
 // list.on('click', function(event) {
@@ -75,8 +86,5 @@ view.init($('.input'));
 //         }
 //     }
 // })
-// placeholder.text(valueArr.filter(Boolean).length ? valueArr.filter(Boolean).join(', '): $(this).closest('.input__body').find('.input__placeholder').attr('data-value'))  
+// placeholder.text(valueArr.filter(Boolean).length ? valueArr.filter(Boolean).join(', '): $(this).closest('.input__body').find('.input__placeholder').attr('data-value'))
 // })
-
-
-
