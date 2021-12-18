@@ -5,21 +5,42 @@ import * as $ from 'jquery'
 // const listValues = $('.select-list__item-value')
 // const valueArr = []
 
-// При клике на 'input__button' добавляем модифицированный класс 'input__body_expanded' для '.input__body'
 const View = {
     presenter: null,
     registerPresenter(presenter) {
         this.presenter = presenter
     },
     init(input) {
-        console.log(input)
         const self = this
         input = $(input)
+        input.find('.select-list__item').each(function () {
+            self.presenter.listButtonsHandler.setItem.call(
+                self.presenter,
+                this.getAttribute('data-number')
+            )
+        })
         input.on('click', function (e) {
-            console.log(this)
             if ($(e.target).hasClass('input__button')) {
                 e.stopPropagation()
                 self.expandList(input)
+            }
+            if ($(e.target).hasClass('select-list__button_type_decrease')) {
+                e.stopPropagation()
+                self.presenter.listButtonsHandler.decreaseItem.call(
+                    self.presenter,
+                    $(e.target)
+                        .closest('.select-list__item')
+                        .attr('data-number')
+                )
+            }
+            if ($(e.target).hasClass('select-list__button_type_increase')) {
+                e.stopPropagation()
+                self.presenter.listButtonsHandler.increaseItem.call(
+                    self.presenter,
+                    $(e.target)
+                        .closest('.select-list__item')
+                        .attr('data-number')
+                )
             }
         })
     },
@@ -28,9 +49,8 @@ const View = {
     },
     setListItems(list) {
         list.each(() => {
-            console.log(i)
             $(this).find('.select-list__name').text(list.name)
-            list.increaseButtonDisabled
+            list.decreaseButtonDisabled
                 ? $(this)
                       .find('.select-list__button_type_increase')
                       .addClass('select-list__button_type_disabled')
@@ -41,9 +61,59 @@ const View = {
         })
     },
 }
+const Presenter = {
+    model: null,
+    view: null,
+    register(model, view) {
+        this.model = model
+        this.view = view
+    },
+
+    listButtonsHandler: {
+        setItem(i) {
+            this.model.setItem(i, { value: 0, decreaseButtonDisabled: true })
+        },
+        increaseItem(i) {
+            console.log(i)
+            console.log(this.model.getValue)
+            // this.model.setItem(i, {
+            //     value: this.model.getValue(i).value,
+            //     decreaseButtonDisabled: true,
+            // })
+        },
+        decreaseItem(i) {
+            const self = this
+            console.log(self.model.getValue(i).value--)
+            this.model.setItem(i, {
+                value: self.model.getValue(i).value--,
+                decreaseButtonDisabled: true,
+            })
+        },
+    },
+}
+const Model = {
+    presenter: null,
+    registerPresenter(presenter) {
+        this.presenter = presenter
+    },
+    listValues: [],
+    setItem(i, data) {
+        this.listValues[i] = data
+        console.log(this.listValues[i])
+    },
+    getValue(i) {
+        console.log(this)
+        return this.listValues[i]
+    },
+}
 
 $('.input').each(function () {
     const view = Object.create(View)
+    const presenter = Object.create(Presenter)
+    const model = Object.create(Model)
+    view.registerPresenter(presenter)
+    model.registerPresenter(presenter)
+    presenter.register(model, view)
     view.init(this)
 })
 // Логика работы кнопок + и - в пунктах меню

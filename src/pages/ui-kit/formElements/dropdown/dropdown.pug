@@ -11,7 +11,7 @@ mixin dropdown(opt)
         +b.UL.select-list
           - var n=0
             each item in opt.items
-              +e.LI.item
+              +e.LI.item(data-number= n++)
                 +e.SPAN.name= item
                 +e.handler
                   +e.BUTTON.button_type_decrease._type_disabled= "-"
