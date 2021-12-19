@@ -3,15 +3,18 @@ import * as $ from 'jquery'
 class View {
     constructor() {
         this.presenter = null
+        this.itemsList = []
+        this.placeholder = null
     }
 
     registerWith(presenter) {
         this.presenter = presenter
     }
-    itemsList = []
+
     init(input) {
         const self = this
         input = $(input)
+        this.placeholder = input.find('.input__placeholder')
         $.each(input.find('.select-list__item'), function () {
             self.itemsList.push(this)
             self.presenter.setItem(this.getAttribute('data-number'))
@@ -40,25 +43,31 @@ class View {
         })
     }
     expandList(input) {
-        $(input).find('.input__body').toggleClass('input__body_expanded')
+        input.find('.input__body').toggleClass('input__body_expanded')
     }
     setListItem(index, value, disabled) {
-        console.log(this.itemsList[index], index, value, disabled)
         $(this.itemsList[index]).find('.select-list__item-value').text(value)
         $(this.itemsList[index])
             .find('.select-list__button_type_decrease')
             .prop('disabled', disabled)
-        // list.each((i) => {
-        //     $(this).find('.select-list__name').text(list.name)
-        //     list.decreaseButtonDisabled
-        //         ? $(this)
-        //               .find('.select-list__button_type_increase')
-        //               .addClass('select-list__button_type_disabled')
-        //         : $(this)
-        //               .find('.select-list__button_type_increase')
-        //               .removeClass('select-list__button_type_disabled')
-        //     $(this).find('.select-list__item-value').text(list.value)
-        // })
+        this.setInputString()
+    }
+    setInputString() {
+        console.log(this)
+        const valueArr = []
+        $.each(this.itemsList, function (i, item) {
+            const value = $(item).find('.select-list__item-value').text()
+            const name = $(item).find('.select-list__name').text()
+            if (value > 0) {
+                valueArr[i] = `${name} ${value}`
+            }
+        })
+
+        this.placeholder.text(
+            valueArr.filter(Boolean).length
+                ? valueArr.filter(Boolean).join(', ')
+                : this.placeholder.attr('data-value')
+        )
     }
 }
 
@@ -99,10 +108,8 @@ class Model {
 
     setItem(i, value) {
         this.listValues[i] = value
-        console.log(this.listValues[i])
     }
     getValue(i) {
-        console.log(this)
         return this.listValues[i]
     }
 }
@@ -120,45 +127,3 @@ $('.input')
         view[i].registerWith(presenter[i])
         view[i].init(this)
     })
-// Логика работы кнопок + и - в пунктах меню
-
-// list.on('click', function(event) {
-//     const placeholder =$(this).closest('.input__body').find('.input__placeholder');
-//     const context = this
-//     decrButtons.each((i, button) => {
-//         if (event.target === button) {
-//             if (listValues[i].innerHTML > 1) {
-//                 listValues[i].innerHTML--
-//             } else {
-//                 if (listValues[i].innerHTML == 1) {
-//                     listValues[i].innerHTML--
-//                     button.classList.add('select-list__button_type_disabled')
-//                 }
-//             }
-//         }
-//     })
-//     incrButtons.each((i, button) => {
-//         if (event.target === button) {
-//             if (listValues[i].innerHTML == 0) {
-//                 decrButtons[i].classList.remove(
-//                     'select-list__button_type_disabled'
-//                 )
-//                 listValues[i].innerHTML++
-//             } else {
-//                 listValues[i].innerHTML++
-//             }
-//         }
-//     })
-//     // Записываем выбранные значения в тело поля ввода
-
-// listValues.each(function(i,value) {
-//     if ((value.innerHTML > 0)&&(context.contains(value))) {
-//         valueArr[i]= `${$(value).closest('.select-list__item').find('.select-list__name').html()} ${value.innerHTML}`
-//     } else {
-//         if (context.contains(value)) {
-//         valueArr[i]=null;
-//         }
-//     }
-// })
-// placeholder.text(valueArr.filter(Boolean).length ? valueArr.filter(Boolean).join(', '): $(this).closest('.input__body').find('.input__placeholder').attr('data-value'))
-// })
