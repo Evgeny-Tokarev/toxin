@@ -1,5 +1,6 @@
 {
   "parser": "@babel/eslint-parser",
+  "ignorePatterns": ["jquery.mask.js"],
   "rules": {
     "no-unused-vars": "error",
     "no-var": "error",
@@ -11,8 +12,12 @@
     "prefer-object-spread": "error",
     "no-array-constructor": "error",
     "array-callback-return": "error",
-    "prefer-destructuring": ["error", {"object": true, "array": true}],
-    "quotes": ["error", "single", { "allowTemplateLiterals": true,"avoidEscape": true }],
+    "prefer-destructuring": ["error", { "object": true, "array": true }],
+    "quotes": [
+      "error",
+      "single",
+      { "allowTemplateLiterals": true, "avoidEscape": true }
+    ],
     "prefer-template": "error",
     "template-curly-spacing": "error"
   }

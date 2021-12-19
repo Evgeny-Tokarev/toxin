@@ -1,0 +1,7 @@
+include ../blanks/input-header/input-header
+mixin masked-text-field(opt)
+  +b.input(class="_320")
+    +input-header({left_heading:opt.left_heading,right_heading: opt.right_heading,modifier:"default"})
+    +e.body()
+      +e.INPUT.field(id="masked-text-field",placeholder!=opt.placeholder)
+        

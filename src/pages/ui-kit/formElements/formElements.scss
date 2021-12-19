@@ -1,16 +1,22 @@
-@import "./blanks/input-header/input-header.scss";
-@import "./textField/textField.scss";
-@import "./dropdown/dropdown.scss";
+@import './blanks/input-header/input-header.scss';
+// @import "./textField/textField.scss";
+@import './dropdown/dropdown.scss';
 
 .form-elements {
-  position: relative;
-  padding: 143px 141px;
+    position: relative;
+    padding: 143px 141px;
 }
 .main-icon {
-  position: absolute;
-  left: 30px;
-  top: 30px;
+    position: absolute;
+    left: 30px;
+    top: 30px;
 }
 .form-elements .input {
-  margin-bottom: 19px;
+    margin-bottom: 19px;
+}
+.wrapper_320 {
+    width: 320px;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 0;
 }

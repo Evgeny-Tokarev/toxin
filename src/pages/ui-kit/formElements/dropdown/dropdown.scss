@@ -1,7 +1,8 @@
 @import '../../colors&type/colors&type.scss';
 @import '../blanks/input-body/input-body.scss';
+
+@include input-body();
 .input {
-    @include input-body();
     &__inner {
         width: 100%;
         display: flex;

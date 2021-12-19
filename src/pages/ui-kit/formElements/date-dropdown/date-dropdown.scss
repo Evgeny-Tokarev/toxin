@@ -1,0 +1,21 @@
+@import '../../colors&type/colors&type.scss';
+@import '../blanks/input-body/input-body.scss';
+
+@include input-body();
+.input {
+    &__inner {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    &__button {
+        border-left: 2px solid $Dark-Shade-50;
+        border-bottom: 2px solid $Dark-Shade-50;
+        width: 8px;
+        height: 8px;
+        transform: rotate(-45deg);
+        margin-top: -5px;
+        margin-right: 4px;
+    }
+}
