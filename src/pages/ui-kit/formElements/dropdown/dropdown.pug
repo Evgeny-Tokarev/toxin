@@ -14,6 +14,6 @@ mixin dropdown(opt)
               +e.LI.item(data-number= n++)
                 +e.SPAN.name= item
                 +e.handler
-                  +e.BUTTON.button_type_decrease._type_disabled= "-"
+                  +e.BUTTON.button_type_decrease(disabled = true)= "-"
                   +e.item-value= 0
                   +e.BUTTON.button_type_increase= "+"

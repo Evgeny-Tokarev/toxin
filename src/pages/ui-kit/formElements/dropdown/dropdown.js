@@ -1,23 +1,20 @@
 import * as $ from 'jquery'
-// const list = $('.select-list')
-// const decrButtons = $('.select-list__button_type_decrease')
-// const incrButtons = $('.select-list__button_type_increase')
-// const listValues = $('.select-list__item-value')
-// const valueArr = []
 
-const View = {
-    presenter: null,
-    registerPresenter(presenter) {
+class View {
+    constructor() {
+        this.presenter = null
+    }
+
+    registerWith(presenter) {
         this.presenter = presenter
-    },
+    }
+    itemsList = []
     init(input) {
         const self = this
         input = $(input)
-        input.find('.select-list__item').each(function () {
-            self.presenter.listButtonsHandler.setItem.call(
-                self.presenter,
-                this.getAttribute('data-number')
-            )
+        $.each(input.find('.select-list__item'), function () {
+            self.itemsList.push(this)
+            self.presenter.setItem(this.getAttribute('data-number'))
         })
         input.on('click', function (e) {
             if ($(e.target).hasClass('input__button')) {
@@ -26,8 +23,7 @@ const View = {
             }
             if ($(e.target).hasClass('select-list__button_type_decrease')) {
                 e.stopPropagation()
-                self.presenter.listButtonsHandler.decreaseItem.call(
-                    self.presenter,
+                self.presenter.decreaseItem(
                     $(e.target)
                         .closest('.select-list__item')
                         .attr('data-number')
@@ -35,87 +31,95 @@ const View = {
             }
             if ($(e.target).hasClass('select-list__button_type_increase')) {
                 e.stopPropagation()
-                self.presenter.listButtonsHandler.increaseItem.call(
-                    self.presenter,
+                self.presenter.increaseItem(
                     $(e.target)
                         .closest('.select-list__item')
                         .attr('data-number')
                 )
             }
         })
-    },
+    }
     expandList(input) {
         $(input).find('.input__body').toggleClass('input__body_expanded')
-    },
-    setListItems(list) {
-        list.each(() => {
-            $(this).find('.select-list__name').text(list.name)
-            list.decreaseButtonDisabled
-                ? $(this)
-                      .find('.select-list__button_type_increase')
-                      .addClass('select-list__button_type_disabled')
-                : $(this)
-                      .find('.select-list__button_type_increase')
-                      .removeClass('select-list__button_type_disabled')
-            $(this).find('.select-list__item-value').text(list.value)
-        })
-    },
+    }
+    setListItem(index, value, disabled) {
+        console.log(this.itemsList[index], index, value, disabled)
+        $(this.itemsList[index]).find('.select-list__item-value').text(value)
+        $(this.itemsList[index])
+            .find('.select-list__button_type_decrease')
+            .prop('disabled', disabled)
+        // list.each((i) => {
+        //     $(this).find('.select-list__name').text(list.name)
+        //     list.decreaseButtonDisabled
+        //         ? $(this)
+        //               .find('.select-list__button_type_increase')
+        //               .addClass('select-list__button_type_disabled')
+        //         : $(this)
+        //               .find('.select-list__button_type_increase')
+        //               .removeClass('select-list__button_type_disabled')
+        //     $(this).find('.select-list__item-value').text(list.value)
+        // })
+    }
 }
-const Presenter = {
-    model: null,
-    view: null,
-    register(model, view) {
-        this.model = model
-        this.view = view
-    },
 
-    listButtonsHandler: {
-        setItem(i) {
-            this.model.setItem(i, { value: 0, decreaseButtonDisabled: true })
-        },
-        increaseItem(i) {
-            console.log(i)
-            console.log(this.model.getValue)
-            // this.model.setItem(i, {
-            //     value: this.model.getValue(i).value,
-            //     decreaseButtonDisabled: true,
-            // })
-        },
-        decreaseItem(i) {
-            const self = this
-            console.log(self.model.getValue(i).value--)
-            this.model.setItem(i, {
-                value: self.model.getValue(i).value--,
-                decreaseButtonDisabled: true,
-            })
-        },
-    },
+class Presenter {
+    constructor(view) {
+        this.view = view
+        this.model = null
+    }
+    setModel(model) {
+        this.model = model
+    }
+
+    setItem(i) {
+        this.model.setItem(i, 0)
+    }
+    increaseItem(i) {
+        this.model.setItem(i, this.model.getValue(i) + 1)
+        this.view.setListItem(i, this.model.getValue(i), false)
+    }
+    decreaseItem(i) {
+        if (this.model.getValue(i) > 1) {
+            this.model.setItem(i, this.model.getValue(i) - 1)
+            this.view.setListItem(i, this.model.getValue(i), false)
+        } else {
+            this.model.setItem(i, this.model.getValue(i) - 1)
+            this.view.setListItem(i, this.model.getValue(i), true)
+        }
+    }
 }
-const Model = {
-    presenter: null,
-    registerPresenter(presenter) {
+class Model {
+    constructor() {
+        this.presenter = null
+        this.listValues = []
+    }
+    registerWith(presenter) {
         this.presenter = presenter
-    },
-    listValues: [],
-    setItem(i, data) {
-        this.listValues[i] = data
+    }
+
+    setItem(i, value) {
+        this.listValues[i] = value
         console.log(this.listValues[i])
-    },
+    }
     getValue(i) {
         console.log(this)
         return this.listValues[i]
-    },
+    }
 }
 
-$('.input').each(function () {
-    const view = Object.create(View)
-    const presenter = Object.create(Presenter)
-    const model = Object.create(Model)
-    view.registerPresenter(presenter)
-    model.registerPresenter(presenter)
-    presenter.register(model, view)
-    view.init(this)
-})
+const view = []
+const presenter = []
+const model = []
+$('.input')
+    .has('.input__description')
+    .each(function (i) {
+        model[i] = new Model()
+        view[i] = new View(this)
+        presenter[i] = new Presenter(view[i])
+        presenter[i].setModel(model[i])
+        view[i].registerWith(presenter[i])
+        view[i].init(this)
+    })
 // Логика работы кнопок + и - в пунктах меню
 
 // list.on('click', function(event) {

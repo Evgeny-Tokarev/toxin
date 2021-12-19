@@ -58,7 +58,7 @@
                     border-color: $Dark-Shade-5;
                 }
             }
-            &__button_type_disabled {
+            &__button[disabled] {
                 border-color: $Dark-Shade-5;
             }
         }
