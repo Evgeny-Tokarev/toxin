@@ -20,7 +20,10 @@ class View {
             self.presenter.setItem(this.getAttribute('data-number'))
         })
         input.on('click', function (e) {
-            if ($(e.target).hasClass('input__button')) {
+            if (
+                $(e.target).hasClass('input__button') ||
+                $(e.target).hasClass('input__button-icon')
+            ) {
                 e.stopPropagation()
                 self.expandList(input)
             }
@@ -43,6 +46,10 @@ class View {
         })
     }
     expandList(input) {
+        input.toggleClass('input__expanded')
+        input
+            .find('.input__description')
+            .css({ bottom: `-${this.itemsList.length * 39}px` })
         input.find('.input__body').toggleClass('input__body_expanded')
     }
     setListItem(index, value, disabled) {

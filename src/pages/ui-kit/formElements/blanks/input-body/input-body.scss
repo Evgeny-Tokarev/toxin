@@ -2,8 +2,6 @@
 
 @mixin input-body {
     .input {
-        display: flex;
-        flex-direction: column;
     }
     .input_320 {
         width: 320px;
@@ -40,6 +38,5 @@
     .input__body_expanded .input__field {
         border-radius: 4px 4px 0 0;
         border-color: $Dark-Shade-50;
-        border-bottom: none;
     }
 }

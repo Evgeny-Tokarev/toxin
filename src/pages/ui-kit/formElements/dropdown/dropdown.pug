@@ -6,7 +6,8 @@ mixin dropdown(opt)
       +e.field
         +e.inner()
           +e.placeholder(data-value!=opt.inner_text)= opt.inner_text
-          +e.BUTTON.button(type!=opt.button-type)
+          +e.button
+            +e.BUTTON.button-icon(type!=opt.button-type)
       +e.description
         +b.UL.select-list
           - var n=0
