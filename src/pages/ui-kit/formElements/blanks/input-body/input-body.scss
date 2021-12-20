@@ -15,6 +15,7 @@
     }
     .input__field {
         display: flex;
+        overflow: hidden;
         width: 100%;
         @include Body-text();
         height: 44px;

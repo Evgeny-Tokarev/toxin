@@ -1,7 +1,15 @@
+@import './plugins/jquery-ui/jquery-ui.scss';
+@import './reset.scss';
 @import './pages/ui-kit/formElements/formElements.scss';
 @import './pages/ui-kit/colors&type/colors&type.scss';
-@import './reset.scss';
-@import './plugins/jquery-ui/jquery-ui.scss';
+@font-face {
+    font-family: 'Material Icons';
+    font-style: normal;
+    font-weight: 400;
+    src: url('./fonts/MaterialIcons-Regular.svg') format('svg'),
+        url('./fonts/MaterialIcons-Regular.woff') format('woff'),
+        url('./fonts/MaterialIcons-Regular.ttf') format('truetype');
+}
 @font-face {
     font-family: 'Montserrat';
     src: url('./fonts/Montserrat-Regular.woff') format('woff'),
