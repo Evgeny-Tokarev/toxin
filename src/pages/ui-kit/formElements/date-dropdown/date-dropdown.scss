@@ -2,6 +2,9 @@
 @import '../blanks/input-body/input-body.scss';
 
 @include input-body();
+.input__expanded {
+    position: relative;
+}
 .input {
     &__inner {
         width: 100%;
@@ -10,12 +13,39 @@
         align-items: center;
     }
     &__button {
-        border-left: 2px solid $Dark-Shade-50;
-        border-bottom: 2px solid $Dark-Shade-50;
-        width: 8px;
-        height: 8px;
-        transform: rotate(-45deg);
-        margin-top: -5px;
-        margin-right: 4px;
+        align-self: stretch;
+        cursor: pointer;
+        width: 25px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        button {
+            text-align: center;
+            border-left: 2px solid $Dark-Shade-50;
+            border-bottom: 2px solid $Dark-Shade-50;
+            width: 8px;
+            height: 8px;
+            transform: rotate(-45deg);
+            margin-top: -5px;
+            margin-right: -8px;
+        }
     }
 }
+.ui-datepicker {
+    width: 500px;
+}
+// ui-datepicker: The outer container of the datepicker. If the datepicker is inline, this element will additionally have a ui-datepicker-inline class. If the isRTL option is set, this element will additionally have a class of ui-datepicker-rtl.
+// ui-datepicker-header: The container for the datepicker's header.
+// ui-datepicker-prev: The control used to select previous months.
+// ui-datepicker-next: The control used to select subsequent months.
+// ui-datepicker-title: The container for the datepicker's title containing the month and year.
+// ui-datepicker-month: The textual display of the month or a <select> element if the changeMonth option is set.
+// ui-datepicker-year: The textual display of the year or a <select> element if the changeYear option is set.
+// ui-datepicker-calendar: The table that contains the calendar itself.
+// ui-datepicker-week-end: Cells containing weekend days.
+// ui-datepicker-other-month: Cells containing days that occur in a month other than the currently selected month.
+// ui-datepicker-unselectable: Cells containing days that are not selectable by the user.
+// ui-datepicker-current-day: The cell containing the selected day.
+// ui-datepicker-today: The cell containing today's date.
+// ui-datepicker-buttonpane: The buttonpane that is used when the showButtonPanel option is set.
+// ui-datepicker-current: The button used to select today's date.

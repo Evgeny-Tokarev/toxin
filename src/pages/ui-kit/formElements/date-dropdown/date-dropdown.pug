@@ -3,7 +3,5 @@ mixin date-dropdown(opt)
   +b.input(class="_150")
     +input-header({left_heading:opt.left_heading})
     +e.body()
-      +e.field()
-        +e.inner()
-          +e.placeholder(data-value!=opt.inner_text)= opt.inner_text
-          +e.BUTTON.button(type!=opt.button-type)
+      +b.INPUT#datepicker(type="text")
+        

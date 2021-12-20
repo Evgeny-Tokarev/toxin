@@ -1,6 +1,6 @@
 {
   "parser": "@babel/eslint-parser",
-  "ignorePatterns": ["jquery.mask.js"],
+  "ignorePatterns": ["jquery.mask.js","jquery-ui.js"],
   "rules": {
     "no-unused-vars": "error",
     "no-var": "error",

@@ -1,27 +1,28 @@
-@import "./pages/ui-kit/formElements/formElements.scss";
-@import "./pages/ui-kit/colors&type/colors&type.scss";
-@import "./reset.scss";
+@import './pages/ui-kit/formElements/formElements.scss';
+@import './pages/ui-kit/colors&type/colors&type.scss';
+@import './reset.scss';
+@import './plugins/jquery-ui/jquery-ui.scss';
 @font-face {
-  font-family: "Montserrat";
-  src: url("./fonts/Montserrat-Regular.woff") format("woff"),
-    url("./fonts/Montserrat-Regular.ttf") format("truetype"),
-    url("./fonts/Montserrat-Regular.svg") format("svg");
-  font-weight: 400;
-  font-style: normal;
+    font-family: 'Montserrat';
+    src: url('./fonts/Montserrat-Regular.woff') format('woff'),
+        url('./fonts/Montserrat-Regular.ttf') format('truetype'),
+        url('./fonts/Montserrat-Regular.svg') format('svg');
+    font-weight: 400;
+    font-style: normal;
 }
 @font-face {
-  font-family: "Montserrat";
-  src: url("./fonts/Montserrat-Bold.woff") format("woff"),
-    url("./fonts/Montserrat-Bold.ttf") format("truetype"),
-    url("./fonts/Montserrat-Bold.svg") format("svg");
-  font-weight: 700;
-  font-style: normal;
+    font-family: 'Montserrat';
+    src: url('./fonts/Montserrat-Bold.woff') format('woff'),
+        url('./fonts/Montserrat-Bold.ttf') format('truetype'),
+        url('./fonts/Montserrat-Bold.svg') format('svg');
+    font-weight: 700;
+    font-style: normal;
 }
 html {
-  font-family: "Montserrat", Arial, sans-serif;
-  letter-spacing: 0px;
-  font-size: 14px;
+    font-family: 'Montserrat', Arial, sans-serif;
+    letter-spacing: 0px;
+    font-size: 14px;
 }
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }

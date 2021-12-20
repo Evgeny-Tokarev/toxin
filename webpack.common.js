@@ -59,7 +59,8 @@ module.exports = {
       filename: '[name].[contenthash].css',
     }),
     new CopyPlugin({
-      patterns: [{ from: './img/icons8-webpack-64.png', to: '../dist' }],
+      patterns: [{ from: './img/icons8-webpack-64.png', to: '../dist' },
+      {from: './plugins/jquery-ui/images/*.*', to: '../dist/images/*.*'}],
     }),
     new TerserPlugin(),
     new ESLintPlugin({
