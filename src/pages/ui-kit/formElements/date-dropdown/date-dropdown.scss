@@ -1,5 +1,6 @@
 @import '../../colors&type/colors&type.scss';
 @import '../blanks/input-body/input-body.scss';
+@import '~jquery-ui/themes/base/datepicker.css';
 
 @include input-body();
 .input__expanded {

@@ -63,7 +63,7 @@ module.exports = {
             patterns: [
                 { from: './img/icons8-webpack-64.png', to: '../dist' },
                 {
-                    from: './plugins/jquery-ui/images/*.*',
+                    from: '../node_modules/jquery-ui/themes/base/images/*.*',
                     to: '../dist/images',
                 },
             ],
@@ -97,7 +97,7 @@ module.exports = {
                 use: ['pug-loader'],
             },
             {
-                test: /\.s[ac]ss$/i,
+                test: /\.s?[ac]ss$/i,
                 use: [
                     isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
                     {
