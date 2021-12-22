@@ -1,15 +1,15 @@
 import * as $ from 'jquery'
-import 'jquery-ui/ui/widget'
-import 'jquery-ui/ui/widgets/datepicker'
+import '../../../../plugins/jquery-ui/jquery-ui'
 
-console.log($.ui.datepicker)
-console.log(typeof $.ui.datepicker)
+console.log($.fn)
 
-$.widget('toxin.myDatepicker', $.ui.datepicker, {
+console.log($.fn.datepicker)
+
+$.widget('toxin.myDatepicker', $.fn.datepicker, {
     options: {},
 })
 // $(function () {
 //       $('#datepicker').datepicker()
 //   })
-  
+
 //   $('span .ui-icon-circle-triangle-w .ui-corner-all').text('arrow_back')
