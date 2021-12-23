@@ -1,15 +1,9 @@
-import * as $ from 'jquery'
-import '../../../../plugins/jquery-ui/jquery-ui'
+// import * as $ from 'jquery'
+import AirDatepicker from 'air-datepicker'
 
-console.log($.fn)
+new AirDatepicker('#datepicker', {
+    inline: true,
 
-console.log($.fn.datepicker)
-
-$.widget('toxin.myDatepicker', $.fn.datepicker, {
-    options: {},
+    prevHtml: `<span>arrow_back</span>`,
+    nextHtml: `<span>arrow_forward</span>`,
 })
-// $(function () {
-//       $('#datepicker').datepicker()
-//   })
-
-//   $('span .ui-icon-circle-triangle-w .ui-corner-all').text('arrow_back')
