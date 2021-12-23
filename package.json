@@ -49,6 +49,8 @@
     "sass": "^1.43.5",
     "sass-loader": "^12.3.0",
     "style-loader": "^3.3.1",
+    "stylelint": "^14.2.0",
+    "stylelint-config-standard": "^24.0.0",
     "terser-webpack-plugin": "^5.2.5",
     "webpack": "^5.64.4",
     "webpack-bundle-analyzer": "^4.5.0",
@@ -58,6 +60,7 @@
     "webpack-node-externals": "^3.0.0"
   },
   "dependencies": {
+    "air-datepicker": "^3.1.0",
     "jquery": "^3.6.0",
     "jquery-ui": "^1.13.0"
   }

@@ -3,15 +3,17 @@ $Dark-Shade-75: rgba(31, 32, 65, 0.75);
 $Dark-Shade-50: rgba(31, 32, 65, 0.5);
 $Dark-Shade-25: rgba(31, 32, 65, 0.25);
 $Dark-Shade-5: #1f20410d;
+$Purple: #bc9cff;
+$Green: #6fcf97;
 @mixin Body-text() {
-  font-weight: 400;
-  font-size: 1rem;
-  letter-spacing: -0.2px;
-  line-height: 1.714rem;
+    font-weight: 400;
+    font-size: 1rem;
+    letter-spacing: -0.2px;
+    line-height: 1.714rem;
 }
 @mixin Label-text() {
-  font-weight: 700;
-  font-size: 0.857rem;
-  letter-spacing: 0;
-  text-transform: uppercase;
+    font-weight: 700;
+    font-size: 0.857rem;
+    letter-spacing: 0;
+    text-transform: uppercase;
 }
