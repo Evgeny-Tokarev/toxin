@@ -1,8 +1,6 @@
 {
-    "path-autocomplete.extensionOnImport": true,
-    "css.validate": false,
-    "less.validate": false,
-    "scss.validate": false,
-    "stylelint.validate": ["css", "scss"],
+    "editor.quickSuggestions": {
+        "strings": true
+    },
     "editor.formatOnSave": true
 }
