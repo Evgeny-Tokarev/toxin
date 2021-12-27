@@ -4,10 +4,10 @@ mixin dropdown(opt)
     +input-header({left_heading:opt.left_heading,right_heading: opt.right_heading,modifier:"default"})
     +e.body()
       +e.field
-        +e.inner()
+        +e.inner
           +e.placeholder(data-value!=opt.inner_text)= opt.inner_text
-          +e.button
-            +e.BUTTON.button-icon(type!=opt.button-type)
+          +e.button(tabindex="-1")
+            +e.BUTTON.button-icon(type!=opt.button-type,tabindex="-1")
       +e.description
         +b.UL.select-list
           - var n=0

@@ -1,19 +1,32 @@
 import * as $ from 'jquery';
 import AirDatepicker from 'air-datepicker';
+function submit(dp) {
+    console.log(dp.selectedDates);
+    setTimeout(() => {
+        dp.hide();
+        dp.clear();
+    }, 1000);
+    dp.setViewDate(new Date());
+}
 const submitButton = {
     content: 'Применить',
     className: 'air-datepicker--submitButton',
-    onClick: (dp) => {
-        console.log(dp.selectedDates);
-        dp.hide();
-        dp.clear();
-    },
+    onClick: (dp) => submit(dp),
 };
+// массив для хранения экземпляров datepicker
 const dp = [];
-$('.datepicker').each(function (i) {
-    dp[i] = new AirDatepicker('.datepicker', {
+// Применяем маску ввода ко всем элементам с классом datepicker
+$(function () {
+    $('.datepicker').mask('00.00.0000');
+});
+$('.datepicker').each(function (i, el) {
+    const self = this;
+    const button = this.nextElementSibling;
+    dp[i] = new AirDatepicker(el, {
+        // inline: true,
         buttons: ['clear', submitButton],
         startDate: [new Date(2019, 7, 8)],
+        keyboardNav: false,
         navTitles: {
             days(dp) {
                 return `<span>
@@ -21,24 +34,47 @@ $('.datepicker').each(function (i) {
                 </span>`;
             },
         },
-        // showEvent: '',
+        showEvent: '',
         prevHtml: `<span>arrow_back</span>`,
         nextHtml: `<span>arrow_forward</span>`,
     });
-    console.log(dp[i]);
-    const button = $(this).closest('.input__body').find('.input__button');
-    const input = this;
-    button.on('click', function () {
-        console.log($(dp[i].$datepicker).hasClass('-active-'));
-        if ($(dp[i].$datepicker).hasClass('-active-')) {
-            $(input).trigger('blur');
-            console.log('-');
-            // dp[i].hide();
-        } else {
-            $(input).trigger('focus');
-            console.log('+');
+    console.log(dp[i].$el.readonly);
+    // dp[i].$el.setAttribute('readonly', false);
+    this.closest('.input__body').addEventListener('keydown', (e) => {
+        if (e.code == 'Enter') {
+            // dp[i].setFocusDate(this.value, { viewDateTransition: true });
 
-            // dp[i].show();
+            dp[i].selectDate(this.value);
+            if (dp[i].selectedDates.length) {
+                submit(dp[i]);
+            }
+        }
+    });
+    this.closest('.input__body').addEventListener('mousedown', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        if (
+            (e.target === button ||
+                e.target === button.firstElementChild ||
+                self.contains(e.target)) &&
+            !dp[i].$datepicker.classList.contains('-active-')
+        ) {
+            self.focus();
+            if (this.value) {
+                dp[i].selectDate(this.value);
+            }
+            dp[i].show();
+        } else {
+            if (
+                dp[i].$datepicker.classList.contains('-active-') &&
+                (e.target === button ||
+                    e.target === button.firstElementChild ||
+                    !self.contains(e.target)) &&
+                !dp[i].$datepicker.contains(e.target)
+            ) {
+                dp[i].hide();
+                self.blur();
+            }
         }
     });
 });

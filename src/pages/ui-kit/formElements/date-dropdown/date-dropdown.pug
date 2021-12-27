@@ -4,6 +4,6 @@ mixin date-dropdown(opt)
     +input-header({left_heading:opt.left_heading})
     +e.body()
       +e.INPUT.field.datepicker(type="text", placeholder = "ДД.ММ.ГГГГ")
-      +e.button
-        +e.BUTTON.button-icon(type!=opt.button-type)
+      +e.button(tabindex="-1")
+        +e.BUTTON.button-icon(type!=opt.button-type,tabindex='-1')
         
