@@ -58,11 +58,8 @@
         #6fcf97 0%,
         #66d2ea 100%
     );
-    --adp-cell-background-color-in-range: linear-gradient(
-        180deg,
-        #bc9cff 0%,
-        #8ba4f9 100%
-    );
+    --adp-cell-background-color-in-range: none;
+
     --adp-cell-background-color-in-range-hover: linear-gradient(
         180deg,
         #bc9cff 0%,
@@ -113,32 +110,37 @@
     }
     .air-datepicker-cell.-range-from- {
         border: 1px solid var(--adp-cell-border-color-in-range);
-        background: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%),
-            linear-gradient(to right, #fff 50%, blue 50%);
+        background: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
     }
     .air-datepicker-cell.-range-from-::before {
         content: '';
         height: 40px;
-        width: 40px;
+        width: 20px;
+        right: 0;
         position: absolute;
-        background: linear-gradient(to right, #fff 50%, blue 50%);
+        background: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
         opacity: 0.25;
         z-index: -2;
-    }
-    .air-datepicker-cell.-range-from-::after {
-        content: '';
-        height: 40px;
-        width: 40px;
-        position: absolute;
-        background: #fff;
-        border-radius: 50%;
-        overflow: hidden;
-        z-index: -1;
     }
     .air-datepicker-cell.-range-to- {
         background: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
     }
-    .air-datepicker-cell.-in-range- {
+    .air-datepicker-cell.-range-to-::before {
+        content: '';
+        height: 40px;
+        width: 20px;
+        left: 0;
+        position: absolute;
+        background: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
+        opacity: 0.25;
+        z-index: -2;
+    }
+    .air-datepicker-cell.-in-range-::after {
+        content: '';
+        height: 40px;
+        width: 40px;
+        position: absolute;
+        background: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
         opacity: 0.25;
     }
     .air-datepicker-cell.-focus- {

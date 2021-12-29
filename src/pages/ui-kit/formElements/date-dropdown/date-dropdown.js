@@ -30,6 +30,7 @@ class MyDatepicker {
         // определяет нужен ли выбор диапазона дат
         this.isRange = false;
     }
+    // заготовка для отправления дат на сервер
     submit(dp) {
         console.log(dp.selectedDates);
         setTimeout(() => {
@@ -40,29 +41,54 @@ class MyDatepicker {
     }
     mask(selector) {
         // Применяем маску ввода ко всем элементам с заданным селектором
+        const self = this;
         $(function () {
-            $(selector).mask('00.00.0000');
+            $(selector).mask(
+                self.options.range ? '00 aaa-00 aaa' : '00.00.0000',
+                {
+                    translation: {
+                        a: { pattern: /[a-z]/ },
+                    },
+                }
+            );
         });
+    }
+    multiDateHandler(range, i) {
+        const dates = range.split('-');
+        this.setDate(dates, i);
+    }
+    setDate(dates, i) {
+        const self = this;
+        if (dates) {
+            dates.forEach((currentDate) => {
+                const date = currentDate.toString().split('.');
+                if (
+                    date[2] > 0 &&
+                    date[2] < 3000 &&
+                    date[0] >= 0 &&
+                    date[1] < 13 &&
+                    date[0] > 0 &&
+                    date[0] <= 31
+                ) {
+                    self.dp[i].selectDate(
+                        new Date(date[2], date[1] - 1, date[0])
+                    );
+                    if (self.dp[i].selectedDates.length) {
+                        self.submit(self.dp[i]);
+                    }
+                }
+            });
+        }
     }
     // обработчик для нажатия enter
     keyWatch(el, i) {
         const self = this;
         el.closest('.input__body').addEventListener('keydown', (e) => {
             if (e.code == 'Enter') {
-                const date = el.value.toString().split('.');
-                console.log(date);
-                console.log(
-                    date[2] > 0 &&
-                        date[2] < 3000 &&
-                        date[0] >= 0 &&
-                        date[1] < 13 &&
-                        date[0] > 0 &&
-                        date[0] <= 31
-                );
-                self.dp[i].selectDate(new Date(date[2], date[1] - 1, date[0]));
-                console.log(self.selectedDates);
-                if (self.dp[i].selectedDates.length) {
-                    self.submit(self.dp[i]);
+                if (self.options.range) {
+                    self.multiDateHandler(el.value, i);
+                } else {
+                    self.setDate(el.value, i);
                 }
             }
         });
@@ -106,11 +132,28 @@ class MyDatepicker {
     }
     init(selector) {
         const self = this;
+        console.log(self);
         $(selector).each(function (i, el) {
-            self.isRange = $(el).hasClass('range') ? true : false;
-            console.log(self);
-            self.options.range = self.isRange;
-            self.options.dynamicRange = self.isRange;
+            self.dp[i].isRange = $(el).hasClass('range') ? true : false;
+            self.dp[i].options.range = self.isRange;
+            self.options.dp[i].dynamicRange = self.isRange;
+            if (self.dp[i].isRange) {
+                self.dp[i].locale.monthsShort = [
+                    'янв',
+                    'фев',
+                    'мар',
+                    'апр',
+                    'май',
+                    'июн',
+                    'июл',
+                    'авг',
+                    'сен',
+                    'окт',
+                    'ноя',
+                    'дек',
+                ];
+                self.options.dateFormat = 'dd MMM';
+            }
             self.mask(this);
             self.dp[i] = new AirDatepicker(el, self.options);
             self.keyWatch(el, i);
