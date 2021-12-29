@@ -1,9 +1,9 @@
 include ../blanks/input-header/input-header
 mixin date-dropdown(opt)
-  +b.input(class="_150")
+  +b.input(class!=`_${opt.width}`)
     +input-header({left_heading:opt.left_heading})
     +e.body()
-      +e.INPUT.field.datepicker(type="text", placeholder = "ДД.ММ.ГГГГ")
+      +e.INPUT.field.datepicker(type="text", placeholder = "ДД.ММ.ГГГГ", class!=opt.class)
       +e.button(tabindex="-1")
-        +e.BUTTON.button-icon(type!=opt.button-type,tabindex='-1')
+        +e.BUTTON.button-icon(tabindex='-1')
         
