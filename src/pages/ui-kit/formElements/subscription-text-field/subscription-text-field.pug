@@ -1,0 +1,8 @@
+include ../blanks/input-header/input-header
+mixin subscription-text-field(opt)
+  +b.input(class="_266")
+    +input-header({left_heading:opt.left_heading})
+    +e.body()
+      +e.INPUT.field(class="subscription-text-field",placeholder!=opt.placeholder)
+      +e.button(tabindex="-1")
+        +e.SPAN.button-icon(tabindex='-1')="arrow_forward"

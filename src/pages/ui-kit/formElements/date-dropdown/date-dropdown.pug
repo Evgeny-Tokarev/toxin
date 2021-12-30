@@ -3,7 +3,7 @@ mixin date-dropdown(opt)
   +b.input(class!=`_${opt.width}`)
     +input-header({left_heading:opt.left_heading})
     +e.body()
-      +e.INPUT.field.datepicker(type="text", placeholder = "ДД.ММ.ГГГГ", class!=opt.class, value=opt.initial_value)
+      +e.INPUT.field.datepicker(type="text", placeholder!= opt.inner_text, class!=opt.class, value=opt.initial_value)
       +e.button(tabindex="-1")
         +e.BUTTON.button-icon(tabindex='-1')
         

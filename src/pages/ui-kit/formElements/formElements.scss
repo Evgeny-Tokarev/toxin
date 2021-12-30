@@ -2,6 +2,7 @@
 // @import "./textField/textField.scss";
 @import './date-dropdown/date-dropdown.scss';
 @import './dropdown/dropdown.scss';
+@import './subscription-text-field/subscription-text-field.scss';
 
 .form-elements {
     position: relative;
@@ -14,6 +15,12 @@
 }
 .form-elements .input {
     margin-bottom: 19px;
+}
+.form-elements .input:nth-child(4) {
+    margin-bottom: 21px;
+}
+.form-elements .input:nth-child(7) {
+    margin-bottom: 42px;
 }
 .wrapper_320 {
     width: 320px;

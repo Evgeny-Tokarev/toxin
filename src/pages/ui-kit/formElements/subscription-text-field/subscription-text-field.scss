@@ -1,0 +1,12 @@
+@import '../../colors&type/colors&type.scss';
+@import '../blanks/input-body/input-body.scss';
+
+@include input-body();
+.input {
+    &__button-icon {
+        color: $Purple;
+        font-family: 'Material Icons';
+        font-weight: 400;
+        font-size: 24px;
+    }
+}
