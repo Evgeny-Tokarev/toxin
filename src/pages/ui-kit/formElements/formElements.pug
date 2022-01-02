@@ -3,6 +3,7 @@ include dropdown/dropdown.pug
 include masked-text-field/masked-text-field.pug
 include date-dropdown/date-dropdown.pug
 include subscription-text-field/subscription-text-field.pug
+include expandable-checkbox/expandable-checkbox.pug
 
 section.form-elements
   img.main-icon(src=('./main-icon.svg') alt='main-icon' height=48 width=48)
@@ -16,3 +17,4 @@ section.form-elements
   +date-dropdown({left_heading:"filter date dropdown", inner_text: "ДД МММ - ДД МММ", class: "range", width: "266",initial_value: "19 авг - 23 авг"})
   +subscription-text-field({left_heading:"subscription text field",placeholder: "Email", width: "266"})
   +dropdown({left_heading:"dropdown", right_heading: "default",inner_text: "Конфигурация номера", items: {"Спальни":0,"Кровати":2, "Ванные комнаты":1}})
+  +expandable-checkbox({title: "expandable checkbox list", items: {"Завтрак":false,"Письменный стол":true, "Стул для кормления":true,"Кроватка": true,"Телевизор":false,"Шампунь":false}})

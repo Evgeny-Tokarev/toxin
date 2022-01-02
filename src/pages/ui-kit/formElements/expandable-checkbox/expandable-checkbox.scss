@@ -1,0 +1,89 @@
+@import '../../colors&type/colors&type.scss';
+@include input-body();
+
+.input {
+    fieldset.input__body {
+        display: block;
+        width: 100%;
+        justify-content: space-between;
+        @include Label-text();
+        height: 44px;
+        line-height: 44px;
+        padding-left: 0;
+        color: $Dark-Shade-100;
+        .input__expand-button {
+            position: absolute;
+            right: 5px;
+            top: 0;
+            cursor: pointer;
+            height: 44px;
+            width: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .input__expand-button::before {
+            content: '';
+            text-align: center;
+            border-left: 2px solid $Dark-Shade-50;
+            border-bottom: 2px solid $Dark-Shade-50;
+            width: 8px;
+            height: 8px;
+            transform: rotate(-45deg);
+            margin-top: -4px;
+            margin-right: 10px;
+            transform-origin: center center;
+            transition: all 1s;
+        }
+        &_expanded .input__expand-button::before {
+            transform: rotate(135deg);
+            margin-top: 5px;
+        }
+    }
+
+    // fieldset.input__body::before {
+    //     content: '';
+    //     position: absolute;
+    //     right: 0;
+    //     width: 30px;
+    //     height: 44px;
+    //     cursor: pointer;
+    // }
+    &__checkbox-item {
+        display: block;
+        @include Body-text();
+        letter-spacing: 0;
+        position: relative;
+        color: $Dark-Shade-50;
+        margin-left: 30px;
+        height: 30.3px;
+        input {
+            z-index: -1;
+            opacity: 0;
+            position: absolute;
+            left: -34px;
+            height: 20px;
+            width: 20px;
+            color: $Dark-Shade-50;
+        }
+        input + .input__checkbox {
+            position: absolute;
+            left: -30px;
+            top: 2px;
+            height: 20px;
+            width: 20px;
+            border: 1px solid $Dark-Shade-25;
+            border-radius: 4px;
+        }
+        input:checked + .input__checkbox {
+            position: absolute;
+            left: -30px;
+            top: 2px;
+            height: 20px;
+            width: 20px;
+            border: 1px solid $Purple;
+            border-radius: 4px;
+            background: url('./img/Vector.png') no-repeat center;
+        }
+    }
+}

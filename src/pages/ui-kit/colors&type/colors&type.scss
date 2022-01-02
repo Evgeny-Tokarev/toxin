@@ -10,10 +10,12 @@ $Green: rgba(111, 207, 151, 1);
     font-size: 14px;
     letter-spacing: -0.2px;
     line-height: 1.714rem;
+    text-transform: none;
 }
 @mixin Label-text() {
     font-weight: 700;
     font-size: 12px;
     letter-spacing: 0;
     text-transform: uppercase;
+    color: $Dark-Shade-50;
 }

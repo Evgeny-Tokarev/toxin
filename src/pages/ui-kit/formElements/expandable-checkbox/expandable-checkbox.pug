@@ -1,0 +1,10 @@
+
+mixin expandable-checkbox(opt)
+  +b.input._266
+    +e({tag: "fieldset"}).body.expandableCheckbox= opt.title
+      +e.expand-button
+      - var n=0
+      each val, key in opt.items
+        +e.LABEL.checkbox-item= key
+          +e.INPUT(type!="checkbox", checked!=val)
+          +e.SPAN.checkbox

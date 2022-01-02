@@ -1,22 +1,22 @@
-const path = require('path')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const CopyPlugin = require('copy-webpack-plugin')
-const TerserPlugin = require('terser-webpack-plugin')
-const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
-const ESLintPlugin = require('eslint-webpack-plugin')
-const glob = require('glob')
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+const ESLintPlugin = require('eslint-webpack-plugin');
+const glob = require('glob');
 
-const isDev = process.env.NODE_ENV === 'development'
+const isDev = process.env.NODE_ENV === 'development';
 const PATHS = {
     src: path.join(__dirname, '/src'),
     dist: path.join(__dirname, '/dist'),
-}
+};
 
-const PAGES_DIR = `${PATHS.src}/pages`
+const PAGES_DIR = `${PATHS.src}/pages`;
 
-const PAGES = glob.sync(`${PAGES_DIR}/**/*.pug`)
-console.log(PAGES)
+const PAGES = glob.sync(`${PAGES_DIR}/**/*.pug`);
+console.log(PAGES);
 
 module.exports = {
     target: 'web',
@@ -60,13 +60,7 @@ module.exports = {
             filename: '[name].[contenthash].css',
         }),
         new CopyPlugin({
-            patterns: [
-                { from: './img/icons8-webpack-64.png', to: '../dist' },
-                {
-                    from: '../node_modules/jquery-ui/themes/base/images/*.*',
-                    to: '../dist/images',
-                },
-            ],
+            patterns: [{ from: './img/*.*', to: '../dist' }],
         }),
         new TerserPlugin(),
         new ESLintPlugin({
@@ -133,4 +127,4 @@ module.exports = {
             },
         ],
     },
-}
+};
