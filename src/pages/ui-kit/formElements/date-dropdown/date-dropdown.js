@@ -119,13 +119,11 @@ class MyDatepicker {
                 }
                 self.dp[i].show();
             } else {
-                // в случае клика в ином месте или при нажатии на кнопку при активном календаре, убираем фокус из поля ввода и закрываем календарь
+                // при нажатии на кнопку при активном календаре, убираем фокус из поля ввода и закрываем календарь
                 if (
                     self.dp[i].$datepicker.classList.contains('-active-') &&
                     (e.target === button ||
-                        e.target === button.firstElementChild ||
-                        !el.contains(e.target)) &&
-                    !self.dp[i].$datepicker.contains(e.target)
+                        e.target === button.firstElementChild)
                 ) {
                     self.dp[i].hide();
                     el.blur();
