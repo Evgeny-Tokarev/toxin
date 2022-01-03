@@ -1,4 +1,5 @@
 import * as $ from 'jquery';
+import Arrow_button from '../blanks/arrow-button/arrow-button';
 
 class View {
     constructor() {
