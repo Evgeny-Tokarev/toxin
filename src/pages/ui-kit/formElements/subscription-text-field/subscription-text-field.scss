@@ -2,8 +2,14 @@
 @import '../blanks/input-body/input-body.scss';
 
 @include input-body();
-.input {
-    &__button-icon {
+.input_type_sub {
+    position: relative;
+    .input__button {
+        position: absolute;
+        right: 10px;
+        top: 21px;
+    }
+    .input__button-icon {
         color: $Purple;
         font-family: 'Material Icons';
         font-weight: 400;

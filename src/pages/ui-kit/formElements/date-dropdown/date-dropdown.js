@@ -1,4 +1,3 @@
-import * as $ from 'jquery';
 import AirDatepicker from 'air-datepicker';
 
 class MyDatepicker {

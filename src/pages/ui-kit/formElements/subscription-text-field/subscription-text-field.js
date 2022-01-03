@@ -1,5 +1,3 @@
-import * as $ from 'jquery';
-
 $('.subscription-text-field')
     .closest('.input__body ')
     .on('click', function (e) {

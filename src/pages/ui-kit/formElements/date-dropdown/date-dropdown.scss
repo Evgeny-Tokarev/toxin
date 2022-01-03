@@ -5,9 +5,9 @@
 @include input-body();
 
 .input {
-    &__body {
-        position: relative;
-    }
+    // &__body {
+    //     position: relative;
+    // }
     &__inner {
         width: 100%;
         display: flex;

@@ -1,6 +1,13 @@
-import * as $ from 'jquery';
+import Arrow_button from '../blanks/arrow-button/arrow-button';
 
-$('.expandableCheckbox').on('click', function (e) {
-    console.log(e.target);
-    $(this).toggleClass('input__body_expanded');
+const button = new Arrow_button();
+button.init($('.input_type_ecb').find('.input__body'));
+const values = {};
+$('.input_type_ecb input').on('change', function () {
+    $.each($('.input__checkbox-item'), function () {
+        if ($(this).find('input').prop('checked')) {
+            values[$(this).text()] = true;
+        }
+    });
+    console.log(values);
 });

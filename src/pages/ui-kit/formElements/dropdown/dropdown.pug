@@ -1,13 +1,11 @@
 include ../blanks/input-header/input-header
 mixin dropdown(opt)
-  +b.input(class="_320", data-value!=opt.items)
+  +b.input_type_drp(class="_320", data-value!=opt.items)
     +input-header({left_heading:opt.left_heading,right_heading: opt.right_heading})
     +e.body()
       +e.field
         +e.inner
           +e.placeholder(data-value!=opt.inner_text)= opt.inner_text
-          +e.button(tabindex="-1")
-            +e.BUTTON.button-icon(type!=opt.button-type,tabindex="-1")
       +e.description
         +b.UL.select-list
           - var n=0

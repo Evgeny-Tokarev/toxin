@@ -6,6 +6,7 @@ const TerserPlugin = require('terser-webpack-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
 const glob = require('glob');
+const webpack = require('webpack');
 
 const isDev = process.env.NODE_ENV === 'development';
 const PATHS = {
@@ -65,6 +66,10 @@ module.exports = {
         new TerserPlugin(),
         new ESLintPlugin({
             extensions: ['js'],
+        }),
+        new webpack.ProvidePlugin({
+            $: 'jquery',
+            jQuery: 'jquery',
         }),
     ],
     output: {

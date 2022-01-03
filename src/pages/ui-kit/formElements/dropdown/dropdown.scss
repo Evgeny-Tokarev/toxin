@@ -6,8 +6,8 @@
     position: relative;
     z-index: 100;
 }
-.input {
-    &__body {
+.input_type_drp {
+    .input__body {
         .select-list {
             font-size: 0;
         }
@@ -15,31 +15,18 @@
             height: 0;
         }
     }
-    &__inner {
+    .input__inner {
         width: 100%;
         display: flex;
         justify-content: space-between;
         align-items: center;
-    }
-    &__button {
-        align-self: stretch;
-        cursor: pointer;
-        width: 25px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        button {
-            text-align: center;
-            border-left: 2px solid $Dark-Shade-50;
-            border-bottom: 2px solid $Dark-Shade-50;
-            width: 8px;
-            height: 8px;
-            transform: rotate(-45deg);
-            margin-top: -5px;
-            margin-right: -2px;
+        .input__arrow-button {
+            margin-right: -25px;
         }
     }
-    &__body_expanded {
+    .input__body_expanded {
+        position: relative;
+
         .input__description {
             width: 320px;
             position: absolute;

@@ -1,4 +1,3 @@
-import * as $ from 'jquery';
 import Arrow_button from '../blanks/arrow-button/arrow-button';
 
 class View {
@@ -20,6 +19,8 @@ class View {
         this.input = input;
         this.clrbtn = input.find('.select-list__control-button_type_clear');
         this.placeholder = input.find('.input__placeholder');
+        this.button = new Arrow_button();
+        this.button.init(this.input.find('.input__inner'));
         $.each(input.find('.select-list__item'), function () {
             self.itemsList.push(this);
             self.presenter.setItem(
@@ -30,20 +31,6 @@ class View {
         this.setInputString();
 
         input.on('click', function (e) {
-            if (
-                $(e.target).hasClass('input__button') ||
-                ($(e.target).hasClass('input__button-icon') &&
-                    !input.hasClass('input__expanded'))
-            ) {
-                self.openList(input);
-            } else {
-                if (
-                    $(e.target).hasClass('input__button') ||
-                    $(e.target).hasClass('input__button-icon')
-                ) {
-                    self.closeList(input);
-                }
-            }
             if ($(e.target).hasClass('select-list__button_type_decrease')) {
                 e.stopPropagation();
                 self.presenter.decreaseItem(
@@ -77,16 +64,6 @@ class View {
                 self.closeList(self.input);
             }
         });
-        $(document).on('click', function (e) {
-            e.stopPropagation;
-
-            if (
-                input.hasClass('input__expanded') &&
-                !input.has(e.target).length
-            ) {
-                self.closeList(input);
-            }
-        });
     }
     clear() {
         const self = this;
@@ -97,15 +74,15 @@ class View {
             );
         });
     }
-    openList(input) {
-        input.addClass('input__expanded');
-        input.find('.input__body').addClass('input__body_expanded');
-        this.clrbtn.css('display', this.setClrbtnView());
-    }
-    closeList(input) {
-        input.removeClass('input__expanded');
-        input.find('.input__body').removeClass('input__body_expanded');
-    }
+    // openList(input) {
+    //     input.addClass('input__expanded');
+    //     input.find('.input__body').addClass('input__body_expanded');
+    //     this.clrbtn.css('display', this.setClrbtnView());
+    // }
+    // closeList(input) {
+    //     input.removeClass('input__expanded');
+    //     input.find('.input__body').removeClass('input__body_expanded');
+    // }
     setListItem(name, value, disabled) {
         $.each(this.itemsList, function (i, item) {
             if ($(item).find('.select-list__name').text() === name) {
