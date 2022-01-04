@@ -1,6 +1,6 @@
 include ../blanks/input-header/input-header
 mixin dropdown(opt)
-  +b.input_type_drp(class=opt.class, data-value!=opt.items)
+  +b.input_type_drp(class=opt.class)
     +input-header({left_heading:opt.left_heading,right_heading: opt.right_heading})
     +e.body()
       +e.field
@@ -16,7 +16,7 @@ mixin dropdown(opt)
                   +e.BUTTON.button_type_decrease(disabled = val == 0 ? true: false)= "-"
                   +e.item-value= val
                   +e.BUTTON.button_type_increase= "+"
-          +e.controls(hidden = opt.btnHiden ? opt.btnHiden : true)
+          +e.controls(hidden!= opt.btnHiden === false ? false: true)
             +e.BUTTON.control-button_type_submit
               +e.SPAN= "Применить"
             +e.BUTTON.control-button_type_clear

@@ -7,7 +7,7 @@
         display: flex;
         position: relative;
 
-        height: 51px;
+        height: 70px;
         justify-content: space-between;
     }
 
@@ -23,7 +23,8 @@
         span {
             font-family: 'Material Icons';
             font-size: 48px;
-            line-height: 51px;
+            line-height: 52px;
+            margin-left: -1px;
             font-weight: 400;
             text-align: center;
             color: transparent;
@@ -33,7 +34,7 @@
     }
     &__description {
         flex-grow: 1;
-        padding-left: 11px;
+        padding-left: 10px;
         padding-top: 2px;
         @include Body-text();
         color: $Dark-Shade-75;

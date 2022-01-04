@@ -25,7 +25,7 @@ class View {
             self.itemsList.push(this);
             self.presenter.setItem(
                 $(this).find('.select-list__name').text(),
-                $(this).find('.select-list__name').attr('data-value')
+                parseInt($(this).find('.select-list__item-value').text())
             );
         });
         this.setInputString();
@@ -61,7 +61,7 @@ class View {
             ) {
                 self.presenter.submit();
                 self.clear();
-                self.closeList(self.input);
+                input.removeClass('input_expanded');
             }
         });
     }
@@ -74,15 +74,6 @@ class View {
             );
         });
     }
-    // openList(input) {
-    //     input.addClass('input__expanded');
-    //     input.find('.input__body').addClass('input__body_expanded');
-    //     this.clrbtn.css('display', this.setClrbtnView());
-    // }
-    // closeList(input) {
-    //     input.removeClass('input__expanded');
-    //     input.find('.input__body').removeClass('input__body_expanded');
-    // }
     setListItem(name, value, disabled) {
         $.each(this.itemsList, function (i, item) {
             if ($(item).find('.select-list__name').text() === name) {
@@ -115,7 +106,7 @@ class View {
         if (valueArr.filter(Boolean).length) {
             str = valueArr.filter(Boolean).join(', ');
             str =
-                str.length > 20
+                str.length > 19
                     ? valueArr
                           .filter(Boolean)
                           .join(', ')

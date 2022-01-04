@@ -4,36 +4,17 @@
 
 @include input-body();
 
-.input {
-    // &__body {
-    //     position: relative;
-    // }
-    &__inner {
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+.input_type_ddd {
+    .input__body {
+        position: relative;
     }
-    &__button {
+    .input__arrow-button {
         position: absolute;
-        align-self: stretch;
-        cursor: pointer;
-        width: 25px;
         height: 44px;
         right: 10px;
-        top: 0px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
         button {
-            text-align: center;
-            border-left: 2px solid $Dark-Shade-50;
-            border-bottom: 2px solid $Dark-Shade-50;
-            width: 8px;
-            height: 8px;
-            transform: rotate(-45deg);
-            margin-top: -5px;
-            margin-right: -8px;
+            margin-top: 0px;
+            margin-right: -1px;
         }
     }
 }

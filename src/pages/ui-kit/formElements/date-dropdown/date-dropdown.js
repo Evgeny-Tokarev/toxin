@@ -1,4 +1,5 @@
 import AirDatepicker from 'air-datepicker';
+import Arrow_button from '../blanks/arrow-button/arrow-button';
 
 class MyDatepicker {
     constructor() {
@@ -12,6 +13,9 @@ class MyDatepicker {
             startDate: [new Date(2019, 7, 8)],
             keyboardNav: false,
             multipleDatesSeparator: ' - ',
+            onShow: () => {
+                this.button.wrapper.addClass('input_expanded');
+            },
 
             navTitles: {
                 days(dp) {
@@ -23,7 +27,6 @@ class MyDatepicker {
                 </span>`;
                 },
             },
-            showEvent: '',
             prevHtml: `<span>arrow_back</span>`,
             nextHtml: `<span>arrow_forward</span>`,
         };
@@ -67,9 +70,9 @@ class MyDatepicker {
     setDate(dateStr, i) {
         const date = dateStr.toString().split('.');
         if (
-            date[2] > 0 &&
-            date[2] < 3000 &&
-            date[0] >= 0 &&
+            date[2] > 2020 &&
+            date[2] < 2030 &&
+            date[1] > 0 &&
             date[1] < 13 &&
             date[0] > 0 &&
             date[0] <= 31
@@ -95,44 +98,11 @@ class MyDatepicker {
             }
         });
     }
-    // обработка событий мыши
-    mouseWatch(el, i) {
-        const self = this;
-        const button = el.nextElementSibling;
-        el.closest('.input__body').addEventListener('mousedown', (e) => {
-            if (e.target === button || e.target === button.firstElementChild) {
-                e.preventDefault();
-            }
-            e.stopPropagation();
-            // Проверяем, произошел ли клик внутри поля ввода или по кнопке
-            if (
-                (e.target === button ||
-                    e.target === button.firstElementChild ||
-                    el.contains(e.target)) &&
-                !self.dp[i].$datepicker.classList.contains('-active-')
-            ) {
-                // устанавливаем фокус на поле ввода и если внутри него была введана дата, передаем ёё в air-datepicker
-                el.focus();
-                if (this.value) {
-                    self.dp[i].selectDate(this.value);
-                }
-                self.dp[i].show();
-            } else {
-                // при нажатии на кнопку при активном календаре, убираем фокус из поля ввода и закрываем календарь
-                if (
-                    self.dp[i].$datepicker.classList.contains('-active-') &&
-                    (e.target === button ||
-                        e.target === button.firstElementChild)
-                ) {
-                    self.dp[i].hide();
-                    el.blur();
-                }
-            }
-        });
-    }
     init(selector) {
         const self = this;
         $(selector).each(function (i, el) {
+            self.button = new Arrow_button();
+            self.button.init($(this).closest('.input__body'));
             self.dp[i] = new AirDatepicker(el, self.options);
             self.dp[i].isRange = $(el).hasClass('range') ? true : false;
             self.dp[i].opts.range = self.dp[i].isRange;
@@ -158,7 +128,7 @@ class MyDatepicker {
                 : 'dd.MM.yyyy';
             self.mask.call(self.dp[i]);
             self.keyWatch(el, i);
-            self.mouseWatch(el, i);
+            // self.wrapperWatch(el.closest('.input'), i);
         });
     }
 }

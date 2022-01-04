@@ -6,12 +6,14 @@
     position: relative;
     .input__button {
         position: absolute;
+        height: 44px;
         right: 10px;
         top: 21px;
     }
     .input__button-icon {
         color: $Purple;
         font-family: 'Material Icons';
+        line-height: 44px;
         font-weight: 400;
         font-size: 24px;
     }

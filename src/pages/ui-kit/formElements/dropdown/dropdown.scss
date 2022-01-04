@@ -22,7 +22,7 @@
         }
     }
 }
-.input_expanded {
+.input_type_drp.input_expanded {
     .input__body {
         position: relative;
 
@@ -41,7 +41,8 @@
         .select-list {
             &__item {
                 @include Label-text;
-                height: 39px;
+                color: $Dark-Shade-100;
+                height: 38px;
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
@@ -60,14 +61,13 @@
                 border: 1px solid $Dark-Shade-50;
                 border-radius: 50%;
                 font-size: 18px;
+                line-height: 30px;
                 font-weight: 400;
                 color: $Dark-Shade-50;
-                &_disabled {
-                    border-color: $Dark-Shade-5;
-                }
             }
             &__button[disabled] {
-                border-color: $Dark-Shade-5;
+                color: $Dark-Shade-25;
+                border-color: $Dark-Shade-25;
             }
             &__controls {
                 height: 39px;
