@@ -28,6 +28,7 @@
         @include Label-text();
         padding-left: 0;
         color: $Dark-Shade-100;
+        background-color: #fff;
     }
     .input__checkbox-item {
         display: block;

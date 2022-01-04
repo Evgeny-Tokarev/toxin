@@ -144,7 +144,11 @@ class Presenter {
     }
     setItem(name, value) {
         this.model.setItem(name, value);
-        this.view.setListItem(name, this.model.getValue(name), true);
+        if (this.model.getValue(name) > 1) {
+            this.view.setListItem(name, this.model.getValue(name), false);
+        } else {
+            this.view.setListItem(name, this.model.getValue(name), true);
+        }
     }
     increaseItem(name) {
         this.model.setItem(name, this.model.getValue(name) * 1 + 1);

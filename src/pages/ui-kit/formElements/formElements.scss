@@ -3,6 +3,7 @@
 @import './dropdown/dropdown.scss';
 @import './subscription-text-field/subscription-text-field.scss';
 @import './expandable-checkbox/expandable-checkbox.scss';
+@import './advantage-item/advantage-item.scss';
 
 .form-elements {
     position: relative;
@@ -22,8 +23,14 @@
 .form-elements .input:nth-child(7) {
     margin-bottom: 42px;
 }
+.form-elements .input:nth-child(8) {
+    margin-bottom: 98px;
+}
 .form-elements .input:nth-child(9) {
-    margin-bottom: 19.5px;
+    margin-bottom: 19px;
+}
+.form-elements .input:nth-child(10) {
+    margin-bottom: 0px;
 }
 .wrapper_320 {
     width: 320px;

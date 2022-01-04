@@ -1,6 +1,10 @@
 @import '../../../colors&type/colors&type.scss';
 
 @mixin input-body {
+    .input_expanded {
+        position: relative;
+        z-index: 10;
+    }
     .input_320 {
         width: 320px;
     }
@@ -38,8 +42,8 @@
             outline: none;
         }
     }
-    .input__body_expanded .input__field {
-        border-radius: 4px 4px 0 0;
-        border-color: $Dark-Shade-50;
-    }
+}
+.input_expanded .input__field {
+    border-radius: 4px 4px 0 0;
+    border-color: $Dark-Shade-50;
 }

@@ -7,7 +7,9 @@ $('.input_type_ecb input').on('change', function () {
     $.each($('.input__checkbox-item'), function () {
         if ($(this).find('input').prop('checked')) {
             values[$(this).text()] = true;
+        } else {
+            delete values[$(this).text()];
         }
     });
-    console.log(values);
+    console.log(Object.getOwnPropertyNames(values));
 });

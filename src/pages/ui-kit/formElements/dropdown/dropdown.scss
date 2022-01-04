@@ -2,10 +2,7 @@
 @import '../blanks/input-body/input-body.scss';
 
 @include input-body();
-.input__expanded {
-    position: relative;
-    z-index: 100;
-}
+
 .input_type_drp {
     .input__body {
         .select-list {
@@ -24,11 +21,13 @@
             margin-right: -25px;
         }
     }
-    .input__body_expanded {
+}
+.input_expanded {
+    .input__body {
         position: relative;
 
         .input__description {
-            width: 320px;
+            width: 100%;
             position: absolute;
             left: 0;
             top: 43px;
