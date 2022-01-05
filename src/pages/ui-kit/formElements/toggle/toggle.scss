@@ -1,0 +1,63 @@
+@import '../../colors&type/colors&type.scss';
+@import '../blanks/checkbox/checkbox.scss';
+
+.input_type_tog {
+    flex-direction: column;
+    .input__body {
+        display: flex;
+        flex-direction: column;
+        .input__placeholder {
+            height: 44px;
+            line-height: 44px;
+        }
+    }
+    fieldset.input__description {
+        flex-direction: column;
+    }
+    .input__checkbox-item {
+        padding-top: 1px;
+        padding-right: 5px;
+        line-height: 18px;
+        margin-left: 50px;
+        min-height: 34px;
+        input {
+            left: -50px;
+            top: 1px;
+            width: 40px;
+        }
+        input:checked + .input__checkbox {
+            position: absolute;
+            left: -50px;
+            top: 1px;
+            height: 20px;
+            border: 1px solid $Purple;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        input + .input__checkbox {
+            position: absolute;
+            left: -50px;
+            top: 1px;
+            height: 20px;
+            width: 40px;
+            transition: all 0.5s;
+            border: 1px solid $Dark-Shade-25;
+            border-radius: 10px;
+        }
+        input + .input__checkbox:after {
+            content: '';
+            position: absolute;
+            left: 3px;
+            top: 3px;
+            height: 12px;
+            width: 12px;
+            border-radius: 50%;
+            background: $Dark-Shade-25;
+            transition: all 0.2s;
+        }
+        input:checked + .input__checkbox:after {
+            transform: translateX(20px);
+            background: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
+        }
+    }
+}

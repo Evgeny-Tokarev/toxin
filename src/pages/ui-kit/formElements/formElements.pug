@@ -8,6 +8,7 @@ include advantage-item/advantage-item.pug
 include checkbox-buttons/checkbox-buttons.pug
 include radio-buttons/radio-buttons.pug
 include toggle/toggle.pug
+include blanks/checkbox/checkbox.pug
 
 section.form-elements
   img.main-icon(src=('./main-icon.svg') alt='main-icon' height=48 width=48)
@@ -30,5 +31,5 @@ section.form-elements
   +e.col
     +checkbox-buttons({inner_text: "checkbox buttons", items: {"Можно курить":false,"Можно с питомцами":true, "Можно пригласить гостей (до 10 человек)":true}})
     +radio-buttons({inner_text: "radio buttons", items: {"Мужчина":true,"Женщина":false}})
-    +toggle({inner_text: "toggle", items: {"Получать спецпредложения":true,"Получать cпецпредложения":false}})
+    +toggle({class: "_type_tog _266",input_type: "checkbox", inner_text: "toggle", items: {"Получать спецпредложения":true,"Получать cпецпредложения":false}})
     

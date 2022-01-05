@@ -6,6 +6,7 @@
 @import './advantage-item/advantage-item.scss';
 @import './checkbox-buttons/checkbox-buttons.scss';
 @import './radio-buttons/radio-buttons.scss';
+@import './toggle/toggle.scss';
 
 .form-elements {
     position: relative;
@@ -22,6 +23,9 @@
     margin-top: -14px;
     .input:nth-child(1) {
         margin-bottom: 26px;
+    }
+    .input:nth-child(2) {
+        margin-bottom: 17px;
     }
 }
 .form-elements .input {

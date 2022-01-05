@@ -1,22 +1,21 @@
-@import '../../colors&type/colors&type.scss';
+@import '../../../colors&type/colors&type.scss';
 @include input-body();
 
-.input_type_rb {
+.input_type_chkbx {
     display: flex;
     .input__body {
-        display: flex;
-        flex-direction: column;
+        height: 44px;
+        position: relative;
+        justify-content: space-between;
         @include Label-text();
         color: $Dark-Shade-100;
-        .input__placeholder {
-            height: 44px;
-            line-height: 44px;
-        }
     }
+}
+.input_type_chkbx {
     fieldset.input__description {
+        position: absolute;
+        top: 44px;
         display: flex;
-        justify-content: flex-start;
-        width: 100%;
         justify-content: space-between;
         @include Label-text();
         padding-left: 0;
@@ -24,11 +23,8 @@
         background-color: #fff;
     }
     .input__checkbox-item {
-        display: block;
-        padding-top: 1px;
-        padding-right: 20px;
+        display: flex;
         @include Body-text();
-        line-height: 18px;
         letter-spacing: 0;
         position: relative;
         color: $Dark-Shade-50;
@@ -44,23 +40,17 @@
         }
         input + .input__checkbox {
             position: absolute;
+            margin: 0;
             left: -30px;
-            top: 1px;
             height: 20px;
             width: 20px;
-            border: 1px solid $Dark-Shade-25;
-            border-radius: 50%;
+            // border: 1px solid $Dark-Shade-25;
+            // border-radius: 4px;
             cursor: pointer;
         }
-        input:checked + .input__checkbox:after {
-            content: '';
-            position: absolute;
-            left: 3px;
-            top: 3px;
-            height: 12px;
-            width: 12px;
-            border-radius: 50%;
-            background: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
-        }
+        // input:checked + .input__checkbox {
+        //     border: 1px solid $Purple;
+        //     background: url('./img/Vector.png') no-repeat center;
+        // }
     }
 }
