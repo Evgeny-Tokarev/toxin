@@ -1,11 +1,4 @@
+include ../blanks/checkbox/checkbox.pug
 
 mixin radio-buttons(opt)
-  +b.input._type_rb(class=opt.class)
-    +e.body
-      +e.placeholder()= opt.inner_text
-      +e({tag: "fieldset"}).description
-        - var n=0
-          each val, key in opt.items
-              +e.LABEL.checkbox-item= key
-                +e.INPUT(type!="radio", name!=Object.getOwnPropertyNames( opt.items)[0],value = key, checked!=val)
-                +e.SPAN.checkbox  
+  +checkbox(opt)  
