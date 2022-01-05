@@ -4,15 +4,25 @@
 @import './subscription-text-field/subscription-text-field.scss';
 @import './expandable-checkbox/expandable-checkbox.scss';
 @import './advantage-item/advantage-item.scss';
+@import './checkbox-buttons/checkbox-buttons.scss';
+@import './radio-buttons/radio-buttons.scss';
 
 .form-elements {
     position: relative;
     padding: 143px 141px;
+    display: flex;
 }
 .main-icon {
     position: absolute;
     left: 30px;
     top: 30px;
+}
+.form-elements .col:nth-child(3) {
+    padding-left: 126px;
+    margin-top: -14px;
+    .input:nth-child(1) {
+        margin-bottom: 26px;
+    }
 }
 .form-elements .input {
     margin-bottom: 19px;
@@ -37,6 +47,9 @@
 }
 .form-elements .input:nth-child(12) {
     margin-bottom: 272px;
+}
+.form-elements .input:nth-child(14) {
+    margin-bottom: 25px;
 }
 .form-elements .advantage {
     margin-bottom: 20px;

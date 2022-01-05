@@ -8,3 +8,5 @@ import './pages/ui-kit/formElements/masked-text-field/masked-text-field.js';
 import './pages/ui-kit/formElements/date-dropdown/date-dropdown.js';
 import './pages/ui-kit/formElements/subscription-text-field/subscription-text-field.js';
 import './pages/ui-kit/formElements/expandable-checkbox/expandable-checkbox.js';
+import './pages/ui-kit/formElements/checkbox-buttons/checkbox-buttons.js';
+import './pages/ui-kit/formElements/radio-buttons/radio-buttons.js';

@@ -1,0 +1,11 @@
+
+mixin checkbox-buttons(opt)
+  +b.input._222._type_cbb(class=opt.class)
+    +e.body
+      +e.placeholder()= opt.inner_text
+      +e({tag: "fieldset"}).description
+        - var n=0
+        each val, key in opt.items
+          +e.LABEL.checkbox-item= key
+            +e.INPUT(type!="checkbox", checked!=val)
+            +e.SPAN.checkbox

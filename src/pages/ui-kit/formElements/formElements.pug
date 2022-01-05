@@ -5,21 +5,30 @@ include date-dropdown/date-dropdown.pug
 include subscription-text-field/subscription-text-field.pug
 include expandable-checkbox/expandable-checkbox.pug
 include advantage-item/advantage-item.pug
+include checkbox-buttons/checkbox-buttons.pug
+include radio-buttons/radio-buttons.pug
+include toggle/toggle.pug
 
 section.form-elements
   img.main-icon(src=('./main-icon.svg') alt='main-icon' height=48 width=48)
-  +text-field({left_heading:"text field", right_heading: "default",placeholder: "Email", type: "Email"})
-  +text-field({left_heading:"text field", right_heading: "Hover / Focus", value: "This is pretty awesome"})
-  +dropdown({class: "_320", left_heading:"dropdown", inner_text: "Сколько гостей", items: {"Взрослые":0,"Дети":0, "Младенцы":0}})
-  +masked-text-field({left_heading:"masked text field",placeholder: "ДД.ММ.ГГГГ"}) 
-  +e.wrapper._320 
-    +date-dropdown({left_heading:"date dropdown", inner_text: "ДД.ММ.ГГГГ", width: "150"})
-    +date-dropdown({left_heading:"date dropdown", inner_text: "ДД.ММ.ГГГГ", width: "150",initial_value: "19.08.2019"})
-  +date-dropdown({left_heading:"filter date dropdown", inner_text: "ДД МММ - ДД МММ", class: "range", width: "266",initial_value: "19 авг - 23 авг"})
-  +subscription-text-field({left_heading:"subscription text field",placeholder: "Email", width: "266"})
-  +dropdown({class: "_266", left_heading:"dropdown", right_heading: "default",inner_text: "Конфигурация номера", items: {"Спальни":2,"Кровати":2, "Ванные комнаты":0}})
-  +dropdown({class: "_266 _expanded", left_heading:"dropdown", right_heading: "expanded",inner_text: "Конфигурация номера", items: {"Спальни":2,"Кровати":2, "Ванные комнаты":0}})
-  +expandable-checkbox({inner_text: "expandable checkbox list", items: {"Завтрак":false,"Письменный стол":true, "Стул для кормления":true,"Кроватка": true,"Телевизор":false,"Шампунь":false}})
-  +expandable-checkbox({class: "_expanded", inner_text: "expandable checkbox list", items: {"Завтрак":false,"Письменный стол":true, "Стул для кормления":true,"Кроватка": true,"Телевизор":false,"Шампунь":false}})
-  +advantage-item({icon: "insert_emoticon", title: "Комфорт", text: "Шумопоглощающие стены"})
-  +advantage-item({icon: "location_city", title: "Удобство", text: "Окно в каждой из спален"})
+  +e.col
+    +text-field({left_heading:"text field", right_heading: "default",placeholder: "Email", type: "Email"})
+    +text-field({left_heading:"text field", right_heading: "Hover / Focus", value: "This is pretty awesome"})
+    +dropdown({class: "_320", left_heading:"dropdown", inner_text: "Сколько гостей", items: {"Взрослые":0,"Дети":0, "Младенцы":0}})
+    +masked-text-field({left_heading:"masked text field",placeholder: "ДД.ММ.ГГГГ"}) 
+    +e.wrapper._320 
+      +date-dropdown({left_heading:"date dropdown", inner_text: "ДД.ММ.ГГГГ", width: "150"})
+      +date-dropdown({left_heading:"date dropdown", inner_text: "ДД.ММ.ГГГГ", width: "150",initial_value: "19.08.2019"})
+    +date-dropdown({left_heading:"filter date dropdown", inner_text: "ДД МММ - ДД МММ", class: "range", width: "266",initial_value: "19 авг - 23 авг"})
+    +subscription-text-field({left_heading:"subscription text field",placeholder: "Email", width: "266"})
+    +dropdown({class: "_266", left_heading:"dropdown", right_heading: "default",inner_text: "Конфигурация номера", items: {"Спальни":2,"Кровати":2, "Ванные комнаты":0}})
+    +dropdown({class: "_266 _expanded", left_heading:"dropdown", right_heading: "expanded",inner_text: "Конфигурация номера", items: {"Спальни":2,"Кровати":2, "Ванные комнаты":0}})
+    +expandable-checkbox({inner_text: "expandable checkbox list", items: {"Завтрак":false,"Письменный стол":true, "Стул для кормления":true,"Кроватка": true,"Телевизор":false,"Шампунь":false}})
+    +expandable-checkbox({class: "_expanded", inner_text: "expandable checkbox list", items: {"Завтрак":false,"Письменный стол":true, "Стул для кормления":true,"Кроватка": true,"Телевизор":false,"Шампунь":false}})
+    +advantage-item({icon: "insert_emoticon", title: "Комфорт", text: "Шумопоглощающие стены"})
+    +advantage-item({icon: "location_city", title: "Удобство", text: "Окно в каждой из спален"})
+  +e.col
+    +checkbox-buttons({inner_text: "checkbox buttons", items: {"Можно курить":false,"Можно с питомцами":true, "Можно пригласить гостей (до 10 человек)":true}})
+    +radio-buttons({inner_text: "radio buttons", items: {"Мужчина":true,"Женщина":false}})
+    +toggle({inner_text: "toggle", items: {"Получать спецпредложения":true,"Получать cпецпредложения":false}})
+    
