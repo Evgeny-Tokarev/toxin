@@ -9,6 +9,7 @@ include checkbox-buttons/checkbox-buttons.pug
 include radio-buttons/radio-buttons.pug
 include toggle/toggle.pug
 include blanks/checkbox/checkbox.pug
+include like-button/like-button.pug
 
 section.form-elements
   img.main-icon(src=('./main-icon.svg') alt='main-icon' height=48 width=48)
@@ -32,4 +33,5 @@ section.form-elements
     +checkbox-buttons({class: "_type_cbb _222",inner_text: "checkbox buttons",input_type: "checkbox", items: {"Можно курить":false,"Можно с питомцами":true, "Можно пригласить гостей (до 10 человек)":true}})
     +radio-buttons({class: "_type_rb",inner_text: "radio buttons",input_type: "radio", items: {"Мужчина":true,"Женщина":false}})
     +toggle({class: "_type_tog _266",input_type: "checkbox", inner_text: "toggle", items: {"Получать спецпредложения":true,"Получать cпецпредложения":false}})
+    +like-button({class: "_type_lkb _266",input_type: "checkbox", inner_text: "like button", items: {2:false}})
     
