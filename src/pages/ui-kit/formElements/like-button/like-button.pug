@@ -1,4 +1,5 @@
-include ../blanks/checkbox/checkbox.pug
 
 mixin like-button(opt)
-  +checkbox(opt)
+  +b.LABEL.like-button
+    +e.INPUT(type!="checkbox", name!=opt.name, value!=opt.value, checked!=opt.checked)
+    +e.SPAN.checkbox= opt.value > 99 ? '99+' : opt.value

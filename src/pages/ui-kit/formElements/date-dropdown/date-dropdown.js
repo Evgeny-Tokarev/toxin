@@ -85,7 +85,7 @@ class MyDatepicker {
             }
         }
     }
-    // обработчик для нажатия enter
+    // обработчик для нажатия enter в поле ввода
     keyWatch(el, i) {
         const self = this;
         el.closest('.input__body').addEventListener('keydown', (e) => {
@@ -128,7 +128,6 @@ class MyDatepicker {
                 : 'dd.MM.yyyy';
             self.mask.call(self.dp[i]);
             self.keyWatch(el, i);
-            // self.wrapperWatch(el.closest('.input'), i);
         });
     }
 }

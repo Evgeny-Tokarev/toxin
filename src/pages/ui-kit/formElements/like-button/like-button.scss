@@ -1,68 +1,47 @@
 @import '../../colors&type/colors&type.scss';
-@import '../blanks/checkbox/checkbox.scss';
+@import '../blanks/input-header/input-header.scss';
 
-.input_type_lkb {
-    flex-direction: column;
-    .input__body {
-        display: flex;
-        flex-direction: column;
-        .input__placeholder {
-            height: 44px;
-            line-height: 44px;
-        }
-
-        fieldset.input__description {
-            flex-direction: column;
-        }
-        .input__checkbox-item {
-            padding-top: 1px;
-            padding-right: 5px;
-            line-height: 20px;
-            font-size: 10px;
-            font-weight: 400;
-            margin-left: 22px;
-            min-height: 34px;
-            input {
-                left: -50px;
-                top: 1px;
-                width: 40px;
-            }
-            input:checked + .input__checkbox {
-                position: absolute;
-                top: 1px;
-                height: 20px;
-                border: 1px solid $Purple;
-                border-radius: 10px;
-                cursor: pointer;
-            }
-            input + .input__checkbox {
-                position: absolute;
-                font-family: 'Material Icons';
-                left: -22px;
-                top: 1px;
-                height: 20px;
-                width: 40px;
-                border: 1px solid $Dark-Shade-25;
-                border-radius: 10px;
-            }
-            input + .input__checkbox:after {
-                content: 'favorite_border';
-                font-family: 'Material Icons';
-                position: absolute;
-                left: 4px;
-                top: -1px;
-            }
-            input:checked + .input__checkbox:after {
-                content: 'favorite';
-                font-family: 'Material Icons';
-                color: transparent;
-                background-clip: text;
-                background-image: linear-gradient(
-                    180deg,
-                    #bc9cff 0%,
-                    #8ba4f9 100%
-                );
-            }
-        }
+.like-button {
+    position: relative;
+    width: 40px;
+    height: 20px;
+    font-size: 10px;
+    font-weight: 400;
+    input {
+        margin: 0;
+        position: absolute;
+        opacity: 0;
+        height: 20px;
+        width: 40px;
+        cursor: pointer;
+    }
+    input:checked + .like-button__checkbox {
+        border: 1px solid $Purple;
+        color: $Purple;
+    }
+    input + .like-button__checkbox {
+        position: absolute;
+        height: 20px;
+        width: 40px;
+        padding-left: 21px;
+        line-height: 19px;
+        color: $Dark-Shade-25;
+        border: 1px solid $Dark-Shade-25;
+        border-radius: 10px;
+    }
+    input + .like-button__checkbox:after {
+        content: 'favorite_border';
+        font-family: 'Material Icons';
+        position: absolute;
+        line-height: 20px;
+        left: 3px;
+        top: -1px;
+    }
+    input:checked + .like-button__checkbox:after {
+        content: 'favorite';
+        font-family: 'Material Icons';
+        color: transparent;
+        background-clip: text;
+        background-image: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
     }
 }

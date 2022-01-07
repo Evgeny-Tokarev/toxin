@@ -16,8 +16,6 @@
 }
 .input_type_chkbx {
     fieldset.input__description {
-        // position: absolute;
-        // top: 44px;
         display: flex;
         justify-content: space-between;
         @include Label-text();

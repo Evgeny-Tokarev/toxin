@@ -1,0 +1,8 @@
+mixin rate-button(opt)
+  +b.input_type_rat(data-id!=opt.id)
+    +e({tag: "fieldset"}).description
+     - var i = 0;
+      while i <5
+        +e.LABEL.checkbox-item()
+          +e.INPUT(type!="checkbox", value!=i++, checked!= opt.value < i ?  false : true)
+          +e.SPAN.checkbox

@@ -1,0 +1,38 @@
+@import '../../colors&type/colors&type.scss';
+
+.input_type_rat {
+    fieldset.input__description {
+        display: flex;
+        flex-direction: row;
+    }
+    .input__checkbox-item {
+        position: relative;
+        padding-top: 1px;
+        line-height: 24px;
+        input {
+            opacity: 0;
+            margin: 0;
+            height: 24px;
+            width: 24px;
+        }
+        input:checked + .input__checkbox {
+            cursor: pointer;
+        }
+        input + .input__checkbox {
+            position: absolute;
+            left: 0;
+        }
+        input + .input__checkbox:after {
+            content: 'star_border';
+            font-family: 'Material Icons';
+            position: absolute;
+            font-size: 24px;
+            color: transparent;
+            background-clip: text;
+            background-image: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
+        }
+        input:checked + .input__checkbox:after {
+            content: 'star';
+        }
+    }
+}

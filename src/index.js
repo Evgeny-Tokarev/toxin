@@ -11,3 +11,5 @@ import './pages/ui-kit/formElements/expandable-checkbox/expandable-checkbox.js';
 import './pages/ui-kit/formElements/checkbox-buttons/checkbox-buttons.js';
 import './pages/ui-kit/formElements/radio-buttons/radio-buttons.js';
 import './pages/ui-kit/formElements/toggle/toggle.js';
+import './pages/ui-kit/formElements/like-button/like-button.js';
+import './pages/ui-kit/formElements/rate-button/rate-button.js';
