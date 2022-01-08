@@ -3,7 +3,7 @@ include ../like-button/like-button.pug
 mixin review-item(opt)
   +b.review-item 
     +e.header 
-      +e.icon(src!= opt.icon_url) 
+      +e.icon(src!= opt.icon_url, width= 48, height= 48) 
       +e.name= opt.name
         +e.P.last-visit= opt.last_visit + ' дней назад'
     +e.description

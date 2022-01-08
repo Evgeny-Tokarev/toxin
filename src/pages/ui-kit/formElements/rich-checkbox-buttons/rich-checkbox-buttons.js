@@ -6,7 +6,6 @@ class RichButtons extends Checkbox {
         this.richHandler(selector);
     }
     richHandler(item) {
-        console.log($(item));
         $(item).each(function () {
             $(this)
                 .find('.input__checkbox-item')
