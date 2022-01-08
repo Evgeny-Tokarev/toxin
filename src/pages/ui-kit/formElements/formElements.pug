@@ -12,6 +12,7 @@ include toggle/toggle.pug
 include blanks/checkbox/checkbox.pug
 include like-button/like-button.pug
 include rate-button/rate-button.pug
+include rich-checkbox-buttons/rich-checkbox-buttons.pug
 
 section.form-elements
   img.main-icon(src=('./main-icon.svg') alt='main-icon' height=48 width=48)
@@ -43,3 +44,5 @@ section.form-elements
     +e.wrapper._320._type_paddingless
       +rate-button({class: "_type_rat _266", inner_text: "rate button",id: "id", value: 4})
       +rate-button({class: "_type_rat _266", inner_text: "rate button",id: "other id", value: 5})
+    +dropdown({class: "_320 _expanded", left_heading:"dropdown", btnHiden: false, inner_text: "Сколько гостей", items: {"Взрослые":0,"Дети":0, "Младенцы":0} })
+    +rich-checkbox-buttons({class: "_type_rich _266",inner_text: "rich checkbox buttons",input_type: "checkbox", items: {"Широкий коридор&Ширина коридоров в номере не менее 91 см.":false,"Помощник для инвалидов&На 1 этаже вас встретит специалист  и проводит до номера.":false}})

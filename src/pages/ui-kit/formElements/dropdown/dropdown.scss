@@ -46,7 +46,7 @@
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
-                padding: 0 7px 0 15px;
+                padding: 0 7px 0 14px;
             }
             &__handler {
                 width: 92px;
@@ -70,7 +70,7 @@
                 border-color: $Dark-Shade-25;
             }
             &__controls {
-                height: 39px;
+                height: 43px;
                 display: flex;
                 flex-direction: row-reverse;
                 justify-content: space-between;
@@ -81,7 +81,8 @@
                 display: none;
             }
             &__control-button {
-                height: 39px;
+                height: 40px;
+                align-self: flex-end;
                 span {
                     @include Label-text();
                     color: $Purple;

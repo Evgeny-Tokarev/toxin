@@ -9,6 +9,7 @@
 @import './toggle/toggle.scss';
 @import './like-button/like-button.scss';
 @import './rate-button/rate-button.scss';
+@import './rich-checkbox-buttons/rich-checkbox-buttons.scss';
 
 .form-elements {
     position: relative;
@@ -38,6 +39,18 @@
     .input:nth-child(6) {
         margin-bottom: 10px;
     }
+    .wrapper_type_paddingless {
+        padding: 0;
+        justify-content: left;
+        gap: 10px;
+        margin-bottom: 39px;
+    }
+    .wrapper_type_paddingless:nth-child(7) {
+        margin-bottom: 162px;
+    }
+    .input:nth-child(8) {
+        margin-bottom: 242px;
+    }
 }
 .form-elements .input {
     margin-bottom: 19px;
@@ -45,12 +58,15 @@
 .form-elements .input:nth-child(4) {
     margin-bottom: 21px;
 }
+.form-elements .input:nth-child(6) {
+    margin-bottom: 41px;
+}
 .form-elements .input:nth-child(7) {
-    margin-bottom: 42px;
+    margin-bottom: 99px;
 }
-.form-elements .input:nth-child(8) {
-    margin-bottom: 98px;
-}
+// .form-elements .input:nth-child(8) {
+//     margin-bottom: 98px;
+// }
 .form-elements .input:nth-child(9) {
     margin-bottom: 159px;
 }
@@ -67,7 +83,7 @@
     margin-bottom: 25px;
 }
 .form-elements .advantage {
-    margin-bottom: 20px;
+    margin-bottom: 19px;
 }
 .wrapper_320 {
     width: 320px;
@@ -75,12 +91,7 @@
     justify-content: space-between;
     padding: 20px 0;
 }
-.wrapper_type_paddingless {
-    padding: 0;
-    justify-content: left;
-    gap: 10px;
-    margin-bottom: 39px;
-}
+
 .input_type_rat {
     margin-right: 10px;
 }

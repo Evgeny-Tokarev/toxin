@@ -1,0 +1,39 @@
+@import '../../colors&type/colors&type.scss';
+@import '../blanks/checkbox/checkbox.scss';
+
+.input_type_rich {
+    .input__body {
+        flex-direction: column;
+        fieldset.input__description {
+            flex-direction: column;
+            margin-top: -1px;
+        }
+        .input__checkbox-item {
+            flex-direction: column;
+            padding-top: 3px;
+            line-height: 18px;
+            margin-bottom: 7px;
+            .input__item-header {
+                font-size: 14px;
+                font-weight: 700;
+                line-height: 18px;
+                margin-bottom: 6px;
+                color: $Dark-Shade-75;
+            }
+            .input__item-description {
+                font-size: 12px;
+                font-weight: 400;
+                line-height: 14px;
+                color: $Dark-Shade-50;
+            }
+            input + .input__checkbox {
+                top: 2px;
+                border-radius: 4px;
+            }
+            input:checked + .input__checkbox {
+                border: 1px solid $Purple;
+                background: url('./img/Vector.png') no-repeat center;
+            }
+        }
+    }
+}
