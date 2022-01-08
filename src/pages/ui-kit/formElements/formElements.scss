@@ -10,18 +10,35 @@
 @import './like-button/like-button.scss';
 @import './rate-button/rate-button.scss';
 @import './rich-checkbox-buttons/rich-checkbox-buttons.scss';
+@import './review-item/review-item.scss';
 
 .form-elements {
     position: relative;
-    padding: 143px 141px;
-    display: flex;
+    padding-top: 143px;
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+    grid-template-areas:
+        'col1 col2 col3'
+        'col1 review review';
 }
 .main-icon {
     position: absolute;
     left: 30px;
     top: 30px;
 }
+.form-elements .col:nth-child(2) {
+    grid-area: col1;
+    padding-left: 141px;
+}
+.form-elements .col:nth-child(4) {
+    grid-area: col3;
+    width: 578px;
+    padding-right: 141px;
+}
 .form-elements .col:nth-child(3) {
+    grid-area: col2;
+
     padding-left: 126px;
     margin-top: -14px;
     .input:nth-child(1) {
@@ -94,4 +111,10 @@
 
 .input_type_rat {
     margin-right: 10px;
+}
+.form-elements .review-item {
+    grid-area: review;
+    padding-left: 126px;
+    margin-top: 26px;
+    padding-right: 141px;
 }

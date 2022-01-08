@@ -1,0 +1,11 @@
+include ../like-button/like-button.pug
+
+mixin review-item(opt)
+  +b.review-item 
+    +e.header 
+      +e.icon(src!= opt.icon_url) 
+      +e.name= opt.name
+        +e.P.last-visit= opt.last_visit + ' дней назад'
+    +e.description
+      +like-button(opt.likes)
+      +e.content= opt.content

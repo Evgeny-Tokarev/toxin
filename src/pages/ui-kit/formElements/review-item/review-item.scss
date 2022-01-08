@@ -1,0 +1,37 @@
+@import '../../colors&type/colors&type.scss';
+@import '../like-button/like-button.scss';
+
+.review-item {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    color: $Dark-Shade-75;
+    &__header {
+        display: flex;
+        gap: 10px;
+        .review-item__icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+        }
+        .review-item__name {
+            @include Body-text();
+            font-weight: 700;
+
+            .review-item__last-visit {
+                font-weight: 400;
+            }
+        }
+    }
+    &__description {
+        .like-button {
+            position: relative;
+            top: 0;
+            left: 4px;
+        }
+        .review-item__content {
+            padding-left: 58px;
+        }
+    }
+}
