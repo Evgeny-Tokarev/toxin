@@ -1,0 +1,48 @@
+@import '../../colors&type/colors&type.scss';
+@import 'nouislider/dist/nouislider.css';
+
+.range-slider {
+    margin-top: 39px;
+    margin-bottom: 10px;
+    .input_service {
+        width: 266px;
+        position: absolute;
+        top: -41px;
+        .input__right-heading {
+            letter-spacing: 0.15px;
+            span {
+                font-family: 'Material Icons';
+                text-transform: none;
+                font-weight: 400;
+                font-size: 11px;
+                position: relative;
+                top: 1px;
+            }
+        }
+    }
+    width: 266px;
+    height: 6px;
+    border-radius: 3px;
+    background: #ffffff;
+    border: 1px solid $Dark-Shade-25;
+    box-shadow: none;
+    .noUi-handle {
+        width: 16px;
+        height: 16px;
+        right: -6px;
+        top: -6px;
+        border-radius: 50%;
+        box-shadow: none;
+        background: linear-gradient(180deg, #6fcf97 0%, #66d2ea 100%);
+        border: 2px solid #ffffff;
+    }
+    .noUi-handle::before {
+        display: none;
+    }
+    .noUi-handle::after {
+        display: none;
+    }
+    .noUi-connect {
+        background: linear-gradient(180deg, #6fcf97 0%, #66d2ea 100%);
+    }
+}

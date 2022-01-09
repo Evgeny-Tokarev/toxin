@@ -11,6 +11,8 @@
 @import './rate-button/rate-button.scss';
 @import './rich-checkbox-buttons/rich-checkbox-buttons.scss';
 @import './review-item/review-item.scss';
+@import './range-slider/range-slider.scss';
+@import './button/button.scss';
 
 .form-elements {
     position: relative;
@@ -21,6 +23,9 @@
     grid-template-areas:
         'col1 col2 col3'
         'col1 review review';
+    .wrapper_type_paddingless {
+        padding: 0;
+    }
 }
 .main-icon {
     position: absolute;
@@ -35,6 +40,28 @@
     grid-area: col3;
     width: 578px;
     padding-right: 141px;
+    padding-left: 72px;
+    .input_service {
+        margin-bottom: 11px;
+    }
+    .range-slider {
+        margin-bottom: 42px;
+    }
+    .wrapper_type_paddingless:nth-child(3) {
+        justify-content: left;
+        gap: 20px;
+        margin-bottom: 30px;
+    }
+    .wrapper_type_paddingless:nth-child(4) {
+        justify-content: left;
+        gap: 20px;
+        margin-bottom: 17px;
+    }
+    .wrapper_type_paddingless:nth-child(5) {
+        justify-content: left;
+        gap: 20px;
+        margin-bottom: 15px;
+    }
 }
 .form-elements .col:nth-child(3) {
     grid-area: col2;
@@ -57,7 +84,6 @@
         margin-bottom: 10px;
     }
     .wrapper_type_paddingless {
-        padding: 0;
         justify-content: left;
         gap: 10px;
         margin-bottom: 39px;
@@ -115,6 +141,6 @@
 .form-elements .review-item {
     grid-area: review;
     padding-left: 126px;
-    margin-top: 32px;
+    margin-top: 30px;
     padding-right: 141px;
 }

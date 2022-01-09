@@ -31,7 +31,7 @@
     "copy-webpack-plugin": "^10.0.0",
     "cross-env": "^7.0.3",
     "css-loader": "^6.5.1",
-    "css-minimizer-webpack-plugin": "^3.2.0",
+    "css-minimizer-webpack-plugin": "^3.3.1",
     "eslint": "^8.3.0",
     "eslint-webpack-plugin": "^3.1.1",
     "fs": "0.0.1-security",
@@ -60,6 +60,8 @@
   "dependencies": {
     "air-datepicker": "^3.1.0",
     "jquery": "^3.6.0",
-    "jquery-ui": "^1.13.0"
+    "jquery-ui": "^1.13.0",
+    "nouislider": "^15.5.0",
+    "wnumb": "^1.2.0"
   }
 }

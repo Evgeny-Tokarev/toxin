@@ -2,7 +2,7 @@ $Dark-Shade-100: rgba(31, 32, 65, 1);
 $Dark-Shade-75: rgba(31, 32, 65, 0.75);
 $Dark-Shade-50: rgba(31, 32, 65, 0.5);
 $Dark-Shade-25: rgba(31, 32, 65, 0.25);
-$Dark-Shade-5: rgba(31, 32, 65, 0.05);
+$Dark-Shade-5: rgba(31, 32, 65, 0.25);
 $Purple: rgba(188, 156, 255, 1);
 $Green: rgba(111, 207, 151, 1);
 @mixin Body-text() {
@@ -17,5 +17,5 @@ $Green: rgba(111, 207, 151, 1);
     font-size: 12px;
     letter-spacing: 0;
     text-transform: uppercase;
-    color: $Dark-Shade-50;
 }
+$Purple-Gradient: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);

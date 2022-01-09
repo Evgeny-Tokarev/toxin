@@ -14,3 +14,4 @@ import './pages/ui-kit/formElements/toggle/toggle.js';
 import './pages/ui-kit/formElements/like-button/like-button.js';
 import './pages/ui-kit/formElements/rate-button/rate-button.js';
 import './pages/ui-kit/formElements/rich-checkbox-buttons/rich-checkbox-buttons.js';
+import './pages/ui-kit/formElements/range-slider/range-slider.js';

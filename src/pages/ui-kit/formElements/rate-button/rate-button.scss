@@ -29,7 +29,7 @@
             font-size: 24px;
             color: transparent;
             background-clip: text;
-            background-image: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
+            background-image: $Purple-Gradient;
         }
         input:checked + .input__checkbox:after {
             content: 'star';
