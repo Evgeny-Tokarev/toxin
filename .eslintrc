@@ -1,11 +1,6 @@
 {
     "parser": "@babel/eslint-parser",
-    "ignorePatterns": [
-        "jquery.mask.js",
-        "jquery-ui.js",
-        "jquery-ui.min.js",
-        "pagination.min.js"
-    ],
+    "ignorePatterns": ["jquery.simplePagination.js"],
     "rules": {
         "no-unused-vars": "error",
         "no-var": "error",

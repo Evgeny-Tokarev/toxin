@@ -1,18 +1,10 @@
-import './pagination.min.js';
-$('.pagination').pagination({
-    dataSource(done) {
-        const result = [];
-        for (let i = 1; i < 196; i++) {
-            result.push(i);
-        }
-        done(result);
-    },
-    pageSize: 12,
-    pageRange: 2,
-    showPrevious: false,
+import '../../../../plugins/simplePagination/jquery.simplePagination.js';
+import '../../../../plugins/simplePagination/simplePagination.css';
 
-    callback(data, pagination) {
-        console.log(pagination);
-        console.log(data);
-    },
+$(function () {
+    $('.pagination').pagination({
+        items: 100,
+        itemsOnPage: 10,
+        cssStyle: 'light-theme',
+    });
 });

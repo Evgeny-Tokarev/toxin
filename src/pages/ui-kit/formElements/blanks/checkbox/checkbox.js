@@ -1,5 +1,4 @@
 import Arrow_button from '../arrow-button/arrow-button';
-
 export default class Checkbox {
     init(input, isButton = false) {
         const values = [];

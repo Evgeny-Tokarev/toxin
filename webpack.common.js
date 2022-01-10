@@ -68,8 +68,8 @@ module.exports = {
             extensions: ['js'],
         }),
         new webpack.ProvidePlugin({
-            $: 'jquery',
             jQuery: 'jquery',
+            $: 'jquery',
         }),
     ],
     output: {

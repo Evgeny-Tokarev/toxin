@@ -1,5 +1,6 @@
 import AirDatepicker from 'air-datepicker';
 import Arrow_button from '../blanks/arrow-button/arrow-button';
+import 'jquery-mask-plugin';
 
 class MyDatepicker {
     constructor() {
