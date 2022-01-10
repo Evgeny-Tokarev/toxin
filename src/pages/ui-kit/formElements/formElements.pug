@@ -16,6 +16,7 @@ include rich-checkbox-buttons/rich-checkbox-buttons.pug
 include review-item/review-item.pug
 include range-slider/range-slider.pug
 include  button/button.pug
+include pagination/pagination.pug
 
 section.form-elements
   img.main-icon(src=('./main-icon.svg') alt='main-icon' height=48 width=48)
@@ -62,4 +63,6 @@ section.form-elements
       +button({class: "_borderless", text: "click me"})
       +button({class: "_borderless", text: "click me", disabled: true})
     +button({class: "_320 _filled _type_arrow", text: "перейти к оплате"})
+    +vidget-header({left_heading:"pagination",class: "_service"})
+    +pagination()
   +review-item({class: "",name: "Мурад Сарафанов", last_visit: 5, icon_url: "./img/murad.png", likes:{name: "Murad id",value:12, checked: true}, content: "Великолепный матрас на кровати в основной спальне! А пуфик вообще потрясающий. И стены, действительно, шумоподавляющие. Выкрикивал комплименты повару — никто не жаловался из соседей."})

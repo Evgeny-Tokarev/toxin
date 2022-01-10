@@ -1,5 +1,5 @@
 import noUiSlider from 'nouislider';
-import wNumb from 'wNumb';
+import wNumb from 'wnumb';
 
 export default class RangeSlider {
     constructor(selector) {

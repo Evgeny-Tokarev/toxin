@@ -1,6 +1,5 @@
 import './reset.scss';
 import './style.scss';
-import './pages/ui-kit/colors&type/colors&type.scss';
 import './img/main-icon.svg';
 import './pages/ui-kit/formElements/dropdown/dropdown.js';
 import './plugins/jquery-mask/jquery.mask.js';
@@ -15,3 +14,4 @@ import './pages/ui-kit/formElements/like-button/like-button.js';
 import './pages/ui-kit/formElements/rate-button/rate-button.js';
 import './pages/ui-kit/formElements/rich-checkbox-buttons/rich-checkbox-buttons.js';
 import './pages/ui-kit/formElements/range-slider/range-slider.js';
+import './pages/ui-kit/formElements/pagination/pagination.js';
