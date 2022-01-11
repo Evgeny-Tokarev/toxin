@@ -62,6 +62,7 @@
     "air-datepicker": "^3.1.0",
     "jquery-mask-plugin": "^1.14.16",
     "nouislider": "^15.5.0",
+    "paginationjs": "^2.1.5",
     "wnumb": "^1.2.0"
   }
 }

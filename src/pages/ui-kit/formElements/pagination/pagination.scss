@@ -1,5 +1,43 @@
 @import '../../colors&type/colors&type.scss';
-// @import '../../../../plugins/simplePagination/simplePagination.css';
+@import '~paginationjs/dist/pagination.css';
 
 .pagination {
+    .paginationjs {
+        .paginationjs-pages {
+            font-family: 'Montserrat', Arial, sans-serif;
+            @include Label-text();
+            li {
+                border: none;
+                border-radius: 50%;
+            }
+            li > a {
+                color: $Dark-Shade-50;
+                font-weight: 400;
+                font-size: 12px;
+                min-width: 40px;
+                height: 40px;
+                line-height: 40px;
+                border-radius: 50%;
+            }
+
+            li.active > a {
+                color: #fff;
+                background: $Purple-Gradient;
+                font-weight: 700;
+            }
+            li:first-child > a {
+                border-radius: 50%;
+            }
+            li.paginationjs-next {
+                font-family: 'Material Icons';
+                text-transform: none;
+            }
+            li.paginationjs-next > a {
+                color: #fff;
+                font-size: 24px;
+                font-weight: 400;
+                background: $Green-Gradient;
+            }
+        }
+    }
 }

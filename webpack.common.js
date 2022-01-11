@@ -17,11 +17,15 @@ const PATHS = {
 const PAGES_DIR = `${PATHS.src}/pages`;
 
 const PAGES = glob.sync(`${PAGES_DIR}/**/*.pug`);
-console.log(PAGES);
 
 module.exports = {
     target: 'web',
     context: path.resolve(__dirname, 'src'),
+    resolve: {
+        alias: {
+            '~': path.resolve(__dirname, 'node_modules'),
+        },
+    },
     entry: {
         app: './index.js',
     },
@@ -70,6 +74,7 @@ module.exports = {
         new webpack.ProvidePlugin({
             jQuery: 'jquery',
             $: 'jquery',
+            'window.jQuery': 'jquery',
         }),
     ],
     output: {
