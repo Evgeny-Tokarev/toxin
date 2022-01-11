@@ -2,6 +2,9 @@
 @include input-body();
 
 .input_type_chkbx {
+    * {
+        box-sizing: border-box;
+    }
     display: flex;
     .input__body {
         position: relative;
@@ -16,6 +19,7 @@
 }
 .input_type_chkbx {
     fieldset.input__description {
+        border: 0;
         display: flex;
         justify-content: space-between;
         @include Label-text();
@@ -33,6 +37,7 @@
         min-height: 30.3px;
         cursor: pointer;
         input {
+            // border: 0;
             opacity: 0;
             margin: 0;
             position: absolute;

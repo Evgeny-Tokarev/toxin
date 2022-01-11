@@ -8,8 +8,8 @@ $Green: rgba(111, 207, 151, 1);
 @mixin Body-text() {
     font-weight: 400;
     font-size: 14px;
-    letter-spacing: -0.2px;
-    line-height: 1.714rem;
+    // letter-spacing: 0;
+    line-height: 18px;
     text-transform: none;
 }
 @mixin Label-text() {

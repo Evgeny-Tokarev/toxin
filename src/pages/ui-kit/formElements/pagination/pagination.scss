@@ -2,6 +2,11 @@
 @import '~paginationjs/dist/pagination.css';
 
 .pagination {
+    .pagination-description {
+        color: $Dark-Shade-75;
+        display: block;
+        margin: 10px 0 0 5px;
+    }
     .paginationjs {
         .paginationjs-pages {
             font-family: 'Montserrat', Arial, sans-serif;

@@ -2,6 +2,9 @@
 @import '../blanks/checkbox/checkbox.scss';
 
 .input_type_cbb {
+    * {
+        box-sizing: border-box;
+    }
     .input__body {
         flex-direction: column;
         fieldset.input__description {

@@ -3,8 +3,9 @@
 .input {
     display: flex;
     flex-direction: column;
-    @include input-body();
-}
-.input_320 {
-    width: 320px;
+    &__body {
+        .input__field {
+            letter-spacing: -0.2px;
+        }
+    }
 }

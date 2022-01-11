@@ -1,6 +1,9 @@
 @import '../../colors&type/colors&type.scss';
 
 .advantage {
+    * {
+        box-sizing: border-box;
+    }
     width: 280px;
     position: relative;
     &__inner {
@@ -44,7 +47,6 @@
         }
         .advantage__text {
             font-weight: 400;
-            // padding-top: 1px;
         }
     }
 }

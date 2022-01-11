@@ -1,6 +1,7 @@
-import './reset.scss';
+// import './reset.scss';
 import './style.scss';
 import './img/main-icon.svg';
+import './pages/ui-kit/formElements/formElements.js';
 import './pages/ui-kit/formElements/dropdown/dropdown.js';
 import './pages/ui-kit/formElements/masked-text-field/masked-text-field.js';
 import './pages/ui-kit/formElements/date-dropdown/date-dropdown.js';

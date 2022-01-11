@@ -1,5 +1,8 @@
 @import '../../../colors&type/colors&type.scss';
 .input__arrow-button {
+    * {
+        box-sizing: border-box;
+    }
     align-self: stretch;
     cursor: pointer;
     width: 25px;
@@ -7,6 +10,12 @@
     align-items: center;
     justify-content: center;
     .input__button-icon {
+        padding: 0;
+        border: none;
+        font: inherit;
+        color: inherit;
+        background-color: transparent;
+        cursor: pointer;
         text-align: center;
         border-left: 2px solid $Dark-Shade-50;
         border-bottom: 2px solid $Dark-Shade-50;

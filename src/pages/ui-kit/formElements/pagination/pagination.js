@@ -13,10 +13,15 @@ $('.pagination').pagination({
     showNext: true,
     nextText: 'arrow_forward',
     callback(data, pagination) {
-        console.log(
-            `${data[0]} - ${data[pagination.pageSize - 1]} из ${
+        pagination.el
+            .closest('.pagination')
+            .find('.pagination-description')
+            .html('');
+        pagination.el.closest('.pagination').append(
+            `<span class='pagination-description'>${data[0]} 	
+            &#8722; ${data[data.length - 1]} из ${
                 pagination.totalNumber < 100 ? pagination.totalNumber : '100+'
-            } вариантов аренды`
+            } вариантов аренды</span>`
         );
     },
 });

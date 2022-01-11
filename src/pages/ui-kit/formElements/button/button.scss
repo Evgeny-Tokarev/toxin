@@ -1,6 +1,9 @@
 @import '../../colors&type/colors&type.scss';
 
 .button {
+    * {
+        box-sizing: border-box;
+    }
     position: relative;
     display: flex;
     justify-content: center;

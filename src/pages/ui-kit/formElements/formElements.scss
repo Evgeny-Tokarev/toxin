@@ -1,4 +1,5 @@
 @import './blanks/input-header/input-header.scss';
+@import './textField/textField.scss';
 @import './date-dropdown/date-dropdown.scss';
 @import './dropdown/dropdown.scss';
 @import './subscription-text-field/subscription-text-field.scss';
@@ -33,10 +34,7 @@
     left: 30px;
     top: 30px;
 }
-.form-elements .col:nth-child(2) {
-    grid-area: col1;
-    padding-left: 141px;
-}
+
 .form-elements .col:nth-child(4) {
     grid-area: col3;
     width: 578px;
@@ -99,38 +97,46 @@
         margin-bottom: 242px;
     }
 }
-.form-elements .input {
-    margin-bottom: 19px;
-}
-.form-elements .input:nth-child(4) {
-    margin-bottom: 21px;
-}
-.form-elements .input:nth-child(6) {
-    margin-bottom: 41px;
-}
-.form-elements .input:nth-child(7) {
-    margin-bottom: 99px;
-}
-// .form-elements .input:nth-child(8) {
-//     margin-bottom: 98px;
-// }
-.form-elements .input:nth-child(9) {
-    margin-bottom: 159px;
-}
-.form-elements .input:nth-child(10) {
-    margin-bottom: 19px;
-}
-.form-elements .input:nth-child(11) {
-    margin-bottom: 272px;
-}
-.form-elements .input:nth-child(12) {
-    margin-bottom: 272px;
-}
-.form-elements .input:nth-child(14) {
-    margin-bottom: 25px;
-}
-.form-elements .advantage {
-    margin-bottom: 19px;
+
+.form-elements .col:nth-child(2) {
+    grid-area: col1;
+    padding-left: 141px;
+    .input {
+        margin-bottom: 19px;
+    }
+    .input:nth-child(2) {
+        margin-bottom: 20px;
+    }
+    .input:nth-child(4) {
+        margin-bottom: 21px;
+    }
+    .input:nth-child(6) {
+        margin-bottom: 41px;
+    }
+    .input:nth-child(7) {
+        margin-bottom: 99px;
+    }
+    //   .input:nth-child(8) {
+    //     margin-bottom: 98px;
+    // }
+    .input:nth-child(9) {
+        margin-bottom: 159px;
+    }
+    .input:nth-child(10) {
+        margin-bottom: 19px;
+    }
+    .input:nth-child(11) {
+        margin-bottom: 272px;
+    }
+    .input:nth-child(12) {
+        margin-bottom: 272px;
+    }
+    .input:nth-child(14) {
+        margin-bottom: 25px;
+    }
+    .advantage {
+        margin-bottom: 19px;
+    }
 }
 .wrapper_320 {
     width: 320px;

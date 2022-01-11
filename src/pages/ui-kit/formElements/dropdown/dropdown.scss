@@ -4,12 +4,16 @@
 @include input-body();
 
 .input_type_drp {
+    box-sizing: border-box;
+    * {
+        box-sizing: border-box;
+    }
     .input__body {
-        .select-list {
-            font-size: 0;
+        .input__field {
+            letter-spacing: 0;
         }
-        .select-list > * {
-            height: 0;
+        .select-list {
+            display: none;
         }
     }
     .input__inner {
@@ -39,6 +43,9 @@
         }
 
         .select-list {
+            display: block;
+            margin: 0;
+            padding: 0;
             &__item {
                 @include Label-text;
                 color: $Dark-Shade-100;
@@ -56,6 +63,9 @@
             }
 
             &__button {
+                padding: 0;
+                background-color: transparent;
+                cursor: pointer;
                 width: 30px;
                 height: 30px;
                 border: 1px solid $Dark-Shade-50;
