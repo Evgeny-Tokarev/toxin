@@ -2,11 +2,14 @@
 @import '../../colors&type/colors&type.scss';
 @import '../blanks/input-body/input-body.scss';
 
-@include input-body();
+// @include input-body();
 
 .input_type_ddd {
     .input__body {
         position: relative;
+        .input__field::placeholder {
+            color: $Dark-Shade-75;
+        }
     }
     .input__arrow-button {
         position: absolute;
@@ -27,12 +30,12 @@
     --adp-color-other-month: rgba(31, 32, 65, 0.25);
     --adp-border-color: rgba(31, 32, 65, 0.25);
     --adp-nav-height: 60px;
-    --adp-day-name-color: rgba(188, 156, 255, 1);
+    --adp-day-name-color: $Purple;
     --adp-day-cell-height: 40px;
     --adp-cell-background-color-selected: linear-gradient(
         180deg,
-        #6fcf97 0%,
-        #66d2ea 100%
+        #bc9cff 0%,
+        #8ba4f9 100%
     );
     --adp-cell-background-color-selected-hover: linear-gradient(
         180deg,
@@ -40,11 +43,10 @@
         #66d2ea 100%
     );
     --adp-cell-background-color-in-range: none;
-
     --adp-cell-background-color-in-range-hover: linear-gradient(
         180deg,
-        #bc9cff 0%,
-        #8ba4f9 100%
+        #6fcf97 0%,
+        #66d2ea 100%
     );
     --adp-border-color-inner: transparent;
     --adp-btn-height: 53px;
@@ -87,11 +89,14 @@
     }
     &-cell.-selected- {
         border-radius: 50%;
-        background: linear-gradient(180deg, #6fcf97 0%, #66d2ea 100%);
+        background: $Green-Gradient;
+    }
+    .air-datepicker-cell .-day- .-selected- .-focus- {
+        background: $Green-Gradient;
     }
     .air-datepicker-cell.-range-from- {
         border: 1px solid var(--adp-cell-border-color-in-range);
-        background: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
+        background: $Purple-Gradient;
     }
     .air-datepicker-cell.-range-from-::before {
         content: '';
@@ -99,12 +104,12 @@
         width: 20px;
         right: 0;
         position: absolute;
-        background: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
+        background: $Purple-Gradient;
         opacity: 0.25;
         z-index: -2;
     }
     .air-datepicker-cell.-range-to- {
-        background: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
+        background: $Purple-Gradient;
     }
     .air-datepicker-cell.-range-to-::before {
         content: '';
@@ -112,7 +117,7 @@
         width: 20px;
         left: 0;
         position: absolute;
-        background: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
+        background: $Purple-Gradient;
         opacity: 0.25;
         z-index: -2;
     }
@@ -121,7 +126,7 @@
         height: 40px;
         width: 40px;
         position: absolute;
-        background: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
+        background: $Purple-Gradient;
         opacity: 0.25;
     }
     .air-datepicker-cell.-focus- {

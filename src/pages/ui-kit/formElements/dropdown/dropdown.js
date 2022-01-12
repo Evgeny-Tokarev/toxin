@@ -190,13 +190,11 @@ class Model {
 const view = [];
 const presenter = [];
 const model = [];
-$('.input')
-    .has('.input__description')
-    .each(function (i) {
-        model[i] = new Model();
-        view[i] = new View(this);
-        presenter[i] = new Presenter(view[i]);
-        presenter[i].setModel(model[i]);
-        view[i].registerWith(presenter[i]);
-        view[i].init(this);
-    });
+$('.input_type_expandable').each(function (i) {
+    model[i] = new Model();
+    view[i] = new View(this);
+    presenter[i] = new Presenter(view[i]);
+    presenter[i].setModel(model[i]);
+    view[i].registerWith(presenter[i]);
+    view[i].init(this);
+});

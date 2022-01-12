@@ -11,11 +11,13 @@ class MyDatepicker {
         };
         this.options = {
             buttons: ['clear', this.submitButton],
-            startDate: [new Date(2019, 7, 8)],
+            // startDate: [new Date(2019, 7, 8)],
+            // selectedDates: [new Date(2019, 7, 8)],
             keyboardNav: false,
             multipleDatesSeparator: ' - ',
             onShow: () => {
-                this.button.wrapper.addClass('input_expanded');
+                console.log(this);
+                this.button.$wrapper.addClass('input_expanded');
             },
 
             navTitles: {
@@ -31,10 +33,10 @@ class MyDatepicker {
             prevHtml: `<span>arrow_back</span>`,
             nextHtml: `<span>arrow_forward</span>`,
         };
-        // массив для хранения экземпляров datepicker
-        this.dp = [];
+        this.dp = null;
+        this.button = null;
     }
-    // заготовка для отправления дат на сервер
+    // заготовка для отдачи результата
     submit(dp) {
         console.log(dp.selectedDates);
         setTimeout(() => {
@@ -54,84 +56,99 @@ class MyDatepicker {
             });
         });
     }
-    multiDateHandler(range, i) {
+    multiDateHandler(range, toClose = true) {
         const self = this;
         range.split(' - ').forEach((currentDate) => {
+            console.log(this.dp.selectedDates);
             const dateArr = currentDate.split(' ');
-            const monthNum = self.dp[i].locale.monthsShort.findIndex(
+            const monthNum = self.dp.locale.monthsShort.findIndex(
                 (monthName) => dateArr[1] === monthName
             );
             dateArr[1] = monthNum < 10 ? `0${monthNum.toString()}` : monthNum;
-            dateArr[2] = self.dp[i].selectedDates.length
-                ? self.dp[i].selectedDates[0].getFullYear()
-                : self.dp[i].viewDate.getFullYear();
-            self.setDate(dateArr.join('.'), i);
+            dateArr[2] = self.dp.selectedDates.length
+                ? self.dp.selectedDates[0].getFullYear()
+                : self.dp.viewDate.getFullYear();
+            self.setDate(dateArr.join('.'), toClose);
         });
     }
-    setDate(dateStr, i) {
+    setDate(dateStr, toClose) {
+        console.log('setDate' + dateStr);
         const date = dateStr.toString().split('.');
         if (
-            date[2] > 2020 &&
+            date[2] > 2010 &&
             date[2] < 2030 &&
             date[1] > 0 &&
             date[1] < 13 &&
             date[0] > 0 &&
             date[0] <= 31
         ) {
-            this.dp[i].selectDate(new Date(date[2], date[1] - 1, date[0]));
-            this.dp[i].setFocusDate(new Date(date[2], date[1] - 1, date[0]));
+            console.log(this.dp.selectedDates);
+            if (!this.dp.selectedDates.length) {
+                this.dp.selectDate(new Date(date[2], date[1] - 1, date[0]));
+            } else {
+                this.dp.selectDate(this.dp.selectedDates);
+            }
+            this.dp.selectDate(this.dp.selectedDates);
+            console.log(new Date(date[2], date[1] - 1, date[0]));
+            this.dp.setFocusDate(new Date(date[2], date[1] - 1, date[0]));
 
-            if (this.dp[i].selectedDates.length) {
-                this.submit(this.dp[i]);
+            if (this.dp.selectedDates.length && toClose) {
+                this.submit(this.dp);
             }
         }
     }
     // обработчик для нажатия enter в поле ввода
-    keyWatch(el, i) {
+    keyWatch(el) {
         const self = this;
-        el.closest('.input__body').addEventListener('keydown', (e) => {
-            if (e.code == 'Enter') {
-                if (self.dp[i].opts.range) {
-                    self.multiDateHandler(el.value, i);
-                } else {
-                    self.setDate(el.value, i);
+        $(el)
+            .closest('.input__body')
+            .on('keydown', (e) => {
+                if (e.code == 'Enter') {
+                    if (self.dp.opts.range) {
+                        self.multiDateHandler(el.value);
+                    } else {
+                        self.setDate(el.value);
+                    }
                 }
-            }
-        });
+            });
     }
-    init(selector) {
-        const self = this;
-        $(selector).each(function (i, el) {
-            self.button = new Arrow_button();
-            self.button.init($(this).closest('.input__body'));
-            self.dp[i] = new AirDatepicker(el, self.options);
-            self.dp[i].isRange = $(el).hasClass('range') ? true : false;
-            self.dp[i].opts.range = self.dp[i].isRange;
-            self.dp[i].opts.dynamicRange = self.dp[i].isRange;
-            if (self.dp[i].isRange) {
-                self.dp[i].locale.monthsShort = [
-                    'янв',
-                    'фев',
-                    'мар',
-                    'апр',
-                    'май',
-                    'июн',
-                    'июл',
-                    'авг',
-                    'сен',
-                    'окт',
-                    'ноя',
-                    'дек',
-                ];
+    init(container) {
+        this.button = new Arrow_button();
+        this.button.init($(container).closest('.input__body'));
+        this.dp = new AirDatepicker(container, this.options);
+        console.log(container.value.length);
+        this.dp.isRange = $(container).hasClass('range') ? true : false;
+        this.dp.opts.range = this.dp.isRange;
+        this.dp.opts.dynamicRange = this.dp.isRange;
+        if (this.dp.isRange) {
+            this.dp.locale.monthsShort = [
+                'янв',
+                'фев',
+                'мар',
+                'апр',
+                'май',
+                'июн',
+                'июл',
+                'авг',
+                'сен',
+                'окт',
+                'ноя',
+                'дек',
+            ];
+        }
+        this.dp.locale.dateFormat = this.dp.isRange ? 'dd MMM' : 'dd.MM.yyyy';
+        this.mask.call(this.dp);
+        this.keyWatch(container);
+        if (this.dp.isRange && container.value.length) {
+            this.multiDateHandler(container.value, false);
+        } else {
+            if (container.value.length) {
+                this.setDate(container.value, false);
             }
-            self.dp[i].locale.dateFormat = self.dp[i].isRange
-                ? 'dd MMM'
-                : 'dd.MM.yyyy';
-            self.mask.call(self.dp[i]);
-            self.keyWatch(el, i);
-        });
+        }
     }
 }
-
-const myDatepicker = new MyDatepicker();
-myDatepicker.init('.datepicker');
+$('.datepicker').each(function () {
+    const myDatepicker = new MyDatepicker();
+    myDatepicker.init(this);
+});
