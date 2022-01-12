@@ -11,22 +11,16 @@ class MyDatepicker {
         };
         this.options = {
             buttons: ['clear', this.submitButton],
-            // startDate: [new Date(2019, 7, 8)],
-            // selectedDates: [new Date(2019, 7, 8)],
             keyboardNav: false,
             multipleDatesSeparator: ' - ',
             onShow: () => {
-                console.log(this);
                 this.button.$wrapper.addClass('input_expanded');
             },
 
             navTitles: {
                 days(dp) {
                     return `<span>
-                     ${dp.formatDate(
-                         dp.isRange ? dp.selectedDates[1] : dp.selectedDates[0],
-                         'MMMM yyyy'
-                     )}
+                     ${dp.formatDate(dp.viewDate, 'MMMM yyyy')}
                 </span>`;
                 },
             },
@@ -35,10 +29,10 @@ class MyDatepicker {
         };
         this.dp = null;
         this.button = null;
+        this.result = [];
     }
     // заготовка для отдачи результата
     submit(dp) {
-        console.log(dp.selectedDates);
         setTimeout(() => {
             dp.hide();
             dp.clear();
@@ -59,7 +53,6 @@ class MyDatepicker {
     multiDateHandler(range, toClose = true) {
         const self = this;
         range.split(' - ').forEach((currentDate) => {
-            console.log(this.dp.selectedDates);
             const dateArr = currentDate.split(' ');
             const monthNum = self.dp.locale.monthsShort.findIndex(
                 (monthName) => dateArr[1] === monthName
@@ -72,7 +65,6 @@ class MyDatepicker {
         });
     }
     setDate(dateStr, toClose) {
-        console.log('setDate' + dateStr);
         const date = dateStr.toString().split('.');
         if (
             date[2] > 2010 &&
@@ -82,14 +74,18 @@ class MyDatepicker {
             date[0] > 0 &&
             date[0] <= 31
         ) {
-            console.log(this.dp.selectedDates);
-            if (!this.dp.selectedDates.length) {
-                this.dp.selectDate(new Date(date[2], date[1] - 1, date[0]));
+            if (this.dp.isRange) {
+                if (!this.result.length) {
+                    this.result.push(new Date(date[2], date[1] - 1, date[0]));
+                } else {
+                    this.result.push(new Date(date[2], date[1] - 1, date[0]));
+                    this.dp.selectDate(this.result);
+                    this.result = [];
+                }
             } else {
-                this.dp.selectDate(this.dp.selectedDates);
+                this.dp.selectDate(new Date(date[2], date[1] - 1, date[0]));
             }
             this.dp.selectDate(this.dp.selectedDates);
-            console.log(new Date(date[2], date[1] - 1, date[0]));
             this.dp.setFocusDate(new Date(date[2], date[1] - 1, date[0]));
 
             if (this.dp.selectedDates.length && toClose) {
@@ -116,7 +112,6 @@ class MyDatepicker {
         this.button = new Arrow_button();
         this.button.init($(container).closest('.input__body'));
         this.dp = new AirDatepicker(container, this.options);
-        console.log(container.value.length);
         this.dp.isRange = $(container).hasClass('range') ? true : false;
         this.dp.opts.range = this.dp.isRange;
         this.dp.opts.dynamicRange = this.dp.isRange;

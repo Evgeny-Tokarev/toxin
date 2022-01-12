@@ -1,10 +1,26 @@
+// @import '../../../../reset.scss';
 @import 'air-datepicker/air-datepicker.css';
 @import '../../colors&type/colors&type.scss';
 @import '../blanks/input-body/input-body.scss';
 
-// @include input-body();
+/* Set core body defaults */
+body {
+    line-height: 1.5;
+}
 
+button {
+    padding: 0;
+    border: none;
+    font: inherit;
+    color: inherit;
+    background-color: transparent;
+    cursor: pointer;
+}
 .input_type_ddd {
+    * {
+        box-sizing: border-box;
+    }
+
     .input__body {
         position: relative;
         .input__field::placeholder {
@@ -22,15 +38,19 @@
     }
 }
 .air-datepicker {
+    box-sizing: border-box;
+    * {
+        box-sizing: border-box;
+    }
     --adp-font-family: 'Montserrat', Arial, sans-serif;
     --adp-font-size: 12px;
-    --adp-width: 318px;
+    --adp-width: 320px;
     --adp-padding: 0 19px;
     --adp-color: rgba(31, 32, 65, 0.5);
     --adp-color-other-month: rgba(31, 32, 65, 0.25);
     --adp-border-color: rgba(31, 32, 65, 0.25);
-    --adp-nav-height: 60px;
-    --adp-day-name-color: $Purple;
+    --adp-nav-height: 63px;
+    --adp-day-name-color: rgba(188, 156, 255, 1);
     --adp-day-cell-height: 40px;
     --adp-cell-background-color-selected: linear-gradient(
         180deg,
@@ -45,8 +65,8 @@
     --adp-cell-background-color-in-range: none;
     --adp-cell-background-color-in-range-hover: linear-gradient(
         180deg,
-        #6fcf97 0%,
-        #66d2ea 100%
+        #bc9cff 0%,
+        #8ba4f9 100%
     );
     --adp-border-color-inner: transparent;
     --adp-btn-height: 53px;
@@ -69,7 +89,7 @@
         font-size: 24px;
     }
     &-buttons {
-        gap: 123px;
+        gap: 124px;
     }
     &-button {
         font-weight: 700;
@@ -80,12 +100,13 @@
         margin-top: 1px;
     }
     &-body--day-names {
-        margin-top: 22px;
+        margin-top: 21.5px;
         margin-bottom: 11px;
     }
     &-body--day-name {
         @include Label-text;
         text-transform: none;
+        margin-left: 2px;
     }
     &-cell.-selected- {
         border-radius: 50%;
