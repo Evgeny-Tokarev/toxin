@@ -17,7 +17,7 @@
     &::after {
         content: '';
         position: absolute;
-        bottom: 0;
+        bottom: -1px;
         width: 280px;
         height: 1px;
         background-color: rgba(31, 32, 65, 0.1);
@@ -38,12 +38,13 @@
     &__description {
         flex-grow: 1;
         padding-left: 10px;
-        padding-top: 2px;
+        padding-top: 5px;
         @include Body-text();
         color: $Dark-Shade-75;
         letter-spacing: 0;
         .advantage__title {
             font-weight: 700;
+            margin-bottom: 6px;
         }
         .advantage__text {
             font-weight: 400;

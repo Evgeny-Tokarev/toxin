@@ -23,6 +23,9 @@ button {
 
     .input__body {
         position: relative;
+        .input__field {
+            letter-spacing: 0;
+        }
         .input__field::placeholder {
             color: $Dark-Shade-75;
         }
@@ -32,7 +35,7 @@ button {
         height: 44px;
         right: 10px;
         button {
-            margin-top: 0px;
+            margin-top: -2px;
             margin-right: -1px;
         }
     }
@@ -111,6 +114,7 @@ button {
     &-cell.-selected- {
         border-radius: 50%;
         background: $Green-Gradient;
+        font-weight: 700;
     }
     .air-datepicker-cell .-day- .-selected- .-focus- {
         background: $Green-Gradient;

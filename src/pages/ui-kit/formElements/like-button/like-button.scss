@@ -23,8 +23,8 @@
         position: absolute;
         height: 20px;
         width: 40px;
-        padding-left: 21px;
-        line-height: 19px;
+        padding-left: 20px;
+        line-height: 17px;
         color: $Dark-Shade-25;
         border: 1px solid $Dark-Shade-25;
         border-radius: 10px;
@@ -34,7 +34,7 @@
         font-family: 'Material Icons';
         position: absolute;
         line-height: 20px;
-        left: 3px;
+        left: 4px;
         top: -1px;
     }
     input:checked + .like-button__checkbox:after {

@@ -1,5 +1,5 @@
 @import '../../../colors&type/colors&type.scss';
-@include input-body();
+@import '../input-body/input-body.scss';
 
 .input_type_chkbx {
     * {
@@ -20,10 +20,11 @@
 .input_type_chkbx {
     fieldset.input__description {
         border: 0;
+        margin: 0;
+        padding: 0;
         display: flex;
         justify-content: space-between;
         @include Label-text();
-        padding-left: 0;
         color: $Dark-Shade-100;
         background-color: #fff;
     }
@@ -35,6 +36,7 @@
         color: $Dark-Shade-50;
         margin-left: 30px;
         min-height: 30.3px;
+        padding-bottom: 2px;
         cursor: pointer;
         input {
             // border: 0;

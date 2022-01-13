@@ -1,7 +1,6 @@
 @import '../../colors&type/colors&type.scss';
 @import '../blanks/input-body/input-body.scss';
 
-@include input-body();
 .input_type_sub {
     position: relative;
     .input__button {

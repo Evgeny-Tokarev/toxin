@@ -9,6 +9,7 @@
         .input__placeholder {
             height: 44px;
             line-height: 44px;
+            letter-spacing: -0.4px;
         }
 
         fieldset.input__description {
@@ -20,6 +21,7 @@
             line-height: 18px;
             margin-left: 50px;
             min-height: 34px;
+            color: $Dark-Shade-75;
             input {
                 left: -50px;
                 top: 1px;

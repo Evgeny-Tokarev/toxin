@@ -3,11 +3,9 @@
 
 .input_type_ecb {
     .input__body {
-        // height: 44px;
         width: 100%;
         flex-direction: row;
         align-items: center;
-
         .input__arrow-button {
             margin-right: 11px;
         }
@@ -19,7 +17,7 @@
 .input_type_ecb.input_expanded {
     fieldset.input__description {
         position: absolute;
-        top: 44px;
+        top: 47px;
         display: block;
         width: 100%;
         justify-content: space-between;
@@ -34,13 +32,12 @@
         letter-spacing: 0;
         position: relative;
         color: $Dark-Shade-50;
-        margin-left: 30px;
+        min-width: 192px;
         height: 30.3px;
         cursor: pointer;
         input + .input__checkbox {
             position: absolute;
             left: -30px;
-            top: 2px;
             height: 20px;
             width: 20px;
             border: 1px solid $Dark-Shade-25;

@@ -8,13 +8,13 @@
     .input__body {
         flex-direction: column;
         fieldset.input__description {
+            padding-top: 2px;
             flex-direction: column;
         }
         .input__checkbox-item {
-            padding-top: 3px;
+            padding-bottom: 3px;
             line-height: 18px;
             input + .input__checkbox {
-                top: 2px;
                 border-radius: 4px;
             }
             input:checked + .input__checkbox {

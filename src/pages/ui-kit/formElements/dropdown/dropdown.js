@@ -4,9 +4,9 @@ class View {
     constructor() {
         this.presenter = null;
         this.itemsList = [];
-        this.placeholder = null;
-        this.clrbtn = null;
-        this.input = null;
+        this.$placeholder = null;
+        this.$clrbtn = null;
+        this.$input = null;
     }
 
     registerWith(presenter) {
@@ -15,13 +15,13 @@ class View {
 
     init(input) {
         const self = this;
-        input = $(input);
-        this.input = input;
-        this.clrbtn = input.find('.select-list__control-button_type_clear');
-        this.placeholder = input.find('.input__placeholder');
+        const $input = $(input);
+        this.$input = $input;
+        this.$clrbtn = $input.find('.select-list__control-button_type_clear');
+        this.$placeholder = $input.find('.input__placeholder');
         this.button = new Arrow_button();
-        this.button.init(this.input.find('.input__inner'));
-        $.each(input.find('.select-list__item'), function () {
+        this.button.init(this.$input.find('.input__inner'));
+        $.each($input.find('.select-list__item'), function () {
             self.itemsList.push(this);
             self.presenter.setItem(
                 $(this).find('.select-list__name').text(),
@@ -30,7 +30,7 @@ class View {
         });
         this.setInputString();
 
-        input.on('click', function (e) {
+        $input.on('click', function (e) {
             if ($(e.target).hasClass('select-list__button_type_decrease')) {
                 e.stopPropagation();
                 self.presenter.decreaseItem(
@@ -61,13 +61,13 @@ class View {
             ) {
                 self.presenter.submit();
                 self.clear();
-                input.removeClass('input_expanded');
+                $input.removeClass('input_expanded');
             }
         });
     }
     clear() {
         const self = this;
-        $.each(this.input.find('.select-list__item'), function () {
+        $.each(this.$input.find('.select-list__item'), function () {
             self.presenter.setItem(
                 $(this).find('.select-list__name').text(),
                 0
@@ -87,8 +87,8 @@ class View {
         this.setInputString();
     }
     setClrbtnView() {
-        return this.placeholder.text() ===
-            this.input.find('.input__placeholder').attr('data-value')
+        return this.$placeholder.text() ===
+            this.$input.find('.input__placeholder').attr('data-value')
             ? 'none'
             : 'block';
     }
@@ -114,11 +114,11 @@ class View {
                           .concat('...')
                     : str;
         } else {
-            str = this.placeholder.attr('data-value');
+            str = this.$placeholder.attr('data-value');
         }
 
-        this.placeholder.text(str);
-        this.clrbtn.css('display', this.setClrbtnView());
+        this.$placeholder.text(str);
+        this.$clrbtn.css('display', this.setClrbtnView());
     }
 }
 

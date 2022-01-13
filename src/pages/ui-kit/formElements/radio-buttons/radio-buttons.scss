@@ -6,6 +6,9 @@
     .input__body {
         display: flex;
         flex-direction: column;
+        .input__description {
+            justify-content: flex-start;
+        }
         .input__checkbox-item {
             padding-top: 1px;
             padding-right: 20px;
@@ -25,6 +28,9 @@
                 border-radius: 50%;
                 background: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
             }
+        }
+        .input__checkbox-item_checked {
+            color: $Dark-Shade-75;
         }
     }
 }

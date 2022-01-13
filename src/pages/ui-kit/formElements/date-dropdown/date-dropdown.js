@@ -13,6 +13,7 @@ class MyDatepicker {
             buttons: ['clear', this.submitButton],
             keyboardNav: false,
             multipleDatesSeparator: ' - ',
+            startDate: new Date('2019-08-19'),
             onShow: () => {
                 this.button.$wrapper.addClass('input_expanded');
             },
@@ -57,7 +58,8 @@ class MyDatepicker {
             const monthNum = self.dp.locale.monthsShort.findIndex(
                 (monthName) => dateArr[1] === monthName
             );
-            dateArr[1] = monthNum < 10 ? `0${monthNum.toString()}` : monthNum;
+            dateArr[1] =
+                monthNum < 10 ? `0${(monthNum + 1).toString()}` : monthNum + 1;
             dateArr[2] = self.dp.selectedDates.length
                 ? self.dp.selectedDates[0].getFullYear()
                 : self.dp.viewDate.getFullYear();
