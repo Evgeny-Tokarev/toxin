@@ -7,6 +7,9 @@ class View {
         this.$placeholder = null;
         this.$clrbtn = null;
         this.$input = null;
+        this.$submitbtn = null;
+        this.button = new Arrow_button();
+        this.button.init(this.$input.find('.input__inner'));
     }
 
     registerWith(presenter) {
@@ -18,47 +21,36 @@ class View {
         const $input = $(input);
         this.$input = $input;
         this.$clrbtn = $input.find('.select-list__control-button_type_clear');
+        this.$submitbtn = $input.find(
+            '.select-list__control-button_type_submit'
+        );
         this.$placeholder = $input.find('.input__placeholder');
-        this.button = new Arrow_button();
-        this.button.init(this.$input.find('.input__inner'));
         $.each($input.find('.select-list__item'), function () {
-            self.itemsList.push(this);
-            self.presenter.setItem(
-                $(this).find('.select-list__name').text(),
+            const itemName = $(this).find('.select-list__name').text();
+            const itemValue = Math.abs(
                 parseInt($(this).find('.select-list__item-value').text())
             );
+            self.itemsList.push(this);
+            self.presenter.setItem(itemName, itemValue);
         });
-        this.setInputString();
-
         $input.on('click', function (e) {
-            if ($(e.target).hasClass('select-list__button_type_decrease')) {
+            const $target = $(e.target);
+            if ($target.hasClass('select-list__button_type_decrease')) {
                 e.stopPropagation();
-                self.presenter.decreaseItem(
-                    $(e.target)
-                        .closest('.select-list__item')
-                        .find('.select-list__name')
-                        .text()
-                );
+                const itemName = $(e.target)
+                    .closest('.select-list__item')
+                    .find('.select-list__name')
+                    .text();
+                self.presenter.decreaseItem(itemName);
             }
-            if ($(e.target).hasClass('select-list__button_type_increase')) {
+            if ($target.hasClass('select-list__button_type_increase')) {
                 e.stopPropagation();
-                self.presenter.increaseItem(
-                    $(e.target)
-                        .closest('.select-list__item')
-                        .find('.select-list__name')
-                        .text()
-                );
+                self.presenter.increaseItem(itemName);
             }
-            if (
-                $('.select-list__control-button_type_clear').has(e.target)
-                    .length
-            ) {
+            if (self.$clrbtn.has(e.target).length) {
                 self.clear();
             }
-            if (
-                $('.select-list__control-button_type_submit').has(e.target)
-                    .length
-            ) {
+            if (self.$submitbtn.has(e.target).length) {
                 self.presenter.submit();
                 self.clear();
                 $input.removeClass('input_expanded');
@@ -68,22 +60,21 @@ class View {
     clear() {
         const self = this;
         $.each(this.$input.find('.select-list__item'), function () {
-            self.presenter.setItem(
-                $(this).find('.select-list__name').text(),
-                0
-            );
+            const itemName = $(this).find('.select-list__name').text();
+            self.presenter.setItem(itemName, 0);
         });
     }
-    setListItem(name, value, disabled) {
-        $.each(this.itemsList, function (i, item) {
-            if ($(item).find('.select-list__name').text() === name) {
-                $(item).find('.select-list__item-value').text(value);
-                $(item)
-                    .find('.select-list__button_type_decrease')
-                    .prop('disabled', disabled);
+    setListItem(newNalueItemName, newValue, disabled) {
+        $.each(this.itemsList, function () {
+            const itemName = $(this).find('.select-list__name').text();
+            const $valueNode = $(this).find('.select-list__item-value');
+            const $dcrbtn = $(this).find('.select-list__button_type_decrease');
+            console.log(item === this);
+            if (itemName === newNalueItemName) {
+                $valueNode.text(newValue);
+                $dcrbtn.prop('disabled', disabled);
             }
         });
-
         this.setInputString();
     }
     setClrbtnView() {
@@ -103,15 +94,12 @@ class View {
         });
 
         let str = '';
-        if (valueArr.filter(Boolean).length) {
-            str = valueArr.filter(Boolean).join(', ');
+        const trimmedArr = valueArr.filter(Boolean);
+        if (trimmedArr.length) {
+            str = trimmedArr.join(', ');
             str =
                 str.length > 19
-                    ? valueArr
-                          .filter(Boolean)
-                          .join(', ')
-                          .slice(0, 20)
-                          .concat('...')
+                    ? trimmedArr.join(', ').slice(0, 20).concat('...')
                     : str;
         } else {
             str = this.$placeholder.attr('data-value');
