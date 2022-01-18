@@ -64,11 +64,18 @@ class View {
                 .closest('.select-list__item')
                 .find('.select-list__name')
                 .text();
-            if ($target.hasClass('select-list__button_type_decrease')) {
+            console.log(itemName);
+            if (
+                $(this).has(e.target).length &&
+                $target.hasClass('select-list__button_type_decrease')
+            ) {
                 e.stopPropagation();
                 self.presenter.decreaseItem(itemName);
             }
-            if ($target.hasClass('select-list__button_type_increase')) {
+            if (
+                $(this).has(e.target).length &&
+                $target.hasClass('select-list__button_type_increase')
+            ) {
                 e.stopPropagation();
                 self.presenter.increaseItem(itemName);
             }
@@ -86,7 +93,7 @@ class View {
         const n = Math.abs(number) % 100;
         const n1 = n % 10;
         if (n > 10 && n < 20) {
-            return [2];
+            return wordForms[2];
         }
         if (n1 > 1 && n1 < 5) {
             return wordForms[1];
@@ -198,9 +205,8 @@ class View {
                 ? true
                 : false;
         let str = '';
-        console.log(total.value);
-        str = `${totalValue} ${this.decline(this.commonText, totalValue)}`;
-        if (this.isValid) {
+        if (totalValue) {
+            str = `${totalValue} ${this.decline(this.commonText, totalValue)}`;
         }
         this.$placeholder.text(
             this.distinctValue
