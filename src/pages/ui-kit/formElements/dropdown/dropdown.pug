@@ -7,13 +7,13 @@ mixin dropdown(opt)
         +e.inner
           +e.placeholder(data-value!=opt.inner_text)= opt.inner_text
       +e.description
-        +b.UL.select-list
+        +b.UL.select-list(data-distinct!=opt.distinctIndex, data-commonText!= opt.commonText)
           - var n=0
             each val, key in opt.items
               +e.LI.item(data-number= n++)
                 +e.SPAN.name(data-value!= val)= key
                 +e.handler
-                  +e.BUTTON.button_type_decrease(disabled = val == 0 ? true: false)= "-"
+                  +e.BUTTON.button_type_decrease(disabled = val <= 0 ? true: false)= "-"
                   +e.item-value= val
                   +e.BUTTON.button_type_increase= "+"
           +e.controls(hidden!= opt.btnHiden === false ? false: true)

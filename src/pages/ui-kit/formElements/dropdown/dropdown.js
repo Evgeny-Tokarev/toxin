@@ -8,8 +8,11 @@ class View {
         this.$clrbtn = null;
         this.$input = null;
         this.$submitbtn = null;
-        this.button = new Arrow_button();
-        this.button.init(this.$input.find('.input__inner'));
+        this.distinctItemIndex = null;
+        this.commonText = [];
+        this.distinctValue = null;
+        this.maxGuests = 20;
+        this.isValid = true;
     }
 
     registerWith(presenter) {
@@ -20,11 +23,23 @@ class View {
         const self = this;
         const $input = $(input);
         this.$input = $input;
+        const $selectList = $input.find('.select-list');
         this.$clrbtn = $input.find('.select-list__control-button_type_clear');
+        this.distinctItemIndex = parseInt($selectList.attr('data-distinct'));
+        this.commonText = $selectList.attr('data-commonText')
+            ? $selectList.attr('data-commonText').split(',')
+            : null;
+        this.maxGuests =
+            $selectList.attr('data-maxGuests') &&
+            $selectList.attr('data-maxGuests') < this.maxGuests
+                ? $selectList.attr('data-maxGuests')
+                : this.maxGuests;
         this.$submitbtn = $input.find(
             '.select-list__control-button_type_submit'
         );
         this.$placeholder = $input.find('.input__placeholder');
+        this.button = new Arrow_button();
+        this.button.init(this.$input.find('.input__inner'));
         $.each($input.find('.select-list__item'), function () {
             const itemName = $(this).find('.select-list__name').text();
             const itemValue = Math.abs(
@@ -35,12 +50,12 @@ class View {
         });
         $input.on('click', function (e) {
             const $target = $(e.target);
+            const itemName = $(e.target)
+                .closest('.select-list__item')
+                .find('.select-list__name')
+                .text();
             if ($target.hasClass('select-list__button_type_decrease')) {
                 e.stopPropagation();
-                const itemName = $(e.target)
-                    .closest('.select-list__item')
-                    .find('.select-list__name')
-                    .text();
                 self.presenter.decreaseItem(itemName);
             }
             if ($target.hasClass('select-list__button_type_increase')) {
@@ -65,17 +80,24 @@ class View {
         });
     }
     setListItem(newNalueItemName, newValue, disabled) {
-        $.each(this.itemsList, function () {
+        const self = this;
+        $.each(this.itemsList, function (i) {
             const itemName = $(this).find('.select-list__name').text();
             const $valueNode = $(this).find('.select-list__item-value');
             const $dcrbtn = $(this).find('.select-list__button_type_decrease');
-            console.log(item === this);
             if (itemName === newNalueItemName) {
+                if (self.distinctItemIndex && self.distinctItemIndex === i) {
+                    self.distinctValue = newValue;
+                }
                 $valueNode.text(newValue);
                 $dcrbtn.prop('disabled', disabled);
             }
         });
-        this.setInputString();
+        if (this.distinctItemIndex) {
+            this.setCommonInputString();
+        } else {
+            this.setInputString();
+        }
     }
     setClrbtnView() {
         return this.$placeholder.text() ===
@@ -92,9 +114,17 @@ class View {
                 valueArr[i] = `${value} ${name}`;
             }
         });
-
         let str = '';
         const trimmedArr = valueArr.filter(Boolean);
+        if (trimmedArr.length) {
+            console.log(this.total(trimmedArr));
+            this.isValid =
+                this.total(trimmedArr) <= this.maxGuests ? true : false;
+            console.log(this.isValid);
+        } else {
+            console.log('else');
+            this.isValid = true;
+        }
         if (trimmedArr.length) {
             str = trimmedArr.join(', ');
             str =
@@ -105,7 +135,62 @@ class View {
             str = this.$placeholder.attr('data-value');
         }
 
-        this.$placeholder.text(str);
+        if (this.isValid) {
+            this.$placeholder.text(str);
+            this.$clrbtn.css('display', this.setClrbtnView());
+        }
+    }
+    total(arr) {
+        return arr.reduce(function (a, b) {
+            return a + b;
+        });
+    }
+    setCommonInputString() {
+        const valueArr = [];
+        let totalValue = null;
+        const self = this;
+        $.each(this.itemsList, function (i, item) {
+            const value = parseInt(
+                $(item).find('.select-list__item-value').text()
+            );
+            if (value > 0 && i !== self.distinctItemIndex) {
+                valueArr[i] = value;
+                console.log(valueArr);
+            } else {
+                if (i === self.distinctItemIndex && value > 0) {
+                    self.distinctValue = value;
+                }
+            }
+        });
+        if (valueArr.length) {
+            totalValue = this.total(valueArr);
+        }
+        let str = '';
+        if (totalValue) {
+            switch (totalValue + this.distinctValue) {
+                case 1:
+                    str = `${totalValue + this.distinctValue} ${
+                        this.commonText[0]
+                    }`;
+                    break;
+                case 2 || 3 || 4:
+                    str = `${totalValue + this.distinctValue} ${
+                        this.commonText[1]
+                    }`;
+                    break;
+                default:
+                    str = `${totalValue + this.distinctValue} ${
+                        this.commonText[2]
+                    }`;
+            }
+        }
+        this.$placeholder.text(
+            this.distinctValue
+                ? `${str}, ${this.distinctValue}`
+                : str === ''
+                ? this.$placeholder.attr('data-value')
+                : str
+        );
         this.$clrbtn.css('display', this.setClrbtnView());
     }
 }
@@ -123,7 +208,7 @@ class Presenter {
     }
     setItem(name, value) {
         this.model.setItem(name, value);
-        if (this.model.getValue(name) > 1) {
+        if (this.model.getValue(name) >= 1) {
             this.view.setListItem(name, this.model.getValue(name), false);
         } else {
             this.view.setListItem(name, this.model.getValue(name), true);
