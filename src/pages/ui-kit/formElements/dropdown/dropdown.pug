@@ -7,7 +7,7 @@ mixin dropdown(opt)
         +e.inner
           +e.placeholder(data-value!=opt.inner_text)= opt.inner_text
       +e.description
-        +b.UL.select-list(data-distinct!=opt.distinctIndex, data-commonText!= opt.commonText)
+        +b.UL.select-list(data-distinctForms!= opt.distinctForms, data-maxTotal!= opt.maxTotal, data-distinct!=opt.distinctIndex, data-commonText!= opt.commonText)
           - var n=0
             each val, key in opt.items
               +e.LI.item(data-number= n++)

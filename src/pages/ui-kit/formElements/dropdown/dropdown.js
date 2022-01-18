@@ -11,8 +11,10 @@ class View {
         this.distinctItemIndex = null;
         this.commonText = [];
         this.distinctValue = null;
-        this.maxGuests = 20;
+        this.maxTotal = 20;
         this.isValid = true;
+        this.distinctName = '';
+        this.distinctForms = [];
     }
 
     registerWith(presenter) {
@@ -26,22 +28,30 @@ class View {
         const $selectList = $input.find('.select-list');
         this.$clrbtn = $input.find('.select-list__control-button_type_clear');
         this.distinctItemIndex = parseInt($selectList.attr('data-distinct'));
+        this.distinctForms = $selectList.attr('data-distinctForms')
+            ? $selectList.attr('data-distinctForms').split(',')
+            : [];
         this.commonText = $selectList.attr('data-commonText')
             ? $selectList.attr('data-commonText').split(',')
-            : null;
-        this.maxGuests =
-            $selectList.attr('data-maxGuests') &&
-            $selectList.attr('data-maxGuests') < this.maxGuests
-                ? $selectList.attr('data-maxGuests')
-                : this.maxGuests;
+            : [];
+        this.maxTotal =
+            $selectList.attr('data-maxTotal') &&
+            $selectList.attr('data-maxTotal') < this.maxTotal
+                ? $selectList.attr('data-maxTotal')
+                : $selectList.attr('data-maxTotal')
+                ? this.maxTotal
+                : null;
         this.$submitbtn = $input.find(
             '.select-list__control-button_type_submit'
         );
         this.$placeholder = $input.find('.input__placeholder');
         this.button = new Arrow_button();
         this.button.init(this.$input.find('.input__inner'));
-        $.each($input.find('.select-list__item'), function () {
+        $.each($input.find('.select-list__item'), function (i) {
             const itemName = $(this).find('.select-list__name').text();
+            if (self.distinctItemIndex && self.distinctItemIndex === i) {
+                self.distinctName = itemName;
+            }
             const itemValue = Math.abs(
                 parseInt($(this).find('.select-list__item-value').text())
             );
@@ -68,9 +78,23 @@ class View {
             if (self.$submitbtn.has(e.target).length) {
                 self.presenter.submit();
                 self.clear();
-                $input.removeClass('input_expanded');
+                self.$input.removeClass('input_expanded');
             }
         });
+    }
+    decline(wordForms, number) {
+        const n = Math.abs(number) % 100;
+        const n1 = n % 10;
+        if (n > 10 && n < 20) {
+            return [2];
+        }
+        if (n1 > 1 && n1 < 5) {
+            return wordForms[1];
+        }
+        if (n1 == 1) {
+            return wordForms[0];
+        }
+        return wordForms[2];
     }
     clear() {
         const self = this;
@@ -107,22 +131,20 @@ class View {
     }
     setInputString() {
         const valueArr = [];
+        const outputArr = [];
         $.each(this.itemsList, function (i, item) {
             const value = $(item).find('.select-list__item-value').text();
             const name = $(item).find('.select-list__name').text();
             if (value > 0) {
-                valueArr[i] = `${value} ${name}`;
+                outputArr[i] = `${value} ${name}`;
+                valueArr.push(parseInt(value));
             }
         });
         let str = '';
-        const trimmedArr = valueArr.filter(Boolean);
-        if (trimmedArr.length) {
-            console.log(this.total(trimmedArr));
-            this.isValid =
-                this.total(trimmedArr) <= this.maxGuests ? true : false;
-            console.log(this.isValid);
+        const trimmedArr = outputArr.filter(Boolean);
+        if (valueArr.length) {
+            this.isValid = this.total(valueArr) <= this.maxTotal ? true : false;
         } else {
-            console.log('else');
             this.isValid = true;
         }
         if (trimmedArr.length) {
@@ -135,9 +157,17 @@ class View {
             str = this.$placeholder.attr('data-value');
         }
 
+        this.$placeholder.text(str);
+        this.$clrbtn.css('display', this.setClrbtnView());
+        if (this.maxTotal && this.distinctItemIndex) {
+            this.validatePlaceholder();
+        }
+    }
+    validatePlaceholder() {
         if (this.isValid) {
-            this.$placeholder.text(str);
-            this.$clrbtn.css('display', this.setClrbtnView());
+            this.$placeholder.removeClass('input__placeholder_type_invalid');
+        } else {
+            this.$placeholder.addClass('input__placeholder_type_invalid');
         }
     }
     total(arr) {
@@ -153,45 +183,37 @@ class View {
             const value = parseInt(
                 $(item).find('.select-list__item-value').text()
             );
-            if (value > 0 && i !== self.distinctItemIndex) {
+            if (value > 0) {
                 valueArr[i] = value;
-                console.log(valueArr);
-            } else {
-                if (i === self.distinctItemIndex && value > 0) {
-                    self.distinctValue = value;
-                }
+            }
+            if (i === self.distinctItemIndex && value > 0) {
+                self.distinctValue = value;
             }
         });
         if (valueArr.length) {
             totalValue = this.total(valueArr);
         }
+        this.isValid =
+            totalValue <= this.maxTotal && totalValue !== this.distinctValue
+                ? true
+                : false;
         let str = '';
-        if (totalValue) {
-            switch (totalValue + this.distinctValue) {
-                case 1:
-                    str = `${totalValue + this.distinctValue} ${
-                        this.commonText[0]
-                    }`;
-                    break;
-                case 2 || 3 || 4:
-                    str = `${totalValue + this.distinctValue} ${
-                        this.commonText[1]
-                    }`;
-                    break;
-                default:
-                    str = `${totalValue + this.distinctValue} ${
-                        this.commonText[2]
-                    }`;
-            }
+        console.log(total.value);
+        str = `${totalValue} ${this.decline(this.commonText, totalValue)}`;
+        if (this.isValid) {
         }
         this.$placeholder.text(
             this.distinctValue
-                ? `${str}, ${this.distinctValue}`
+                ? `${str}, ${this.distinctValue} ${this.decline(
+                      this.distinctForms,
+                      this.distinctValue
+                  )} `
                 : str === ''
                 ? this.$placeholder.attr('data-value')
                 : str
         );
         this.$clrbtn.css('display', this.setClrbtnView());
+        this.validatePlaceholder();
     }
 }
 

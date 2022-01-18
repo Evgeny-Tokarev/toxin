@@ -28,7 +28,9 @@
 .input_type_drp.input_expanded {
     .input__body {
         position: relative;
-
+        .input__placeholder_type_invalid {
+            color: red;
+        }
         .input__description {
             width: 100%;
             position: absolute;
