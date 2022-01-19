@@ -8,7 +8,6 @@ export default class Arrow_button {
         this.text = text ? text : '';
     }
     init($input) {
-        // console.log($input);
         this.createButton($input);
         const self = this;
         this.$input = $input;
@@ -31,7 +30,6 @@ export default class Arrow_button {
             }
         });
         $(document).on('click', function (e) {
-            e.stopPropagation;
             if (
                 self.$wrapper.hasClass('input_expanded') &&
                 !self.$wrapper.has(e.target).length &&

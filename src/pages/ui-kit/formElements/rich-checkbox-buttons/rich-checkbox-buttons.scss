@@ -14,6 +14,7 @@
             line-height: 18px;
             margin-bottom: 7px;
             .input__item-header {
+                margin-top: 0;
                 font-size: 14px;
                 font-weight: 700;
                 line-height: 18px;
@@ -25,6 +26,7 @@
                 font-weight: 400;
                 line-height: 14px;
                 color: $Dark-Shade-50;
+                padding-right: 10px;
             }
             input + .input__checkbox {
                 top: 2px;

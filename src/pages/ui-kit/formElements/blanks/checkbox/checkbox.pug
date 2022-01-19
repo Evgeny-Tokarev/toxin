@@ -7,5 +7,5 @@ mixin checkbox(opt)
         - var n=0
           each val, key in opt.items
               +e.LABEL.checkbox-item= key
-                +e.INPUT(type!=opt.input_type, name!=Object.getOwnPropertyNames( opt.items)[0], value!= key, checked!=val)
+                +e.INPUT(type!=opt.input_type, name!=Object.getOwnPropertyNames( opt.items)[0], value= key, checked!=val)
                 +e.SPAN.checkbox

@@ -64,25 +64,30 @@ class View {
                 .closest('.select-list__item')
                 .find('.select-list__name')
                 .text();
-            console.log(itemName);
             if (
                 $(this).has(e.target).length &&
                 $target.hasClass('select-list__button_type_decrease')
             ) {
-                e.stopPropagation();
                 self.presenter.decreaseItem(itemName);
             }
             if (
                 $(this).has(e.target).length &&
                 $target.hasClass('select-list__button_type_increase')
             ) {
-                e.stopPropagation();
                 self.presenter.increaseItem(itemName);
             }
-            if (self.$clrbtn.has(e.target).length) {
+
+            if (
+                self.$clrbtn.has(e.target).length ||
+                e.target === self.$clrbtn[0]
+            ) {
                 self.clear();
             }
-            if (self.$submitbtn.has(e.target).length) {
+            if (
+                (self.$submitbtn.has(e.target).length ||
+                    e.target === self.$submitbtn[0]) &&
+                self.isValid
+            ) {
                 self.presenter.submit();
                 self.clear();
                 self.$input.removeClass('input_expanded');
