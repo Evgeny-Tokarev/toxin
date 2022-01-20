@@ -3,7 +3,8 @@ include ../like-button/like-button.pug
 mixin review-item(opt)
   +b.review-item 
     +e.header 
-      +e.icon(src!= opt.icon_url, width= 48, height= 48) 
+      +e.icon-wrapper
+        +e.icon(src!= opt.icon_url alt='person photo') 
       +e.name= opt.name
         +e.P.last-visit= opt.last_visit + ' дней назад'
     +e.description
