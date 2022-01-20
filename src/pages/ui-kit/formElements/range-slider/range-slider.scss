@@ -1,6 +1,11 @@
 @import '../../colors&type/colors&type.scss';
 @import 'nouislider/dist/nouislider.css';
 
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 .range-slider {
     margin-top: 39px;
     margin-bottom: 10px;
@@ -8,15 +13,14 @@
         width: 266px;
         position: absolute;
         top: -41px;
+        .input__left-heading {
+            margin-top: 0.5px;
+            margin-left: -1px;
+        }
         .input__right-heading {
-            letter-spacing: 0.15px;
+            margin-right: 1px;
             span {
-                font-family: 'Material Icons';
-                text-transform: none;
                 font-weight: 400;
-                font-size: 11px;
-                position: relative;
-                top: 1px;
             }
         }
     }
@@ -42,7 +46,12 @@
     .noUi-handle::after {
         display: none;
     }
+    .noUi-connects {
+        position: static;
+    }
     .noUi-connect {
         background: linear-gradient(180deg, #6fcf97 0%, #66d2ea 100%);
+        margin-top: -1px;
+        height: 6px;
     }
 }

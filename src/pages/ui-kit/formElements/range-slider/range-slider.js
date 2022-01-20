@@ -11,8 +11,8 @@ export default class RangeSlider {
                 start: [5000, 10000],
                 step: 100,
                 range: {
-                    min: [0],
-                    max: [15500],
+                    min: [-100],
+                    max: [15650],
                 },
                 format: wNumb({
                     decimals: 0,
@@ -30,9 +30,7 @@ export default class RangeSlider {
         const [from, to] = value;
         const header = $(sliderEl).find('.input__right-heading');
         header.html('');
-        header.append(
-            `${from}<span>currency_ruble</span>-${to}<span>currency_ruble</span>`
-        );
+        header.append(`${from}<span>₽ - </span>${to}<span>₽</span>`);
         console.log([from, to]);
     }
 }
