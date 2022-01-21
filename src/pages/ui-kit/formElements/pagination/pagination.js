@@ -18,8 +18,10 @@ $('.pagination').pagination({
             .find('.pagination-description')
             .html('');
         pagination.el.closest('.pagination').append(
-            `<span class='pagination-description'>${data[0]} 	
-            &#8722; ${data[data.length - 1]} из ${
+            `<span class='pagination-description'>${
+                data[0]
+            } <span class='pagination-dash'>–</span>	
+             ${data[data.length - 1]} из ${
                 pagination.totalNumber < 100 ? pagination.totalNumber : '100+'
             } вариантов аренды</span>`
         );

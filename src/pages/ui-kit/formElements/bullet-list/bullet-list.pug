@@ -1,0 +1,5 @@
+mixin bullet-list(opt)
+  +b.UL.bullet-list
+    each item in opt.items
+      +e.LI.item!= item
+            

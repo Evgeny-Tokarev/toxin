@@ -1,0 +1,17 @@
+@import '../../colors&type/colors&type.scss';
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+.bullet-list {
+    list-style-type: none;
+    &__item {
+        color: $Dark-Shade-75;
+        background: url('./img/bullet-ellipse.svg') no-repeat left top 7px;
+        padding-left: 21px;
+        line-height: 24px;
+        margin-bottom: 10px;
+    }
+}

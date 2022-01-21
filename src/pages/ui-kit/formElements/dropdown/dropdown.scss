@@ -107,6 +107,16 @@
                     color: $Purple;
                 }
             }
+            &__control-button_type_clear {
+                span {
+                    margin-left: -2px;
+                }
+            }
+            &__control-button_type_submit {
+                span {
+                    margin-right: -1px;
+                }
+            }
         }
     }
 }

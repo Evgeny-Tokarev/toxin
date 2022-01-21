@@ -17,6 +17,7 @@ include review-item/review-item.pug
 include range-slider/range-slider.pug
 include  button/button.pug
 include pagination/pagination.pug
+include bullet-list/bullet-list.pug
 
 section.form-elements
   img.main-icon(src=('./main-icon.svg') alt='main-icon' height=48 width=48)
@@ -65,5 +66,8 @@ section.form-elements
     +button({class: "_320 _filled _type_arrow", text: "перейти к оплате"})
     +vidget-header({left_heading:"pagination",class: "_service"})
     +pagination()
+    +dropdown({class: "_320 _expanded _type_expandable", left_heading:"dropdown", btnHiden: false, inner_text: "Сколько гостей", maxTotal: 20, items: {"взрослые":2,"дети":1, "младенцы":0} , commonText:"гость,гостя,гостей", distinctIndex: 2, distinctForms: "младенец,младенца,младенцев"})
+    +vidget-header({left_heading:"bullet list",class: "_service"})
+    +bullet-list({items:["Нельзя с питомцами","Без вечеринок и мероприятий","Время прибытия — после 13:00,<br>а выезд до 12:00"]})
   +e.wrapper-for-review
     +review-item({class: "",name: "Мурад Сарафанов", last_visit: 5, icon_url: "./img/murad.png", likes:{name: "Murad id",value:12, checked: true}, content: "Великолепный матрас на кровати в основной спальне! А пуфик вообще потрясающий. И стены, действительно, шумоподавляющие. Выкрикивал комплименты повару — никто не жаловался из соседей."})
