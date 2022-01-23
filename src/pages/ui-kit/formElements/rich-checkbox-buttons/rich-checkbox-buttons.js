@@ -1,26 +1,20 @@
 import Checkbox from '../blanks/checkbox/checkbox';
 
 class RichButtons extends Checkbox {
-    constructor(selector) {
-        super();
-        this.richHandler(selector);
-    }
-    richHandler(item) {
-        $(item).each(function () {
-            $(this)
-                .find('.input__checkbox-item')
-                .each(function () {
-                    const [header, description] = $(this).text().split('&');
-                    $(this).contents()[0].nodeValue = '';
-                    $(this).append(
-                        `<h3 class='input__item-header'>${header}</h3>`
-                    );
-                    $(this).append(
-                        `<span class='input__item-description'>${description}</span>`
-                    );
-                });
-        });
-    }
+  richHandler(item) {
+    this.item = item;
+    this.item.find('.input__checkbox-item').each(() => {
+      [this.header, this.description] = this.item.text().split('&');
+      this.item.contents()[0].nodeValue = '';
+      this.item.append(`<h3 class='input__item-header'>${this.header}</h3>`);
+      this.item.append(
+        `<span class='input__item-description'>${this.description}</span>`,
+      );
+    });
+  }
 }
-const richButtons = new RichButtons('.input_type_rich');
-richButtons.init('.input_type_rich');
+const $richButtons = $('.input_type_rich');
+$richButtons.each(($richButton) => {
+  const richButton = new RichButtons($richButton);
+  richButton.richHandler(richButton);
+});

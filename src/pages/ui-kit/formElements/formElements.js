@@ -1,3 +1,3 @@
 $('.form-elements .col:nth-child(2) .input_320:nth-of-type(2)')
-    .find('input')
-    .trigger('focus');
+  .find('input')
+  .trigger('focus');

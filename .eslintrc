@@ -1,25 +1,17 @@
 {
-    "parser": "@babel/eslint-parser",
-    "ignorePatterns": ["jquery.simplePagination.js"],
-    "rules": {
-        "no-unused-vars": "error",
-        "no-var": "error",
-        "prefer-const": "error",
-        "no-new-object": "error",
-        "object-shorthand": "error",
-        "quote-props": ["error", "as-needed"],
-        "no-prototype-builtins": "error",
-        "prefer-object-spread": "error",
-        "no-array-constructor": "error",
-        "array-callback-return": "error",
-        "prefer-destructuring": ["error", { "object": true, "array": true }],
-        "quotes": [
-            "error",
-            "single",
-            { "allowTemplateLiterals": true, "avoidEscape": true }
-        ],
-        // "prefer-template": "error",
-        "template-curly-spacing": "error"
-    }
-    // "extends": ["eslint:recommended"]
+  "parser": "@babel/eslint-parser",
+
+  "extends": ["airbnb-base", "prettier"],
+  "rules": {
+    "class-methods-use-this": [
+      "error",
+      { "exceptMethods": ["total", "isEmpty", "submit", "vividLabel"] }
+    ]
+  },
+  "env": {
+    "browser": true,
+    "commonjs": true,
+    "es6": true,
+    "jquery": true
+  }
 }
