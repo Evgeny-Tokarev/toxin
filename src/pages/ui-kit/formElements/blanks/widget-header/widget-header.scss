@@ -1,0 +1,14 @@
+@import '../../../colors&type/colors&type.scss';
+.input__header {
+  @include Label-text();
+  display: flex;
+  justify-content: space-between;
+  height: 21px;
+}
+.input__left-heading {
+  color: $Dark-Shade-100;
+}
+.input__right-heading {
+  color: $Dark-Shade-50;
+  font-weight: 400;
+}

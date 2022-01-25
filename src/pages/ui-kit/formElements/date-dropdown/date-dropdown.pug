@@ -1,7 +1,7 @@
-include ../blanks/input-header/input-header
+include ../blanks/widget-header/widget-header
 mixin date-dropdown(opt)
   +b.input(class!=`_${opt.width} _type_ddd`)
-    +input-header({left_heading:opt.left_heading})
+    +widget-header({left_heading:opt.left_heading})
     +e.body()
       +e.INPUT.field.datepicker(type="text", placeholder!= opt.inner_text, class!=opt.class, value=opt.initial_value)
         

@@ -6,7 +6,7 @@ export default class Checkbox {
     const checkbox = this;
     $(input)
       .find('.input__body')
-      .each(function (i) {
+      .each((i) => {
         if (isButton) {
           const button = new ArrowButton();
           button.init(this instanceof $ ? this : $(this));

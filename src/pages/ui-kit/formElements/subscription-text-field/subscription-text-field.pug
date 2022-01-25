@@ -1,7 +1,7 @@
-include ../blanks/input-header/input-header
+include ../blanks/widget-header/widget-header
 mixin subscription-text-field(opt)
   +b.input_type_sub(class="_266")
-    +input-header({left_heading:opt.left_heading})
+    +widget-header({left_heading:opt.left_heading})
     +e.body()
       +e.INPUT.field(class="subscription-text-field",placeholder!=opt.placeholder)
       +e.button(tabindex="-1")

@@ -3,6 +3,8 @@
 
   "extends": ["airbnb-base", "prettier"],
   "rules": {
+    "func-names": 0,
+    "no-console": 0,
     "class-methods-use-this": [
       "error",
       { "exceptMethods": ["total", "isEmpty", "submit", "vividLabel"] }

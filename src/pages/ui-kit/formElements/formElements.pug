@@ -1,73 +1,73 @@
-include blanks/vidget-header/vidget-header.pug
+include blanks/widget-header/widget-header.pug
 include textField/textField.pug
-include dropdown/dropdown.pug
-include masked-text-field/masked-text-field.pug
-include date-dropdown/date-dropdown.pug
-include subscription-text-field/subscription-text-field.pug
-include expandable-checkbox/expandable-checkbox.pug
-include advantage-item/advantage-item.pug
-include checkbox-buttons/checkbox-buttons.pug
-include radio-buttons/radio-buttons.pug
-include toggle/toggle.pug
-include blanks/checkbox/checkbox.pug
-include like-button/like-button.pug
-include rate-button/rate-button.pug
-include rich-checkbox-buttons/rich-checkbox-buttons.pug
-include review-item/review-item.pug
-include range-slider/range-slider.pug
-include  button/button.pug
-include pagination/pagination.pug
-include bullet-list/bullet-list.pug
+//- include dropdown/dropdown.pug
+//- include masked-text-field/masked-text-field.pug
+//- include date-dropdown/date-dropdown.pug
+//- include subscription-text-field/subscription-text-field.pug
+//- include expandable-checkbox/expandable-checkbox.pug
+//- include advantage-item/advantage-item.pug
+//- include checkbox-buttons/checkbox-buttons.pug
+//- include radio-buttons/radio-buttons.pug
+//- include toggle/toggle.pug
+//- include blanks/checkbox/checkbox.pug
+//- include like-button/like-button.pug
+//- include rate-button/rate-button.pug
+//- include rich-checkbox-buttons/rich-checkbox-buttons.pug
+//- include review-item/review-item.pug
+//- include range-slider/range-slider.pug
+//- include  button/button.pug
+//- include pagination/pagination.pug
+//- include bullet-list/bullet-list.pug
 
 section.form-elements
   img.main-icon(src=('./main-icon.svg') alt='main-icon' height=48 width=48)
   +e.col
     +text-field({left_heading:"text field", right_heading: "default",placeholder: "Email", type: "Email"})
     +text-field({left_heading:"text field", right_heading: "Hover / Focus", value: "This is pretty awesome"})
-    +dropdown({class: "_320 _type_expandable", left_heading:"dropdown", inner_text: "Сколько гостей", items: {"Взрослые":0,"Дети":0, "Младенцы":0}})
-    +masked-text-field({left_heading:"masked text field",placeholder: "ДД.ММ.ГГГГ"}) 
-    +e.wrapper._320 
-      +date-dropdown({left_heading:"date dropdown", inner_text: "ДД.ММ.ГГГГ", width: "150"})
-      +date-dropdown({left_heading:"date dropdown", inner_text: "ДД.ММ.ГГГГ", width: "150",initial_value: "19.08.2019"})
-    +date-dropdown({left_heading:"filter date dropdown", inner_text: "ДД МММ - ДД МММ", class: "range", width: "266",initial_value: "19 авг - 23 авг"})
-    +subscription-text-field({left_heading:"subscription text field",placeholder: "Email", width: "266"})
-    +dropdown({class: "_266 _type_expandable", left_heading:"dropdown", right_heading: "default",inner_text: "Конфигурация номера", items: {"спальни":2,"кровати":2, "ванные комнаты":0}})
-    +dropdown({class: "_266 _type_expandable _expanded", left_heading:"dropdown", right_heading: "expanded",inner_text: "Конфигурация номера", items: {"спальни":2,"кровати":2, "ванные комнаты":0}})
-    +expandable-checkbox({class: "_type_ecb _266 _type_expandable",inner_text: "expandable checkbox list",input_type: "checkbox", items: {"Завтрак":false,"Письменный стол":true, "Стул для кормления":true,"Кроватка": true,"Телевизор":false,"Шампунь":false}})
-    +expandable-checkbox({class: "_type_ecb _266 _type_expandable _expanded", inner_text: "expandable checkbox list",input_type: "checkbox", items: {"Завтрак":false,"Письменный стол":true, "Стул для кормления":true,"Кроватка": true,"Телевизор":false,"Шампунь":false}})
-    +advantage-item({icon: "insert_emoticon", title: "Комфорт", text: "Шумопоглощающие стены"})
-    +advantage-item({icon: "location_city", title: "Удобство", text: "Окно в каждой из спален"})
-  +e.col
-    +checkbox-buttons({class: "_type_cbb _222",inner_text: "checkbox buttons",input_type: "checkbox", items: {"Можно курить":false,"Можно с питомцами":true, "Можно пригласить гостей (до 10 человек)":true}})
-    +radio-buttons({class: "_type_rb",inner_text: "radio buttons",input_type: "radio", items: {"Мужчина":true,"Женщина":false}})
-    +toggle({class: "_type_tog _266",input_type: "checkbox", inner_text: "toggle", items: {"Получать спецпредложения":true,"Получать cпецпредложения":false}})
-    +vidget-header({left_heading:"like button",class: "_service"})
-    +e.wrapper._320._type_paddingless 
-      +like-button({name: "Post id", value: 2, checked: false})
-      +like-button({name: "Another post id", value: 12, checked: true})
-    +vidget-header({left_heading:"rate button",class: "_service"})
-    +e.wrapper._320._type_paddingless
-      +rate-button({class: "_type_rat _266", inner_text: "rate button",id: "id", value: 4})
-      +rate-button({class: "_type_rat _266", inner_text: "rate button",id: "other id", value: 5})
-    +dropdown({class: "_320 _expanded _type_expandable", left_heading:"dropdown", btnHiden: false, inner_text: "Сколько гостей", maxTotal: 20, items: {"взрослые":0,"дети":0, "младенцы":0} , commonText:"гость,гостя,гостей", distinctIndex: 2, distinctForms: "младенец,младенца,младенцев"})
-    +rich-checkbox-buttons({class: "_type_rich _266",inner_text: "rich checkbox buttons",input_type: "checkbox", items: {"Широкий коридор&Ширина коридоров в номере<br /> не менее 91 см.":false,"Помощник для инвалидов&На 1 этаже вас встретит специалист  и проводит до номера.":false}})
-  +e.col
-    +range-slider({left_heading:"Range Slider",class: "_service"})
-    +vidget-header({left_heading:"buttons",class: "_service"})
-    +e.wrapper._320._type_paddingless
-      +button({class: "_99 _filled", text: "click me"})
-      +button({class: "_99 _filled", text: "click me", disabled: true})
-    +e.wrapper._320._type_paddingless
-      +button({class: "_99 _contoured", text: "click me"})
-      +button({class: "_99 _contoured", text: "click me", disabled: true})
-    +e.wrapper._320._type_paddingless
-      +button({class: "_borderless", text: "click me"})
-      +button({class: "_borderless", text: "click me", disabled: true})
-    +button({class: "_320 _filled _type_arrow", text: "перейти к оплате"})
-    +vidget-header({left_heading:"pagination",class: "_service"})
-    +pagination()
-    +dropdown({class: "_320 _expanded _type_expandable", left_heading:"dropdown", btnHiden: false, inner_text: "Сколько гостей", maxTotal: 20, items: {"взрослые":2,"дети":1, "младенцы":0} , commonText:"гость,гостя,гостей", distinctIndex: 2, distinctForms: "младенец,младенца,младенцев"})
-    +vidget-header({left_heading:"bullet list",class: "_service"})
-    +bullet-list({items:["Нельзя с питомцами","Без вечеринок и мероприятий","Время прибытия — после 13:00,<br>а выезд до 12:00"]})
-  +e.wrapper-for-review
-    +review-item({class: "",name: "Мурад Сарафанов", last_visit: 5, icon_url: "./img/murad.png", likes:{name: "Murad id",value:12, checked: true}, content: "Великолепный матрас на кровати в основной спальне! А пуфик вообще потрясающий. И стены, действительно, шумоподавляющие. Выкрикивал комплименты повару — никто не жаловался из соседей."})
+  //-   +dropdown({class: "_320 _type_expandable", left_heading:"dropdown", inner_text: "Сколько гостей", items: {"Взрослые":0,"Дети":0, "Младенцы":0}})
+  //-   +masked-text-field({left_heading:"masked text field",placeholder: "ДД.ММ.ГГГГ"}) 
+  //-   +e.wrapper._320 
+  //-     +date-dropdown({left_heading:"date dropdown", inner_text: "ДД.ММ.ГГГГ", width: "150"})
+  //-     +date-dropdown({left_heading:"date dropdown", inner_text: "ДД.ММ.ГГГГ", width: "150",initial_value: "19.08.2019"})
+  //-   +date-dropdown({left_heading:"filter date dropdown", inner_text: "ДД МММ - ДД МММ", class: "range", width: "266",initial_value: "19 авг - 23 авг"})
+  //-   +subscription-text-field({left_heading:"subscription text field",placeholder: "Email", width: "266"})
+  //-   +dropdown({class: "_266 _type_expandable", left_heading:"dropdown", right_heading: "default",inner_text: "Конфигурация номера", items: {"спальни":2,"кровати":2, "ванные комнаты":0}})
+  //-   +dropdown({class: "_266 _type_expandable _expanded", left_heading:"dropdown", right_heading: "expanded",inner_text: "Конфигурация номера", items: {"спальни":2,"кровати":2, "ванные комнаты":0}})
+  //-   +expandable-checkbox({class: "_type_ecb _266 _type_expandable",inner_text: "expandable checkbox list",input_type: "checkbox", items: {"Завтрак":false,"Письменный стол":true, "Стул для кормления":true,"Кроватка": true,"Телевизор":false,"Шампунь":false}})
+  //-   +expandable-checkbox({class: "_type_ecb _266 _type_expandable _expanded", inner_text: "expandable checkbox list",input_type: "checkbox", items: {"Завтрак":false,"Письменный стол":true, "Стул для кормления":true,"Кроватка": true,"Телевизор":false,"Шампунь":false}})
+  //-   +advantage-item({icon: "insert_emoticon", title: "Комфорт", text: "Шумопоглощающие стены"})
+  //-   +advantage-item({icon: "location_city", title: "Удобство", text: "Окно в каждой из спален"})
+  //- +e.col
+  //-   +checkbox-buttons({class: "_type_cbb _222",inner_text: "checkbox buttons",input_type: "checkbox", items: {"Можно курить":false,"Можно с питомцами":true, "Можно пригласить гостей (до 10 человек)":true}})
+  //-   +radio-buttons({class: "_type_rb",inner_text: "radio buttons",input_type: "radio", items: {"Мужчина":true,"Женщина":false}})
+  //-   +toggle({class: "_type_tog _266",input_type: "checkbox", inner_text: "toggle", items: {"Получать спецпредложения":true,"Получать cпецпредложения":false}})
+  //-   +widget-header({left_heading:"like button",class: "_service"})
+  //-   +e.wrapper._320._type_paddingless 
+  //-     +like-button({name: "Post id", value: 2, checked: false})
+  //-     +like-button({name: "Another post id", value: 12, checked: true})
+  //-   +widget-header({left_heading:"rate button",class: "_service"})
+  //-   +e.wrapper._320._type_paddingless
+  //-     +rate-button({class: "_type_rat _266", inner_text: "rate button",id: "id", value: 4})
+  //-     +rate-button({class: "_type_rat _266", inner_text: "rate button",id: "other id", value: 5})
+  //-   +dropdown({class: "_320 _expanded _type_expandable", left_heading:"dropdown", btnHiden: false, inner_text: "Сколько гостей", maxTotal: 20, items: {"взрослые":0,"дети":0, "младенцы":0} , commonText:"гость,гостя,гостей", distinctIndex: 2, distinctForms: "младенец,младенца,младенцев"})
+  //-   +rich-checkbox-buttons({class: "_type_rich _266",inner_text: "rich checkbox buttons",input_type: "checkbox", items: {"Широкий коридор&Ширина коридоров в номере<br /> не менее 91 см.":false,"Помощник для инвалидов&На 1 этаже вас встретит специалист  и проводит до номера.":false}})
+  //- +e.col
+  //-   +range-slider({left_heading:"Range Slider",class: "_service"})
+  //-   +widget-header({left_heading:"buttons",class: "_service"})
+  //-   +e.wrapper._320._type_paddingless
+  //-     +button({class: "_99 _filled", text: "click me"})
+  //-     +button({class: "_99 _filled", text: "click me", disabled: true})
+  //-   +e.wrapper._320._type_paddingless
+  //-     +button({class: "_99 _contoured", text: "click me"})
+  //-     +button({class: "_99 _contoured", text: "click me", disabled: true})
+  //-   +e.wrapper._320._type_paddingless
+  //-     +button({class: "_borderless", text: "click me"})
+  //-     +button({class: "_borderless", text: "click me", disabled: true})
+  //-   +button({class: "_320 _filled _type_arrow", text: "перейти к оплате"})
+  //-   +widget-header({left_heading:"pagination",class: "_service"})
+  //-   +pagination()
+  //-   +dropdown({class: "_320 _expanded _type_expandable", left_heading:"dropdown", btnHiden: false, inner_text: "Сколько гостей", maxTotal: 20, items: {"взрослые":2,"дети":1, "младенцы":0} , commonText:"гость,гостя,гостей", distinctIndex: 2, distinctForms: "младенец,младенца,младенцев"})
+  //-   +widget-header({left_heading:"bullet list",class: "_service"})
+  //-   +bullet-list({items:["Нельзя с питомцами","Без вечеринок и мероприятий","Время прибытия — после 13:00,<br>а выезд до 12:00"]})
+  //- +e.wrapper-for-review
+  //-   +review-item({class: "",name: "Мурад Сарафанов", last_visit: 5, icon_url: "./img/murad.png", likes:{name: "Murad id",value:12, checked: true}, content: "Великолепный матрас на кровати в основной спальне! А пуфик вообще потрясающий. И стены, действительно, шумоподавляющие. Выкрикивал комплименты повару — никто не жаловался из соседей."})

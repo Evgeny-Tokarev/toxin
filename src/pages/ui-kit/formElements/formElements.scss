@@ -1,4 +1,4 @@
-@import './blanks/input-header/input-header.scss';
+@import './blanks/widget-header/widget-header.scss';
 @import './textField/textField.scss';
 @import './date-dropdown/date-dropdown.scss';
 @import './dropdown/dropdown.scss';
@@ -18,159 +18,163 @@
 @import './bullet-list/bullet-list.scss';
 
 .form-elements {
-    position: relative;
-    padding-top: 143px;
-    display: grid;
-    grid-template-columns: auto;
-    grid-template-rows: auto;
-    grid-template-areas:
-        'col1 col2 col3'
-        'col1 review review';
-    .main-icon {
-        position: absolute;
-        left: 30px;
-        top: 30px;
-    }
-    .wrapper_320 {
-        width: 320px;
-        display: flex;
-        justify-content: space-between;
-        padding: 20px 0;
-    }
-    .wrapper_type_paddingless {
-        padding: 0;
-    }
-    .wrapper-for-review {
-        grid-area: review;
-        padding-left: 126px;
-        margin-top: auto;
-        padding-right: 185px;
-    }
+  position: relative;
+  padding: 143px 141px 131px 141px;
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: auto;
+  grid-template-areas:
+    'col1 col2 col3'
+    'col1 review review';
+  .main-icon {
+    position: absolute;
+    left: 30px;
+    top: 30px;
+  }
+  .wrapper_320 {
+    width: 320px;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 0;
+  }
+  .wrapper_type_paddingless {
+    padding: 0;
+  }
+  .wrapper-for-review {
+    grid-area: review;
+    padding-left: 126px;
+    margin-top: auto;
+    padding-right: 185px;
+  }
 }
 .form-elements .col:nth-child(2) {
-    grid-area: col1;
-    padding-left: 141px;
-    .input {
-        margin-bottom: 19px;
+  grid-area: col1;
+  .input {
+    margin-bottom: 19px;
+  }
+  .input:nth-child(1) {
+    .input__right-heading {
+      line-height: 10px;
     }
-    .input:nth-child(3) {
-        margin-bottom: 21px;
-    }
-    .input:nth-child(4) {
-        margin-bottom: 19px;
-    }
-    .wrapper:nth-child(5) {
-        margin-bottom: 1px;
-    }
-    .input:nth-child(6) {
-        margin-bottom: 40px;
-    }
-    .input:nth-child(7) {
-        margin-bottom: 99px;
-    }
-    .input:nth-child(8) {
-        margin-left: -1px;
-    }
-    .input:nth-child(9) {
-        margin-left: -1px;
-        margin-bottom: 158px;
-    }
-    .input:nth-child(10) {
-        margin-bottom: 20px;
-    }
-    .input:nth-child(11) {
-        margin-left: -1px;
-        margin-bottom: 272px;
-    }
-    .advantage {
-        margin-bottom: 19px;
-    }
-    .advantage:nth-child(13) {
-        margin-bottom: 0;
-    }
+  }
+  .input:nth-child(3) {
+    margin-bottom: 21px;
+  }
+  .input:nth-child(4) {
+    margin-bottom: 19px;
+  }
+  .wrapper:nth-child(5) {
+    margin-bottom: 1px;
+  }
+  .input:nth-child(6) {
+    margin-bottom: 40px;
+  }
+  .input:nth-child(7) {
+    margin-bottom: 99px;
+  }
+  .input:nth-child(8) {
+    margin-left: -1px;
+  }
+  .input:nth-child(9) {
+    margin-left: -1px;
+    margin-bottom: 158px;
+  }
+  .input:nth-child(10) {
+    margin-bottom: 20px;
+  }
+  .input:nth-child(11) {
+    margin-left: -1px;
+    margin-bottom: 272px;
+  }
+  .advantage {
+    margin-bottom: 19px;
+  }
+  .advantage:nth-child(13) {
+    margin-bottom: 0;
+  }
 }
 .form-elements .col:nth-child(3) {
-    grid-area: col2;
+  grid-area: col2;
 
-    padding-left: 126px;
-    margin-top: -14px;
-    .input:nth-child(1) {
-        margin-bottom: 24px;
-    }
-    .input:nth-child(2) {
-        margin-bottom: 18.5px;
-    }
-    .input:nth-child(3) {
-        margin-bottom: 29.5px;
-    }
-    .input:nth-child(4) {
-        margin-bottom: 11px;
-    }
-    .input:nth-child(6) {
-        margin-bottom: 10px;
-    }
-    .wrapper_type_paddingless {
-        justify-content: left;
-        gap: 10px;
-        margin-bottom: 39px;
-    }
-    .wrapper_type_paddingless:nth-child(7) {
-        margin-bottom: 164px;
-    }
-    .input_type_rat {
-        margin-right: 10px;
-    }
-    .input:nth-child(8) {
-        margin-bottom: 242px;
-    }
+  padding-left: 126px;
+  margin-top: -14px;
+  .input:nth-child(1) {
+    margin-bottom: 24px;
+  }
+  .input:nth-child(2) {
+    margin-bottom: 18.5px;
+  }
+  .input:nth-child(3) {
+    margin-bottom: 29.5px;
+  }
+  .input:nth-child(4) {
+    margin-bottom: 11px;
+  }
+  .input:nth-child(6) {
+    margin-bottom: 10px;
+  }
+  .wrapper_type_paddingless {
+    justify-content: left;
+    gap: 10px;
+    margin-bottom: 39px;
+  }
+  .wrapper_type_paddingless:nth-child(7) {
+    margin-bottom: 164px;
+  }
+  .input_type_rat {
+    margin-right: 10px;
+  }
+  .input:nth-child(8) {
+    margin-bottom: 242px;
+  }
 }
 .form-elements .col:nth-child(4) {
-    grid-area: col3;
-    width: 578px;
-    padding-right: 141px;
-    padding-left: 72px;
-    .input_service {
-        margin-bottom: 11px;
-        margin-left: 1px;
+  grid-area: col3;
+  width: 578px;
+  padding-right: 141px;
+  padding-left: 72px;
+  .input_service {
+    margin-bottom: 11px;
+    margin-left: 1px;
+  }
+  .range-slider {
+    margin-bottom: 42px;
+  }
+  .wrapper_type_paddingless:nth-child(3) {
+    justify-content: left;
+    gap: 19px;
+    margin-bottom: 30px;
+    .button:nth-child(1) {
+      margin-left: 1px;
     }
-    .range-slider {
-        margin-bottom: 42px;
+  }
+  .wrapper_type_paddingless:nth-child(4) {
+    justify-content: left;
+    gap: 20px;
+    margin-bottom: 17px;
+  }
+  .wrapper_type_paddingless:nth-child(5) {
+    justify-content: left;
+    gap: 20px;
+    margin-bottom: 15px;
+    margin-left: 1px;
+    .button:nth-child(2) {
+      padding-bottom: 1px;
+      padding-left: 0.5px;
     }
-    .wrapper_type_paddingless:nth-child(3) {
-        justify-content: left;
-        gap: 19px;
-        margin-bottom: 30px;
-        .button:nth-child(1) {
-            margin-left: 1px;
-        }
-    }
-    .wrapper_type_paddingless:nth-child(4) {
-        justify-content: left;
-        gap: 20px;
-        margin-bottom: 17px;
-    }
-    .wrapper_type_paddingless:nth-child(5) {
-        justify-content: left;
-        gap: 20px;
-        margin-bottom: 15px;
-        margin-left: 1px;
-        .button:nth-child(2) {
-            padding-bottom: 1px;
-            padding-left: 0.5px;
-        }
-    }
-    .button_320 {
-        margin-bottom: 39px;
-    }
-    .pagination {
-        margin-left: 1px;
-        margin-bottom: 233px;
-    }
-    .input:nth-child(9) {
-        margin-bottom: 255px;
-    }
-    .input:nth-child(10) {
-        margin-left: -1px;
-        margin-bottom: 8px;
-    }
+  }
+  .button_320 {
+    margin-bottom: 39px;
+  }
+  .pagination {
+    margin-left: 1px;
+    margin-bottom: 233px;
+  }
+  .input:nth-child(9) {
+    margin-bottom: 255px;
+  }
+  .input:nth-child(10) {
+    margin-left: -1px;
+    margin-bottom: 8px;
+  }
 }

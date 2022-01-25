@@ -1,47 +1,47 @@
 @import '../../colors&type/colors&type.scss';
-@import '../blanks/input-header/input-header.scss';
+@import '../blanks/widget-header/widget-header.scss';
 
 .like-button {
-    position: relative;
-    width: 40px;
+  position: relative;
+  width: 40px;
+  height: 20px;
+  font-size: 10px;
+  font-weight: 400;
+  input {
+    margin: 0;
+    position: absolute;
+    opacity: 0;
     height: 20px;
-    font-size: 10px;
-    font-weight: 400;
-    input {
-        margin: 0;
-        position: absolute;
-        opacity: 0;
-        height: 20px;
-        width: 40px;
-        cursor: pointer;
-    }
-    input:checked + .like-button__checkbox {
-        border: 1px solid $Purple;
-        color: $Purple;
-    }
-    input + .like-button__checkbox {
-        position: absolute;
-        height: 20px;
-        width: 40px;
-        padding-left: 20px;
-        line-height: 18px;
-        color: $Dark-Shade-25;
-        border: 1px solid $Dark-Shade-25;
-        border-radius: 10px;
-    }
-    input + .like-button__checkbox:after {
-        content: 'favorite_border';
-        font-family: 'Material Icons';
-        position: absolute;
-        line-height: 20px;
-        left: 4px;
-        top: -1px;
-    }
-    input:checked + .like-button__checkbox:after {
-        content: 'favorite';
-        font-family: 'Material Icons';
-        color: transparent;
-        background-clip: text;
-        background-image: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
-    }
+    width: 40px;
+    cursor: pointer;
+  }
+  input:checked + .like-button__checkbox {
+    border: 1px solid $Purple;
+    color: $Purple;
+  }
+  input + .like-button__checkbox {
+    position: absolute;
+    height: 20px;
+    width: 40px;
+    padding-left: 20px;
+    line-height: 18px;
+    color: $Dark-Shade-25;
+    border: 1px solid $Dark-Shade-25;
+    border-radius: 10px;
+  }
+  input + .like-button__checkbox:after {
+    content: 'favorite_border';
+    font-family: 'Material Icons';
+    position: absolute;
+    line-height: 20px;
+    left: 4px;
+    top: -1px;
+  }
+  input:checked + .like-button__checkbox:after {
+    content: 'favorite';
+    font-family: 'Material Icons';
+    color: transparent;
+    background-clip: text;
+    background-image: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
+  }
 }
