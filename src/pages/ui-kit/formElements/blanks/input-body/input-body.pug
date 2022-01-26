@@ -1,2 +1,5 @@
 include ~bemto.pug/bemto_webpack.pug  
-+e.body
+mixin input-body(opt={})
+  +e.body()
+  if block 
+    block

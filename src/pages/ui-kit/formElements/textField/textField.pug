@@ -1,8 +1,9 @@
 include ../blanks/widget-header/widget-header.pug
-mixin text-field(opt)
+include ../blanks/input-body/input-body.pug
+mixin text-field(opt={})
   +b.input._320
-    +widget-header({left_heading:opt.left_heading,right_heading: opt.right_heading})
-    include ../blanks/input-body/input-body.pug
+    +widget-header(opt)
+    +input-body()
       +e.INPUT.field(type!=opt.type, placeholder!=opt.placeholder, value!=opt.value)
 
      

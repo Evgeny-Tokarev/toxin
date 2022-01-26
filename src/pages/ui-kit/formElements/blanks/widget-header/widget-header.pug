@@ -1,5 +1,5 @@
 include ~bemto.pug/bemto_webpack.pug
-mixin widget-header(opt)
-  +e.header(class!=opt.class)
+mixin widget-header(opt={})
+  +e.header()
     +e.left-heading=opt.left_heading
     +e.right-heading=opt.right_heading
