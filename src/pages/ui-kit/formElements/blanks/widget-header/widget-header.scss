@@ -1,9 +1,12 @@
 @import '../../../colors&type/colors&type.scss';
 .input__header {
+  margin: 0;
+  padding: 0;
   @include Label-text();
   display: flex;
   justify-content: space-between;
-  height: 21px;
+  height: 20px;
+  line-height: 16px;
 }
 .input__left-heading {
   color: $Dark-Shade-100;

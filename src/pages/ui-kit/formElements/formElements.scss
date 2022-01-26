@@ -19,6 +19,7 @@
 
 .form-elements {
   position: relative;
+  margin: 0;
   padding: 143px 141px 131px 141px;
   display: grid;
   grid-template-columns: auto;
@@ -52,9 +53,17 @@
   .input {
     margin-bottom: 19px;
   }
+
   .input:nth-child(1) {
+    margin-bottom: 20px;
     .input__right-heading {
       line-height: 10px;
+    }
+  }
+  .input:nth-child(2) {
+    // margin-bottom: 20px;
+    .input__right-heading {
+      letter-spacing: -0.2px;
     }
   }
   .input:nth-child(3) {

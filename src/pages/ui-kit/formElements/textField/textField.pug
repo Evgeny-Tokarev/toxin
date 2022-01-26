@@ -2,7 +2,7 @@ include ../blanks/widget-header/widget-header.pug
 mixin text-field(opt)
   +b.input._320
     +widget-header({left_heading:opt.left_heading,right_heading: opt.right_heading})
-    +e.body
+    include ../blanks/input-body/input-body.pug
       +e.INPUT.field(type!=opt.type, placeholder!=opt.placeholder, value!=opt.value)
 
      
