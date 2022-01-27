@@ -4,16 +4,16 @@ mixin dropdown(opt={})
   +input(opt)
     +e.placeholder(data-value!=opt.inner_text)= opt.inner_text
     +e.description
-      +b.UL.select-list(data-distinctForms!= opt.distinctForms, data-maxTotal!= opt.maxTotal, data-distinct!=opt.distinctIndex, data-commonText!= opt.commonText)
+      +e.UL.select-list(data-distinctForms!= opt.distinctForms, data-maxTotal!= opt.maxTotal, data-distinct!=opt.distinctIndex, data-commonText!= opt.commonText)
           - let n=0
             each val, key in opt.items
-              +e.LI.item(data-number= n++)
-                +e.SPAN.name(data-value!= val)= key
-                +e.handler
-                  +e.BUTTON.button_type_decrease(disabled = val <= 0 ? true: false)= "-"
+              +e.LI.list-item(data-number= n++)
+                +e.SPAN.item-name(data-value!= val)= key
+                +e.item-handler
+                  +e.BUTTON.item-button_type_decrease(disabled = val <= 0 ? true: false)= "-"
                   +e.item-value= val
-                  +e.BUTTON.button_type_increase= "+"
-          +e.controls(hidden!= opt.btnHiden === false ? false: true)
+                  +e.BUTTON.item-button_type_increase= "+"
+          +e.list-controls(hidden!= opt.btnHiden === false ? false: true)
             +e.BUTTON.control-button_type_submit
               +e.SPAN= "Применить"
             +e.BUTTON.control-button_type_clear

@@ -13,6 +13,8 @@ export default class Presenter {
   }
 
   setItem(name, value) {
+    console.log(value);
+
     this.model.setItem(name, value);
     if (this.model.getValue(name) >= 1) {
       this.view.setListItem(name, this.model.getValue(name), false);
@@ -22,6 +24,7 @@ export default class Presenter {
   }
 
   increaseItem(name) {
+    console.log(this.model.getValue(name));
     this.model.setItem(name, this.model.getValue(name) * 1 + 1);
     this.view.setListItem(name, this.model.getValue(name), false);
   }

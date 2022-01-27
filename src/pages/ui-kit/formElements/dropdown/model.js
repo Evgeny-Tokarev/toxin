@@ -13,6 +13,7 @@ export default class Model {
   }
 
   setItem(name, newValue) {
+    console.log(newValue);
     let isMatch = false;
     $.each(Object.values(this.listValues), (value) => {
       if (value === name) {
@@ -26,6 +27,7 @@ export default class Model {
   }
 
   getValue(name) {
+    console.log(name);
     return this.listValues[name];
   }
 }

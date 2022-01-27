@@ -26,7 +26,7 @@ export default class View {
     const $input = $(input);
     this.$input = $input;
     const $selectList = $input.find('.select-list');
-    this.$clrbtn = $input.find('.select-list__control-button_type_clear');
+    this.$clrbtn = $input.find('.input__control-button_type_clear');
     this.distinctItemIndex = parseInt($selectList.attr('data-distinct'), 10);
     this.distinctForms = $selectList.attr('data-distinctForms')
       ? $selectList.attr('data-distinctForms').split(',')
@@ -43,36 +43,38 @@ export default class View {
       this.maxTotal = null;
     }
 
-    this.$submitbtn = $input.find('.select-list__control-button_type_submit');
+    this.$submitbtn = $input.find('.input__control-button_type_submit');
     this.$placeholder = $input.find('.input__placeholder');
     this.button = new ArrowButton();
     this.button.init(this.$input.find('.input__body'));
-    $.each($input.find('.select-list__item'), function (i) {
-      const itemName = $(this).find('.select-list__name').text();
+    $.each($input.find('.input__list-item'), function (i) {
+      const itemName = $(this).find('.input__item-name').text();
       if (self.distinctItemIndex && self.distinctItemIndex === i) {
         self.distinctName = itemName;
       }
       const itemValue = Math.abs(
-        parseInt($(this).find('.select-list__item-value').text(), 10),
+        parseInt($(this).find('.input__item-value').text(), 10),
       );
       self.itemsList.push(this);
+      console.log(itemValue);
+
       self.presenter.setItem(itemName, itemValue);
     });
     $input.on('click', function (e) {
       const $target = $(e.target);
-      const itemName = $(e.target)
-        .closest('.select-list__item')
-        .find('.select-list__name')
+      const itemName = $target
+        .closest('.input__list-item')
+        .find('.input__item-name')
         .text();
       if (
         $(this).has(e.target).length &&
-        $target.hasClass('select-list__button_type_decrease')
+        $target.hasClass('input__item-button_type_decrease')
       ) {
         self.presenter.decreaseItem(itemName);
       }
       if (
         $(this).has(e.target).length &&
-        $target.hasClass('select-list__button_type_increase')
+        $target.hasClass('input__item-button_type_increase')
       ) {
         self.presenter.increaseItem(itemName);
       }
@@ -109,8 +111,8 @@ export default class View {
 
   clear() {
     const self = this;
-    $.each(this.$input.find('.select-list__item'), function () {
-      const itemName = $(this).find('.select-list__name').text();
+    $.each(this.$input.find('.input__list-item'), function () {
+      const itemName = $(this).find('.input__item-name').text();
       self.presenter.setItem(itemName, 0);
     });
   }
@@ -118,9 +120,9 @@ export default class View {
   setListItem(newNalueItemName, newValue, disabled) {
     const self = this;
     $.each(this.itemsList, function (i) {
-      const itemName = $(this).find('.select-list__name').text();
-      const $valueNode = $(this).find('.select-list__item-value');
-      const $dcrbtn = $(this).find('.select-list__button_type_decrease');
+      const itemName = $(this).find('.input__item-name').text();
+      const $valueNode = $(this).find('.input__item-value');
+      const $dcrbtn = $(this).find('.input__list-button_type_decrease');
       if (itemName === newNalueItemName) {
         if (self.distinctItemIndex && self.distinctItemIndex === i) {
           self.distinctValue = newValue;
@@ -147,8 +149,8 @@ export default class View {
     const valueArr = [];
     const outputArr = [];
     $.each(this.itemsList, (i, item) => {
-      const value = $(item).find('.select-list__item-value').text();
-      const name = $(item).find('.select-list__name').text();
+      const value = $(item).find('.input__item-value').text();
+      const name = $(item).find('.input__item-name').text();
       if (value > 0) {
         outputArr[i] = `${value} ${name}`;
         valueArr.push(parseInt(value, 10));
