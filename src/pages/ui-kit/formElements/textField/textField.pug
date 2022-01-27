@@ -1,10 +1,8 @@
-include ../blanks/widget-header/widget-header.pug
-include ../blanks/input-body/input-body.pug
+include ../blanks/input/input.pug
 mixin text-field(opt={})
-  +b.input._320
-    +widget-header(opt)
-    +input-body()
-      +e.INPUT.field(type!=opt.type, placeholder!=opt.placeholder, value!=opt.value)
+  - opt.class = opt.class + " _type_txt"
+  +input(opt)
+    +e.INPUT.field(type="text", placeholder!=opt.placeholder, value!=opt.value)
 
      
     

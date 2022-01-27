@@ -1,0 +1,25 @@
+@import '../../../colors&type/colors&type.scss';
+@import '../widget-header/widget-header.scss';
+@import '../input-body/input-body.scss';
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+.input_320 {
+  width: 320px;
+}
+.input_150 {
+  width: 150px;
+}
+.input_266 {
+  width: 266px;
+}
+.input_222 {
+  width: 222px;
+}
+.input_expanded {
+  position: relative;
+  z-index: 10;
+}

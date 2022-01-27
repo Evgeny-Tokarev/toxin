@@ -46,7 +46,7 @@ export default class View {
     this.$submitbtn = $input.find('.select-list__control-button_type_submit');
     this.$placeholder = $input.find('.input__placeholder');
     this.button = new ArrowButton();
-    this.button.init(this.$input.find('.input__inner'));
+    this.button.init(this.$input.find('.input__body'));
     $.each($input.find('.select-list__item'), function (i) {
       const itemName = $(this).find('.select-list__name').text();
       if (self.distinctItemIndex && self.distinctItemIndex === i) {

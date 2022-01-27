@@ -1,6 +1,14 @@
-//- include ../widget-header/widget-header.pug
-//- block variables
-//-   const opt = {}
-//- block header 
-//-   +widget-header({left_heading:opt.left_heading,right_heading: opt.right_heading})
-//- block body 
+include ../widget-header/widget-header.pug
+include ../input-body/input-body.pug
+mixin input(opt={})
+  +b.input(class=opt.class)
+    if opt.left_heading || opt.right_heading
+      +widget-header({left_heading:opt.left_heading,right_heading: opt.right_heading})
+      +input-body(opt)
+        if block 
+          block
+    else
+      +input-body(opt)
+        if block 
+          block
+      

@@ -1,14 +1,11 @@
-include ../blanks/widget-header/widget-header
-mixin dropdown(opt)
-  +b.input_type_drp(class=opt.class)
-    +widget-header({left_heading:opt.left_heading,right_heading: opt.right_heading})
-    +e.body()
-      +e.field
-        +e.inner
-          +e.placeholder(data-value!=opt.inner_text)= opt.inner_text
-      +e.description
-        +b.UL.select-list(data-distinctForms!= opt.distinctForms, data-maxTotal!= opt.maxTotal, data-distinct!=opt.distinctIndex, data-commonText!= opt.commonText)
-          - var n=0
+include ../blanks/input/input
+mixin dropdown(opt={})
+  - opt.class = opt.class + " _type_drp _type_expandable"
+  +input(opt)
+    +e.placeholder(data-value!=opt.inner_text)= opt.inner_text
+    +e.description
+      +b.UL.select-list(data-distinctForms!= opt.distinctForms, data-maxTotal!= opt.maxTotal, data-distinct!=opt.distinctIndex, data-commonText!= opt.commonText)
+          - let n=0
             each val, key in opt.items
               +e.LI.item(data-number= n++)
                 +e.SPAN.name(data-value!= val)= key

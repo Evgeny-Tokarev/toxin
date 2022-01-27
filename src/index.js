@@ -1,7 +1,7 @@
 import './style.scss';
 import './img/main-icon.svg';
 import './pages/ui-kit/formElements/formElements';
-// import './pages/ui-kit/formElements/dropdown/dropdown';
+import './pages/ui-kit/formElements/dropdown/dropdown';
 // import './pages/ui-kit/formElements/masked-text-field/masked-text-field';
 // import './pages/ui-kit/formElements/date-dropdown/date-dropdown';
 // import './pages/ui-kit/formElements/subscription-text-field/subscription-text-field';

@@ -8,7 +8,7 @@ export default class ArrowButton {
   text = '';
 
   constructor(text) {
-    this.text = text || '';
+    this.text = text || 'expand_more';
   }
 
   init($input) {
@@ -43,9 +43,9 @@ export default class ArrowButton {
   }
 
   createButton($parent) {
-    this.button = document.createElement('div');
+    this.button = document.createElement('button');
     this.button.className = 'input__arrow-button';
-    this.button.innerHTML = `<button class="input__button-icon" type="null" tabindex="-1">${this.text}</button>`;
+    this.button.innerHTML = `<span class="input__button-icon" type="null" tabindex="-1">${this.text}</span>`;
     $parent.append(this.button);
   }
 

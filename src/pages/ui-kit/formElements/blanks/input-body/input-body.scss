@@ -1,58 +1,24 @@
 @import '../../../colors&type/colors&type.scss';
 
-* {
+.input_type_expandable {
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-.input_expanded {
-  position: relative;
-  z-index: 10;
-}
-.input_320 {
-  width: 320px;
-}
-.input_150 {
-  width: 150px;
-}
-.input_266 {
-  width: 266px;
-}
-.input_222 {
-  width: 222px;
-}
-.input__body {
-  display: flex;
-}
-.input__field {
-  font-family: inherit;
-  display: flex;
-  overflow: hidden;
-  width: 100%;
-  @include Body-text();
-  height: 44px;
-  border: 1px solid $Dark-Shade-25;
-  border-radius: 4px;
-  padding: 0 35px 2px 14px;
-  color: $Dark-Shade-75;
-  .input__placeholder {
-    letter-spacing: 0px;
-  }
-  &::placeholder {
-    font-size: 14px;
-    line-height: 18px;
-    letter-spacing: 0;
-    vertical-align: bottom;
-    color: $Dark-Shade-25;
-  }
-  &:hover,
-  &:focus {
-    border: 1px solid $Dark-Shade-50;
-    outline: none;
+  .input__body {
+    @include Body-text();
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 44px;
+    border: 1px solid $Dark-Shade-25;
+    border-radius: 4px;
+    color: $Dark-Shade-75;
+    padding: 0 14px 2px 14px;
+    &:hover {
+      border: 1px solid $Dark-Shade-50;
+    }
   }
 }
-
-.input_expanded .input__field {
+.input_expanded .input__body {
   border-radius: 4px 4px 0 0;
   border-color: $Dark-Shade-50;
 }
