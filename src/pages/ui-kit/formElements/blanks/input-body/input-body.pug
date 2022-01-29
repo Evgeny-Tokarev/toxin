@@ -1,11 +1,5 @@
-include ../../../../../plugins/bemto/bemto_webpack.pug
--
-  set_bemto_settings({
-    prefix: {
-      'js-': true,
-    }
-  })  
+include ../../../../../vendor/bemto/bemto_webpack.pug
 mixin input-body(opt={})
-  +e.body.js-input__body()
+  +e.body(class!= opt.class)
     if block 
       block

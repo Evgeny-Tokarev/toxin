@@ -1,10 +1,9 @@
 import './style.scss';
 import './img/main-icon.svg';
 import './img/murad.png';
-// import './img/favicon.ico';
 import './pages/ui-kit/formElements/formElements';
 import './pages/ui-kit/formElements/dropdown/dropdown';
-// import './pages/ui-kit/formElements/masked-text-field/masked-text-field';
+import './pages/ui-kit/formElements/text-field/text-field';
 // import './pages/ui-kit/formElements/date-dropdown/date-dropdown';
 // import './pages/ui-kit/formElements/subscription-text-field/subscription-text-field';
 // import './pages/ui-kit/formElements/expandable-checkbox/expandable-checkbox';
