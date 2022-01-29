@@ -27,8 +27,8 @@ export default class View {
   init(input) {
     const self = this;
     this.$input = $(input);
-    this.$selectList = this.$input.find('.input__select-list');
-    this.$clrbtn = this.$input.find('.input__control-button_type_clear');
+    this.$selectList = this.$input.find('.js-input__select-list');
+    this.$clrbtn = this.$input.find('.js-input__control-button_type_clear');
     this.isDistinct =
       typeof this.$selectList.attr('data-distinct') !== typeof undefined &&
       this.$selectList.attr('data-distinct') !== false;
@@ -42,17 +42,17 @@ export default class View {
       this.distinctInit();
     }
     this.maxTotal = this.$selectList.attr('data-maxTotal');
-    this.$submitbtn = this.$input.find('.input__control-button_type_submit');
-    this.$placeholder = this.$input.find('.input__placeholder');
+    this.$submitbtn = this.$input.find('.js-input__control-button_type_submit');
+    this.$placeholder = this.$input.find('.js-input__placeholder');
     this.button = new ArrowButton();
-    this.button.init(this.$input.find('.input__body'));
-    $.each(this.$input.find('.input__list-item'), function (i) {
-      const itemName = $(this).find('.input__item-name').text();
+    this.button.init(this.$input.find('.js-input__body'));
+    $.each(this.$input.find('.js-input__list-item'), function (i) {
+      const itemName = $(this).find('.js-input__item-name').text();
       if (self.isDistinct && self.distinctItemIndex === i) {
         self.distinctName = itemName;
       }
       const itemValue = Math.abs(
-        parseInt($(this).find('.input__item-value').text(), 10),
+        parseInt($(this).find('.js-input__item-value').text(), 10),
       );
       self.itemsList.push(this);
       self.presenter.setItem(itemName, itemValue);
@@ -65,18 +65,18 @@ export default class View {
     $input.on('click', function (e) {
       const $target = $(e.target);
       const itemName = $target
-        .closest('.input__list-item')
-        .find('.input__item-name')
+        .closest('.js-input__list-item')
+        .find('.js-input__item-name')
         .text();
       if (
         $(this).has(e.target).length &&
-        $target.hasClass('input__item-button_type_decrease')
+        $target.hasClass('js-input__item-button_type_decrease')
       ) {
         self.presenter.decreaseItem(itemName);
       }
       if (
         $(this).has(e.target).length &&
-        $target.hasClass('input__item-button_type_increase')
+        $target.hasClass('js-input__item-button_type_increase')
       ) {
         self.presenter.increaseItem(itemName);
       }
@@ -123,17 +123,17 @@ export default class View {
 
   clear() {
     const self = this;
-    $.each(this.$input.find('.input__list-item'), function () {
-      const itemName = $(this).find('.input__item-name').text();
+    $.each(this.$input.find('.js-input__list-item'), function () {
+      const itemName = $(this).find('.js-input__item-name').text();
       self.presenter.setItem(itemName, 0);
     });
   }
 
   setListItem(newValueItemName, newValue, isDisabled) {
     $.each(this.itemsList, (i, item) => {
-      const itemName = $(item).find('.input__item-name').text();
-      const $valueNode = $(item).find('.input__item-value');
-      const $dcrbtn = $(item).find('.input__item-button_type_decrease');
+      const itemName = $(item).find('.js-input__item-name').text();
+      const $valueNode = $(item).find('.js-input__item-value');
+      const $dcrbtn = $(item).find('.js-input__item-button_type_decrease');
       if (itemName === newValueItemName) {
         if (this.isDistinct && this.distinctItemIndex === i) {
           this.distinctValue = newValue;
@@ -151,7 +151,7 @@ export default class View {
 
   setClrbtnDisplay() {
     return this.$placeholder.text() ===
-      this.$input.find('.input__placeholder').attr('data-value')
+      this.$input.find('.js-input__placeholder').attr('data-value')
       ? 'none'
       : 'block';
   }
@@ -160,8 +160,8 @@ export default class View {
     const valueArr = [];
     const outputArr = [];
     $.each(this.itemsList, (i, item) => {
-      const value = $(item).find('.input__item-value').text();
-      const name = $(item).find('.input__item-name').text();
+      const value = $(item).find('.js-input__item-value').text();
+      const name = $(item).find('.js-input__item-name').text();
       if (value > 0) {
         outputArr[i] = `${value} ${name}`;
         valueArr.push(parseInt(value, 10));
@@ -207,7 +207,7 @@ export default class View {
     let totalValue = null;
     const self = this;
     $.each(this.itemsList, (i, item) => {
-      const value = parseInt($(item).find('.input__item-value').text(), 10);
+      const value = parseInt($(item).find('.js-input__item-value').text(), 10);
       if (value > 0) {
         valueArr[i] = value;
       }

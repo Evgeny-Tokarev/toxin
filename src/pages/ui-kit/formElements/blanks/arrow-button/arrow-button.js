@@ -15,27 +15,28 @@ export default class ArrowButton {
     this.createButton($input);
     const self = this;
     this.$input = $input;
-    this.$wrapper = $input.closest('.input');
+    this.$wrapper = $input.closest('.js-input');
     $(this.button).on('mousedown', (e) => {
+      console.log(e.target);
       if (
-        ($(e.target).hasClass('input__arrow-button') ||
-          $(e.target).hasClass('input__button-icon')) &&
-        !self.$wrapper.hasClass('input_expanded')
+        ($(e.target).hasClass('js-input__arrow-button') ||
+          $(e.target).hasClass('js-input__button-icon')) &&
+        !self.$wrapper.hasClass('js-input_expanded')
       ) {
         e.preventDefault();
         self.openMenu($input);
       } else if (
-        $(e.target).hasClass('input__arrow-button') ||
-        $(e.target).hasClass('input__button-icon')
+        $(e.target).hasClass('js-input__arrow-button') ||
+        $(e.target).hasClass('js-input__button-icon')
       ) {
         self.closeMenu($input);
       }
     });
     $(document).on('click', (e) => {
       if (
-        self.$wrapper.hasClass('input_expanded') &&
+        self.$wrapper.hasClass('js-input_expanded') &&
         !self.$wrapper.has(e.target).length &&
-        !$(e.target).closest('.air-datepicker').length
+        !$(e.target).closest('.js-air-datepicker').length
       ) {
         self.closeMenu($input);
       }
@@ -44,20 +45,18 @@ export default class ArrowButton {
 
   createButton($parent) {
     this.button = document.createElement('button');
-    this.button.className = 'input__arrow-button';
-    this.button.innerHTML = `<span class="input__button-icon" type="null" tabindex="-1">${this.text}</span>`;
+    this.button.className = 'input__arrow-button js-input__arrow-button';
+    this.button.innerHTML = `<span class="input__button-icon js-input__button-icon" type="null" tabindex="-1">${this.text}</span>`;
     $parent.append(this.button);
   }
 
   openMenu($input) {
-    this.$wrapper.addClass('input_expanded');
-    $input.closest('.input__body').addClass('input__body_expanded');
-    $input.find('input').focus();
+    this.$wrapper.addClass('js-input_expanded input_expanded');
+    $input.find('js-input').focus();
   }
 
   closeMenu($input) {
-    this.$wrapper.removeClass('input_expanded');
-    $input.closest('.input__body').removeClass('input__body_expanded');
-    $input.find('input').blur();
+    this.$wrapper.removeClass('js-input_expanded input_expanded');
+    $input.find('js-input').blur();
   }
 }

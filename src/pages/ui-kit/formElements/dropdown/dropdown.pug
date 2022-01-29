@@ -1,23 +1,23 @@
 include ../blanks/input/input
 mixin dropdown(opt={})
-  - opt.class = opt.class + " _type_drp _type_expandable"
+  - opt.class = opt.class + " _type_drp _type_expandable js-input_type_expandable"
   +input(opt)
-    +e.placeholder(data-value!=opt.inner_text || "")= opt.inner_text || ""
+    +e.placeholder.js-input__placeholder(data-value!=opt.inner_text || "")= opt.inner_text || ""
     +e.description
-      +e.UL.select-list(data-distinctForms!= opt.distinctForms, data-maxTotal!= opt.maxTotal, data-distinct!=opt.distinctIndex , data-commonText!= opt.commonText)
+      +e.UL.select-list.js-input__select-list(data-distinctForms!= opt.distinctForms, data-maxTotal!= opt.maxTotal, data-distinct!=opt.distinctIndex , data-commonText!= opt.commonText)
         if opt.items  
           - let n=0
             each val, key in opt.items
-              +e.LI.list-item(data-number= n++)
-                +e.SPAN.item-name(data-value!= val)= key
+              +e.LI.list-item.js-input__list-item(data-number= n++)
+                +e.SPAN.item-name.js-input__item-name(data-value!= val)= key
                 +e.item-handler
-                  +e.BUTTON.item-button_type_decrease(disabled = val <= 0 ? true: false)= "-"
-                  +e.item-value= val
-                  +e.BUTTON.item-button_type_increase= "+"
+                  +e.BUTTON.item-button_type_decrease.js-input__item-button_type_decrease(disabled = val <= 0 ? true: false)= "-"
+                  +e.item-value.js-input__item-value= val
+                  +e.BUTTON.item-button_type_increase.js-input__item-button_type_increase= "+"
           +e.list-controls(hidden!= opt.btnHiden === false ? false: true)
-            +e.BUTTON.control-button_type_submit
+            +e.BUTTON.control-button_type_submit.js-input__control-button_type_submit
               +e.SPAN= "Применить"
-            +e.BUTTON.control-button_type_clear
+            +e.BUTTON.control-button_type_clear.js-input__control-button_type_clear
               +e.SPAN= "Очистить"
         else
           +e.LI.list-item= "Данные не пришли"      
