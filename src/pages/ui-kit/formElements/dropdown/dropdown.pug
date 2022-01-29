@@ -2,9 +2,10 @@ include ../blanks/input/input
 mixin dropdown(opt={})
   - opt.class = opt.class + " _type_drp _type_expandable"
   +input(opt)
-    +e.placeholder(data-value!=opt.inner_text)= opt.inner_text
+    +e.placeholder(data-value!=opt.inner_text || "")= opt.inner_text || ""
     +e.description
-      +e.UL.select-list(data-distinctForms!= opt.distinctForms, data-maxTotal!= opt.maxTotal, data-distinct!=opt.distinctIndex, data-commonText!= opt.commonText)
+      +e.UL.select-list(data-distinctForms!= opt.distinctForms, data-maxTotal!= opt.maxTotal, data-distinct!=opt.distinctIndex , data-commonText!= opt.commonText)
+        if opt.items  
           - let n=0
             each val, key in opt.items
               +e.LI.list-item(data-number= n++)
@@ -18,3 +19,5 @@ mixin dropdown(opt={})
               +e.SPAN= "Применить"
             +e.BUTTON.control-button_type_clear
               +e.SPAN= "Очистить"
+        else
+          +e.LI.list-item= "Данные не пришли"      

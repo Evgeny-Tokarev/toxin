@@ -51,21 +51,25 @@ module.exports = {
       minify: !isDev,
     }),
     ...PAGES.map(
-      (page) => new HtmlWebpackPlugin({
-        template: page,
-        filename: `[contenthash]${page
-          .split('/')
-          .slice(-1)
-          .join('/')
-          .replace(/\.pug/, '.html')}`,
-      }),
+      (page) =>
+        new HtmlWebpackPlugin({
+          template: page,
+          filename: `[contenthash]${page
+            .split('/')
+            .slice(-1)
+            .join('/')
+            .replace(/\.pug/, '.html')}`,
+        }),
     ),
     new MiniCssExtractPlugin({
       filename: '[name].[contenthash].css',
     }),
-    new CopyPlugin({
-      patterns: [{ from: './img/*.*', to: '../dist' }],
-    }),
+    // new CopyPlugin({
+    //   patterns: [
+    //     { from: './img/*.*', to: '../dist' },
+    //     { from: './fonts', to: '../dist' },
+    //   ],
+    // }),
     new TerserPlugin(),
     new ESLintPlugin({
       extensions: ['js'],
@@ -133,6 +137,9 @@ module.exports = {
       {
         test: /\.(woff|woff2|eot|ttf|otf|svg)$/i,
         type: 'asset/resource',
+        generator: {
+          filename: '[name][ext]',
+        },
       },
     ],
   },

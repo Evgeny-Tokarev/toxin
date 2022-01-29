@@ -6,15 +6,18 @@ export default class View {
     this.itemsList = [];
     this.$placeholder = null;
     this.$clrbtn = null;
+    this.$selectList = null;
     this.$input = null;
     this.$submitbtn = null;
     this.distinctItemIndex = null;
     this.commonText = [];
     this.distinctValue = null;
-    this.maxTotal = 20;
+    this.maxTotal = null;
     this.isValid = true;
     this.distinctName = '';
     this.distinctForms = [];
+    this.isDistinct = false;
+    this.isCommon = false;
   }
 
   registerWith(presenter) {
@@ -23,43 +26,42 @@ export default class View {
 
   init(input) {
     const self = this;
-    const $input = $(input);
-    this.$input = $input;
-    const $selectList = $input.find('.select-list');
-    this.$clrbtn = $input.find('.input__control-button_type_clear');
-    this.distinctItemIndex = parseInt($selectList.attr('data-distinct'), 10);
-    this.distinctForms = $selectList.attr('data-distinctForms')
-      ? $selectList.attr('data-distinctForms').split(',')
+    this.$input = $(input);
+    this.$selectList = this.$input.find('.input__select-list');
+    this.$clrbtn = this.$input.find('.input__control-button_type_clear');
+    this.isDistinct =
+      typeof this.$selectList.attr('data-distinct') !== typeof undefined &&
+      this.$selectList.attr('data-distinct') !== false;
+    this.isCommon =
+      typeof this.$selectList.attr('data-commonText') !== typeof undefined &&
+      this.$selectList.attr('data-commonText') !== false;
+    this.commonText = this.isCommon
+      ? this.$selectList.attr('data-commonText').split(',')
       : [];
-    this.commonText = $selectList.attr('data-commonText')
-      ? $selectList.attr('data-commonText').split(',')
-      : [];
-    if (
-      $selectList.attr('data-maxTotal') &&
-      $selectList.attr('data-maxTotal') < this.maxTotal
-    ) {
-      this.maxTotal = $selectList.attr('data-maxTotal');
-    } else if (!$selectList.attr('data-maxTotal')) {
-      this.maxTotal = null;
+    if (this.isDistinct) {
+      this.distinctInit();
     }
-
-    this.$submitbtn = $input.find('.input__control-button_type_submit');
-    this.$placeholder = $input.find('.input__placeholder');
+    this.maxTotal = this.$selectList.attr('data-maxTotal');
+    this.$submitbtn = this.$input.find('.input__control-button_type_submit');
+    this.$placeholder = this.$input.find('.input__placeholder');
     this.button = new ArrowButton();
     this.button.init(this.$input.find('.input__body'));
-    $.each($input.find('.input__list-item'), function (i) {
+    $.each(this.$input.find('.input__list-item'), function (i) {
       const itemName = $(this).find('.input__item-name').text();
-      if (self.distinctItemIndex && self.distinctItemIndex === i) {
+      if (self.isDistinct && self.distinctItemIndex === i) {
         self.distinctName = itemName;
       }
       const itemValue = Math.abs(
         parseInt($(this).find('.input__item-value').text(), 10),
       );
       self.itemsList.push(this);
-      console.log(itemValue);
-
       self.presenter.setItem(itemName, itemValue);
     });
+    this.setListener(this.$input);
+  }
+
+  setListener($input) {
+    const self = this;
     $input.on('click', function (e) {
       const $target = $(e.target);
       const itemName = $target
@@ -94,6 +96,16 @@ export default class View {
     });
   }
 
+  distinctInit() {
+    this.distinctItemIndex = parseInt(
+      this.$selectList.attr('data-distinct'),
+      10,
+    );
+    this.distinctForms = this.$selectList.attr('data-distinctForms')
+      ? this.$selectList.attr('data-distinctForms').split(',')
+      : [];
+  }
+
   decline(wordForms, number) {
     this.n = Math.abs(number) % 100;
     this.n1 = this.n % 10;
@@ -117,28 +129,27 @@ export default class View {
     });
   }
 
-  setListItem(newNalueItemName, newValue, disabled) {
-    const self = this;
-    $.each(this.itemsList, function (i) {
-      const itemName = $(this).find('.input__item-name').text();
-      const $valueNode = $(this).find('.input__item-value');
-      const $dcrbtn = $(this).find('.input__list-button_type_decrease');
-      if (itemName === newNalueItemName) {
-        if (self.distinctItemIndex && self.distinctItemIndex === i) {
-          self.distinctValue = newValue;
+  setListItem(newValueItemName, newValue, isDisabled) {
+    $.each(this.itemsList, (i, item) => {
+      const itemName = $(item).find('.input__item-name').text();
+      const $valueNode = $(item).find('.input__item-value');
+      const $dcrbtn = $(item).find('.input__item-button_type_decrease');
+      if (itemName === newValueItemName) {
+        if (this.isDistinct && this.distinctItemIndex === i) {
+          this.distinctValue = newValue;
         }
         $valueNode.text(newValue);
-        $dcrbtn.prop('disabled', disabled);
+        $dcrbtn.prop('disabled', isDisabled);
       }
     });
-    if (this.distinctItemIndex) {
+    if (this.isDistinct || this.isCommon) {
       this.setCommonInputString();
     } else {
       this.setInputString();
     }
   }
 
-  setClrbtnView() {
+  setClrbtnDisplay() {
     return this.$placeholder.text() ===
       this.$input.find('.input__placeholder').attr('data-value')
       ? 'none'
@@ -172,10 +183,9 @@ export default class View {
     } else {
       str = this.$placeholder.attr('data-value');
     }
-
     this.$placeholder.text(str);
-    this.$clrbtn.css('display', this.setClrbtnView());
-    if (this.maxTotal && this.distinctItemIndex) {
+    this.$clrbtn.css('display', this.setClrbtnDisplay());
+    if (this.maxTotal) {
       this.validatePlaceholder();
     }
   }
@@ -197,10 +207,7 @@ export default class View {
     let totalValue = null;
     const self = this;
     $.each(this.itemsList, (i, item) => {
-      const value = parseInt(
-        $(item).find('.select-list__item-value').text(),
-        10,
-      );
+      const value = parseInt($(item).find('.input__item-value').text(), 10);
       if (value > 0) {
         valueArr[i] = value;
       }
@@ -210,9 +217,12 @@ export default class View {
     });
     if (valueArr.length) {
       totalValue = this.total(valueArr);
+    } else {
+      totalValue = 0;
     }
     this.isValid = !!(
-      totalValue <= this.maxTotal && totalValue !== this.distinctValue
+      (totalValue <= this.maxTotal && totalValue !== this.distinctValue) ||
+      totalValue === 0
     );
     let str = '';
     if (totalValue) {
@@ -225,13 +235,15 @@ export default class View {
           this.distinctValue,
         )} `,
       );
-    } else if (str === '') {
+    }
+    if (str === '') {
       this.$placeholder.text(this.$placeholder.attr('data-value'));
     } else {
       this.$placeholder.text(str);
     }
-
-    this.$clrbtn.css('display', this.setClrbtnView());
-    this.validatePlaceholder();
+    this.$clrbtn.css('display', this.setClrbtnDisplay());
+    if (this.maxTotal) {
+      this.validatePlaceholder();
+    }
   }
 }

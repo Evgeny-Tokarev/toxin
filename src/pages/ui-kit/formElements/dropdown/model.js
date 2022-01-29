@@ -13,21 +13,23 @@ export default class Model {
   }
 
   setItem(name, newValue) {
-    console.log(newValue);
     let isMatch = false;
-    $.each(Object.values(this.listValues), (value) => {
-      if (value === name) {
-        this.listValues[name] = newValue;
-        isMatch = true;
-      }
-      if (!isMatch) {
-        this.listValues[name] = newValue;
-      }
-    });
+    if (!this.isEmpty(this.listValues)) {
+      $.each(Object.values(this.listValues), (value) => {
+        if (value === name) {
+          this.listValues[name] = newValue;
+          isMatch = true;
+        }
+        if (!isMatch) {
+          this.listValues[name] = newValue;
+        }
+      });
+    } else {
+      this.listValues[name] = newValue;
+    }
   }
 
   getValue(name) {
-    console.log(name);
     return this.listValues[name];
   }
 }
