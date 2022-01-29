@@ -7,6 +7,7 @@ const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
 const glob = require('glob');
 const webpack = require('webpack');
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 
 const isDev = process.env.NODE_ENV === 'development';
 const PATHS = {
@@ -61,14 +62,12 @@ module.exports = {
             .replace(/\.pug/, '.html')}`,
         }),
     ),
+    new FaviconsWebpackPlugin('./img/favicon.jpg'),
     new MiniCssExtractPlugin({
       filename: '[name].[contenthash].css',
     }),
     // new CopyPlugin({
-    //   patterns: [
-    //     { from: './img/*.*', to: '../dist' },
-    //     { from: './fonts', to: '../dist' },
-    //   ],
+    //   patterns: [{ from: './img/*.ico', to: '../dist/*.ico' }],
     // }),
     new TerserPlugin(),
     new ESLintPlugin({

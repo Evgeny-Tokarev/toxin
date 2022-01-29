@@ -17,7 +17,6 @@ export default class ArrowButton {
     this.$input = $input;
     this.$wrapper = $input.closest('.js-input');
     $(this.button).on('mousedown', (e) => {
-      console.log(e.target);
       if (
         ($(e.target).hasClass('js-input__arrow-button') ||
           $(e.target).hasClass('js-input__button-icon')) &&

@@ -1,7 +1,7 @@
 import './style.scss';
 import './img/main-icon.svg';
 import './img/murad.png';
-import './img/Group.jpg';
+// import './img/favicon.ico';
 import './pages/ui-kit/formElements/formElements';
 import './pages/ui-kit/formElements/dropdown/dropdown';
 // import './pages/ui-kit/formElements/masked-text-field/masked-text-field';
