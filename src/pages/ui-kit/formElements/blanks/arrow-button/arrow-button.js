@@ -1,21 +1,21 @@
 import './arrow-button.scss';
 
 export default class ArrowButton {
-  button = null;
-
-  $wrapper = null;
-
-  text = '';
-
   constructor(text) {
+    this.button = null;
+    this.$wrapper = null;
     this.text = text || 'expand_more';
+    this.isDatepicker = false;
   }
 
   init($input) {
     this.createButton($input);
+    this.$wrapper = $input.closest('.js-input');
+    console.log(this.$wrapper);
+    this.isDatepicker = this.$wrapper.hasClass('js-input_type_ddd');
+    console.log(this.isDatepicker);
     const self = this;
     this.$input = $input;
-    this.$wrapper = $input.closest('.js-input');
     $(this.button).on('mousedown', (e) => {
       console.log(e.target);
       if (
@@ -33,11 +33,10 @@ export default class ArrowButton {
       }
     });
     $(document).on('click', (e) => {
-      console.log(e.target);
       if (
         self.$wrapper.hasClass('js-input_expanded') &&
         !self.$wrapper.has(e.target).length &&
-        !$(e.target).closest('.js-air-datepicker').length
+        !this.isDatepicker
       ) {
         self.closeMenu($input);
       }

@@ -33,7 +33,9 @@ class MyDatepicker {
       onShow: () => {
         this.button.$wrapper.addClass('input_expanded js-input_expanded');
       },
-
+      onHide: () => {
+        this.button.$wrapper.removeClass('input_expanded js-input_expanded');
+      },
       navTitles: {
         days(dp) {
           return `<span>
