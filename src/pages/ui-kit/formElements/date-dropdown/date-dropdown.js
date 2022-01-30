@@ -10,12 +10,28 @@ class MyDatepicker {
       onClick: (dp) => this.submit(dp),
     };
     this.options = {
+      // inline: true,
+      // position({ $datepicker, $target, $pointer }) {
+      //   const coords = $target.getBoundingClientRect();
+      //   const dpHeight = $datepicker.clientHeight;
+      //   const dpWidth = $datepicker.clientWidth;
+
+      //   const top =
+      //     coords.y + coords.height / 2 + window.scrollY - dpHeight / 2;
+      //   const left = coords.x + coords.width / 2 - dpWidth / 2;
+
+      //   $datepicker.style.left = `${left}px`;
+      //   $datepicker.style.top = `${top}px`;
+
+      //   $pointer.style.display = 'none';
+      // },
+      classes: 'js-air-datepicker',
       buttons: ['clear', this.submitButton],
       keyboardNav: false,
       multipleDatesSeparator: ' - ',
       startDate: new Date('2019-08-19'),
       onShow: () => {
-        this.button.$wrapper.addClass('input_expanded');
+        this.button.$wrapper.addClass('input_expanded js-input_expanded');
       },
 
       navTitles: {
@@ -35,6 +51,7 @@ class MyDatepicker {
 
   // заготовка для отдачи результата
   submit(dp) {
+    console.log('submit');
     setTimeout(() => {
       dp.hide();
       dp.clear();
@@ -104,7 +121,7 @@ class MyDatepicker {
   keyWatch(el) {
     const self = this;
     $(el)
-      .closest('.input__body')
+      .closest('.js-input__body')
       .on('keydown', (e) => {
         if (e.code === 'Enter') {
           if (self.dp.opts.range) {
@@ -117,10 +134,11 @@ class MyDatepicker {
   }
 
   init(container) {
+    this.$wrapper = $(container).closest('.js-input');
     this.button = new ArrowButton();
-    this.button.init($(container).closest('.input__body'));
+    this.button.init($(container).closest('.js-input__body'));
     this.dp = new AirDatepicker(container, this.options);
-    this.dp.isRange = !!$(container).hasClass('range');
+    this.dp.isRange = !!this.$wrapper.hasClass('.js-input_type_range-ddd');
     this.dp.opts.range = this.dp.isRange;
     this.dp.opts.dynamicRange = this.dp.isRange;
     if (this.dp.isRange) {
@@ -149,7 +167,7 @@ class MyDatepicker {
     }
   }
 }
-$('.datepicker').each(function () {
+$('.js-datepicker').each(function () {
   const myDatepicker = new MyDatepicker();
   myDatepicker.init(this);
 });

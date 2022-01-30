@@ -4,7 +4,7 @@ import './img/murad.png';
 import './pages/ui-kit/formElements/formElements';
 import './pages/ui-kit/formElements/dropdown/dropdown';
 import './pages/ui-kit/formElements/text-field/text-field';
-// import './pages/ui-kit/formElements/date-dropdown/date-dropdown';
+import './pages/ui-kit/formElements/date-dropdown/date-dropdown';
 // import './pages/ui-kit/formElements/subscription-text-field/subscription-text-field';
 // import './pages/ui-kit/formElements/expandable-checkbox/expandable-checkbox';
 // import './pages/ui-kit/formElements/checkbox-buttons/checkbox-buttons';

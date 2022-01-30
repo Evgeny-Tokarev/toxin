@@ -10,11 +10,9 @@ mixin input(opt={})
         - opt.class= ""
       if opt.left_heading || opt.right_heading
         +widget-header({left_heading:opt.left_heading,right_heading: opt.right_heading})
-        +input-body(opt)
-          if block 
-            block
+        +input-body(opt) 
+          block
       else
-        +input-body(opt)
-          if block 
-            block
+        +input-body(opt) 
+          block
       

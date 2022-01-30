@@ -1,7 +1,6 @@
-include ../blanks/widget-header/widget-header
+include ../blanks/input/input.pug
 mixin date-dropdown(opt)
-  +b.input(class!=`_${opt.width} _type_ddd`)
-    +widget-header({left_heading:opt.left_heading})
-    +e.body()
-      +e.INPUT.field.datepicker(type="text", placeholder!= opt.inner_text, class!=opt.class, value=opt.initial_value)
+  - opt.class=opt.class + ' input_type_ddd js-input_type_ddd'
+  +input(opt)
+    +e.INPUT.field.js-input-field.js-datepicker(type="text", placeholder!= opt.inner_text, value=opt.initial_value)
         

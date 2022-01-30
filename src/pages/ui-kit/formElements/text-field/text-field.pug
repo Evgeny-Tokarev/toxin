@@ -1,8 +1,8 @@
 include ../blanks/input/input.pug
 mixin text-field(opt={})
-  - opt.class = opt.class + " input_type_txt"
+  - opt.class=opt.class + " _type_txt"
   +input(opt)
-    +e.INPUT.field(type="text", placeholder!=opt.placeholder, value!=opt.value, data-mask!= opt.mask)
+    +e.INPUT.field(class=opt.mask ? "js-input__field" : "", type="text", placeholder!=opt.placeholder, value!=opt.value, data-mask!= opt.mask) 
 
      
     

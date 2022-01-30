@@ -17,6 +17,7 @@ export default class ArrowButton {
     this.$input = $input;
     this.$wrapper = $input.closest('.js-input');
     $(this.button).on('mousedown', (e) => {
+      console.log(e.target);
       if (
         ($(e.target).hasClass('js-input__arrow-button') ||
           $(e.target).hasClass('js-input__button-icon')) &&
@@ -32,6 +33,7 @@ export default class ArrowButton {
       }
     });
     $(document).on('click', (e) => {
+      console.log(e.target);
       if (
         self.$wrapper.hasClass('js-input_expanded') &&
         !self.$wrapper.has(e.target).length &&
@@ -50,12 +52,14 @@ export default class ArrowButton {
   }
 
   openMenu($input) {
+    console.log('button open');
     this.$wrapper.addClass('js-input_expanded input_expanded');
-    $input.find('js-input').focus();
+    $input.find('input').focus();
   }
 
   closeMenu($input) {
+    console.log('button close');
     this.$wrapper.removeClass('js-input_expanded input_expanded');
-    $input.find('js-input').blur();
+    $input.find('input').blur();
   }
 }

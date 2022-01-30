@@ -3,6 +3,13 @@
 
   "extends": ["airbnb-base", "prettier"],
   "rules": {
+    "no-param-reassign": [
+      "error",
+      {
+        "props": true,
+        "ignorePropertyModificationsFor": ["$datepicker", "$pointer"]
+      }
+    ],
     "func-names": 0,
     "no-console": 0,
     "class-methods-use-this": [
