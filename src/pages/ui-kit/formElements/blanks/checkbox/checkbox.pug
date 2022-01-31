@@ -1,11 +1,10 @@
-
 mixin checkbox(opt)
-  +b.input._type_chkbx(class=opt.class)
-    +e.body
-      +e.placeholder()= opt.inner_text
-      +e({tag: "fieldset"}).description
+  .input.input_type_chkbx(class=opt.class)
+    .input__body
+      .input__placeholder()= opt.inner_text
+      fieldset.input__description
         - var n=0
           each val, key in opt.items
-              +e.LABEL.checkbox-item= key
-                +e.INPUT(type!=opt.input_type, name!=Object.getOwnPropertyNames( opt.items)[0], value= key, checked!=val)
-                +e.SPAN.checkbox
+              label.input__checkbox-item= key
+                input.input__checkbox-field(type!=opt.input_type, name!=Object.getOwnPropertyNames( opt.items)[0], value= key, checked!=val)
+                span.input__checkbox

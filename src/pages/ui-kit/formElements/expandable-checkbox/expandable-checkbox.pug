@@ -1,4 +1,6 @@
 include ../blanks/checkbox/checkbox.pug
 
 mixin expandable-checkbox(opt)
+  - opt.class=opt.class ? opt.class + " input_type_ecb js-input_type_ecb input_type_expandable js-input_type_expandable" :
+  | "input_type_ecb js-input_type_ecb input_type_expandable js-input_type_expandable"
   +checkbox(opt)

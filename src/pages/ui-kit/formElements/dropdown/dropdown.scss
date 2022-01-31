@@ -38,6 +38,10 @@
         align-items: center;
         padding: 0 6px 0 14px;
       }
+      .input__item-name {
+        display: inline-block;
+        margin-top: 2px;
+      }
       .input__item-handler {
         width: 91px;
         display: flex;
