@@ -11,20 +11,6 @@ class MyDatepicker {
     };
     this.options = {
       // inline: true,
-      // position({ $datepicker, $target, $pointer }) {
-      //   const coords = $target.getBoundingClientRect();
-      //   const dpHeight = $datepicker.clientHeight;
-      //   const dpWidth = $datepicker.clientWidth;
-
-      //   const top =
-      //     coords.y + coords.height / 2 + window.scrollY - dpHeight / 2;
-      //   const left = coords.x + coords.width / 2 - dpWidth / 2;
-
-      //   $datepicker.style.left = `${left}px`;
-      //   $datepicker.style.top = `${top}px`;
-
-      //   $pointer.style.display = 'none';
-      // },
       classes: 'js-air-datepicker',
       buttons: ['clear', this.submitButton],
       keyboardNav: false,
@@ -53,11 +39,11 @@ class MyDatepicker {
 
   // заготовка для отдачи результата
   submit(dp) {
-    console.log('submit');
+    console.log(dp.selectedDates);
     setTimeout(() => {
       dp.hide();
       dp.clear();
-    }, 500);
+    }, 300);
     dp.setViewDate(dp.selectedDates[0]);
   }
 
@@ -140,7 +126,7 @@ class MyDatepicker {
     this.button = new ArrowButton();
     this.button.init($(container).closest('.js-input__body'));
     this.dp = new AirDatepicker(container, this.options);
-    this.dp.isRange = !!this.$wrapper.hasClass('.js-input_type_range-ddd');
+    this.dp.isRange = !!this.$wrapper.hasClass('js-input_type_range-ddd');
     this.dp.opts.range = this.dp.isRange;
     this.dp.opts.dynamicRange = this.dp.isRange;
     if (this.dp.isRange) {

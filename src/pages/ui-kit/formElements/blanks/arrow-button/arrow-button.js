@@ -11,13 +11,10 @@ export default class ArrowButton {
   init($input) {
     this.createButton($input);
     this.$wrapper = $input.closest('.js-input');
-    console.log(this.$wrapper);
     this.isDatepicker = this.$wrapper.hasClass('js-input_type_ddd');
-    console.log(this.isDatepicker);
     const self = this;
     this.$input = $input;
     $(this.button).on('mousedown', (e) => {
-      console.log(e.target);
       if (
         ($(e.target).hasClass('js-input__arrow-button') ||
           $(e.target).hasClass('js-input__button-icon')) &&
@@ -51,13 +48,11 @@ export default class ArrowButton {
   }
 
   openMenu($input) {
-    console.log('button open');
     this.$wrapper.addClass('js-input_expanded input_expanded');
     $input.find('input').focus();
   }
 
   closeMenu($input) {
-    console.log('button close');
     this.$wrapper.removeClass('js-input_expanded input_expanded');
     $input.find('input').blur();
   }
