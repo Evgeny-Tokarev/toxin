@@ -1,90 +1,87 @@
 @import '../../colors&type/colors&type.scss';
 
-* {
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
-}
 .button {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 44px;
-    border-radius: 22px;
-    @include Label-text();
-    letter-spacing: -0.25px;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 44px;
+  border-radius: 22px;
+  @include Label-text();
+  letter-spacing: -0.25px;
+  cursor: pointer;
+}
+.button_type_filled {
+  background: $Purple-Gradient;
+  color: #fff;
+  padding-right: 3px;
+}
+.button_type_filled[disabled] {
+  opacity: 0.5;
+  padding-right: 2px;
+}
+.button_type_contoured {
+  position: relative;
+  border-radius: 22px;
+  color: transparent;
+  background: $Purple-Gradient;
+  background-clip: text;
+  padding-right: 1px;
+}
 
-    cursor: pointer;
+.button_type_contoured:before {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  right: 2px;
+  bottom: 2px;
+  border-radius: 20px;
+  content: '';
+  z-index: -1;
+  background-color: #fff;
 }
-.button_filled {
-    background: $Purple-Gradient;
-    color: #fff;
-    padding-right: 3px;
+.button_type_contoured:after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: inherit;
+  background: $Purple-Gradient;
+  content: '';
+  z-index: -2;
 }
-.button_filled[disabled] {
-    opacity: 0.5;
-    padding-right: 2px;
+.button_type_contoured[disabled]:after {
+  opacity: 0.5;
 }
-.button_contoured {
-    position: relative;
-    border-radius: 22px;
-    color: transparent;
-    background: $Purple-Gradient;
-    background-clip: text;
-    padding-right: 1px;
+.button_type_borderless {
+  color: transparent;
+  background: $Purple-Gradient;
+  background-clip: text;
+  letter-spacing: 0;
 }
-
-.button_contoured:before {
-    position: absolute;
-    top: 2px;
-    left: 2px;
-    right: 2px;
-    bottom: 2px;
-    border-radius: 20px;
-    content: '';
-    z-index: -1;
-    background-color: #fff;
+.button_type_borderless[disabled] {
+  color: $Dark-Shade-50;
 }
-.button_contoured:after {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    border-radius: inherit;
-    background: $Purple-Gradient;
-    content: '';
-    z-index: -2;
+.button_type_99 {
+  width: 99px;
 }
-.button_contoured[disabled]:after {
-    opacity: 0.5;
-}
-.button_borderless {
-    color: transparent;
-    background: $Purple-Gradient;
-    background-clip: text;
-    letter-spacing: 0;
-}
-.button_borderless[disabled] {
-    color: $Dark-Shade-50;
-}
-.button_99 {
-    width: 99px;
-}
-.button_320 {
-    width: 320px;
-    padding-left: 2px;
-    letter-spacing: 0;
+.button_type_320 {
+  width: 320px;
+  padding-left: 2px;
+  letter-spacing: 0;
 }
 .button_type_arrow:before {
-    content: 'arrow_forward';
-    text-transform: none;
-    font-size: 24px;
-    font-weight: 400;
-    font-family: 'Material Icons';
-    line-height: 44px;
-    position: absolute;
-    top: 0;
-    right: 10px;
+  content: 'arrow_forward';
+  text-transform: none;
+  font-size: 24px;
+  font-weight: 400;
+  font-family: 'Material Icons';
+  line-height: 44px;
+  position: absolute;
+  top: 0;
+  right: 10px;
 }

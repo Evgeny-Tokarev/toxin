@@ -1,19 +1,33 @@
 import './arrow-button.scss';
 
 export default class ArrowButton {
-  constructor(text) {
+  constructor(text, action) {
+    this.$input = null;
     this.button = null;
     this.$wrapper = null;
     this.text = text || 'expand_more';
     this.isDatepicker = false;
+    this.action = action;
+  }
+
+  btnAct() {
+    return this.action && typeof this.action === 'function'
+      ? this.action.bind(this)
+      : this.expandList.bind(this);
   }
 
   init($input) {
     this.createButton($input);
-    this.$wrapper = $input.closest('.js-input');
+    this.$wrapper = $input.closest(
+      '.js-input_type_expandable' || '.js-input_type_sub',
+    );
     this.isDatepicker = this.$wrapper.hasClass('js-input_type_ddd');
-    const self = this;
     this.$input = $input;
+    this.btnAct()($input);
+  }
+
+  expandList($input) {
+    const self = this;
     $(this.button).on('mousedown', (e) => {
       if (
         ($(e.target).hasClass('js-input__arrow-button') ||
@@ -48,6 +62,7 @@ export default class ArrowButton {
   }
 
   openMenu($input) {
+    console.log(this.$wrapper);
     this.$wrapper.addClass('js-input_expanded input_expanded');
     $input.find('input').focus();
   }

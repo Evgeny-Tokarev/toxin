@@ -3,7 +3,7 @@ include ../input-body/input-body.pug
 mixin input(opt={})
   - const classes=opt.class 
   - const classArr=classes.split(" ");
-    +b.input(class=opt.class)
+    .input(class=opt.class)
       if classArr.some((el) => el.match(/^js-/))
         - opt.class= "js-input__body"
       else 

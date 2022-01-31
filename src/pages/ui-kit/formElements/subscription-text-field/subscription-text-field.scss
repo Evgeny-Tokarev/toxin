@@ -1,19 +1,21 @@
 @import '../../colors&type/colors&type.scss';
 @import '../blanks/input-body/input-body.scss';
+@import '../button/button.scss';
 
 .input_type_sub {
+  .input__body {
     position: relative;
-    .input__button {
-        position: absolute;
-        height: 44px;
-        right: 10px;
-        top: 21px;
+    .input__arrow-button {
+      position: absolute;
+      top: 0;
+      right: 14.5px;
+      height: 44px;
+
+      .input__button-icon {
+        color: transparent;
+        background: $Purple-Gradient;
+        background-clip: text;
+      }
     }
-    .input__button-icon {
-        color: $Purple;
-        font-family: 'Material Icons';
-        line-height: 44px;
-        font-weight: 400;
-        font-size: 24px;
-    }
+  }
 }

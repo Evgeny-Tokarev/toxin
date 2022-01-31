@@ -122,7 +122,7 @@ class MyDatepicker {
   }
 
   init(container) {
-    this.$wrapper = $(container).closest('.js-input');
+    this.$wrapper = $(container).closest('.js-input_type_ddd');
     this.button = new ArrowButton();
     this.button.init($(container).closest('.js-input__body'));
     this.dp = new AirDatepicker(container, this.options);

@@ -1,12 +1,23 @@
-$('.subscription-text-field')
-  .closest('.input__body ')
-  .on('click', function (e) {
-    const button = $(this).find('.input__button');
-    if (
-      e.target === button[0]
-            || e.target === button.find('.input__button-icon')[0]
-    ) {
-      console.log($(this).find('input')[0].value);
-      $(this).find('input')[0].value = '';
-    }
-  });
+import ArrowButton from '../blanks/arrow-button/arrow-button';
+
+class SubscriptionTextField {
+  init($input) {
+    const submit = function () {
+      $(this.button).on('mousedown', (e) => {
+        const $inputField = this.$input.find('.js-input__field');
+        if (
+          $(e.target).hasClass('js-input__arrow-button') ||
+          $(e.target).hasClass('js-input__button-icon')
+        )
+          console.log($inputField.val());
+        $inputField.val('');
+      });
+    };
+    this.button = new ArrowButton('arrow_forward', submit);
+    this.button.init($input.find('.js-input__body'));
+  }
+}
+$('.js-input_type_sub').each(function () {
+  const sub = new SubscriptionTextField();
+  sub.init($(this));
+});

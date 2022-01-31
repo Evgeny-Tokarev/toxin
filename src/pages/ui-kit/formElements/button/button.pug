@@ -1,2 +1,2 @@
-mixin button(opt)
-  +b.BUTTON.button(class!= opt.class, type!=opt.type, disabled!= opt.disabled)= opt.text
+mixin button(opt={})
+  button.button(class!= opt.class, type!=opt.type, disabled!= opt.disabled)= opt.text

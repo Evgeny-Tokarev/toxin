@@ -1,6 +1,6 @@
 include ../blanks/input/input.pug
 mixin date-dropdown(opt)
-  - opt.class=opt.class + ' input_type_ddd js-input_type_ddd'
+  - opt.class=opt.class + ' input_type_ddd js-input_type_ddd js-input_type_expandable'
   +input(opt)
-    +e.INPUT.field.js-input-field.js-datepicker(type="text", placeholder!= opt.inner_text, value=opt.initial_value)
+    input.input__field.js-input__field.js-datepicker(type="text", placeholder!= opt.inner_text, value=opt.initial_value)
         

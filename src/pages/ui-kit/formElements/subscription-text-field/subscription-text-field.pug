@@ -1,8 +1,8 @@
 include ../blanks/widget-header/widget-header
-mixin subscription-text-field(opt)
-  +b.input_type_sub(class="_266")
-    +widget-header({left_heading:opt.left_heading})
-    +e.body()
-      +e.INPUT.field(class="subscription-text-field",placeholder!=opt.placeholder)
-      +e.button(tabindex="-1")
-        +e.SPAN.button-icon(tabindex='-1')="arrow_forward"
+include ../text-field/text-field.pug
+include ../button/button.pug
+
+mixin subscription-text-field(opt={})
+  - opt.class=opt.class ? opt.class+ " input_type_sub js-input_type_sub" : "input_type_sub js-input_type_sub"
+  +text-field(opt)
+    +button({class: "button_type_borderless button_type_arrow"})
