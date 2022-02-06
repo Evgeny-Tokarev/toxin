@@ -1,8 +1,8 @@
 mixin advantage-item(opt)
-  +b.advantage
-    +e.__inner
-      +e.icon 
-        +e.SPAN= opt.icon
-      +e.description 
-        +e.title= opt.title
-        +e.text= opt.text
+  .advantage
+    .advantage__inner
+      .advantage__icon 
+        SPAN.advantage__icon-text= opt.icon
+      .advantage__description 
+        .advantage__title= opt.title
+        .advantage__text= opt.text

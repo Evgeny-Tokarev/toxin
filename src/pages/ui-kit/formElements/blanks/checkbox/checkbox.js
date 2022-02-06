@@ -1,48 +1,62 @@
 import ArrowButton from '../arrow-button/arrow-button';
 
+const makeJqueryInstance = (selector) => {
+  let instance = null;
+  try {
+    instance = selector instanceof $ ? selector : $(selector);
+  } catch (e) {
+    console.error(e);
+  }
+  return instance;
+};
+
 export default class Checkbox {
-  init(input, isButton = false) {
-    const values = [];
-    const checkbox = this;
-    $(input)
-      .find('.input__body')
-      .each((i) => {
-        if (isButton) {
-          const button = new ArrowButton();
-          button.init(this instanceof $ ? this : $(this));
-        }
-        const isVivid = !!$(this).closest('.input').hasClass('input_type_rb');
-        const self = this;
-        values[i] = {};
-        if (isVivid) {
-          checkbox.vividLabel($(this).find('input[checked]'));
-        }
-        $(this)
-          .find('input')
-          .on('change', () => {
-            $.each($(self).find('.input__checkbox-item'), function () {
-              if ($(this).find('input').prop('checked')) {
-                values[i][$(this).text()] = true;
-                if (isVivid) {
-                  checkbox.vividLabel($(this).find('input'));
-                }
-              } else {
-                delete values[i][$(this).text()];
-              }
-            });
-            console.log(Object.getOwnPropertyNames(values[i]));
-          });
-      });
+  constructor() {
+    this.isRich = false;
+    this.itemValues = {};
+    this.$wrapper = null;
+    this.$checkboxBody = null;
   }
 
-  vividLabel($input) {
-    $input
-      .closest('.input__description')
+  init(wrapper) {
+    this.$wrapper = makeJqueryInstance(wrapper);
+    this.$checkboxBody = this.$wrapper.find('.js-input__body');
+    this.isRich = !!this.$wrapper.hasClass('js-input_type_rb');
+    const button = new ArrowButton();
+    console.log(button);
+    button.init(this.$checkboxBody);
+    if (this.isRich) {
+      this.handleRichLabel($(this).find('input[checked]'));
+    }
+    this.$checkboxBody.find('input').on('change', () => {
+      this.addValuesToList();
+      console.log(Object.getOwnPropertyNames(this.itemValues));
+    });
+  }
+
+  addValuesToList() {
+    const self = this;
+    $.each(this.$checkboxBody.find('.js-input__checkbox-item'), function () {
+      const checkFlag = $(this).find('input').prop('checked');
+      if (checkFlag) {
+        self.itemValues[$(this).text()] = true;
+        if (this.isRich) {
+          self.$checkbox.richLabel($(this).find('input'));
+        }
+      } else {
+        delete self.itemValues[$(this).text()];
+      }
+    });
+  }
+
+  handleRichLabel($itemInput) {
+    $itemInput
+      .closest('.js-input__description')
       .find('label')
       .each(function () {
         $(this).removeClass('input__checkbox-item_checked');
       });
 
-    $input.closest('label').addClass('input__checkbox-item_checked');
+    $itemInput.closest('label').addClass('input__checkbox-item_checked');
   }
 }

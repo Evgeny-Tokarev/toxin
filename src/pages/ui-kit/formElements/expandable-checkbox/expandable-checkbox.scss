@@ -2,51 +2,51 @@
 @import '../blanks/checkbox/checkbox.scss';
 
 .input_type_ecb {
-    .input__body {
-        width: 100%;
-        flex-direction: row;
-        align-items: center;
-        .input__arrow-button {
-            margin-right: 11px;
-        }
-        fieldset.input__description {
-            display: none;
-        }
+  .input__body {
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+    .input__arrow-button {
+      margin-right: 15px;
     }
+    fieldset.input__description {
+      display: none;
+    }
+  }
 }
 .input_type_ecb.input_expanded {
-    fieldset.input__description {
-        position: absolute;
-        top: 47px;
-        display: block;
-        width: 100%;
-        justify-content: space-between;
-        @include Label-text();
-        padding-left: 0;
-        color: $Dark-Shade-100;
-        background-color: #fff;
+  fieldset.input__description {
+    position: absolute;
+    top: 47px;
+    display: block;
+    width: 100%;
+    justify-content: space-between;
+    @include Label-text();
+    padding-left: 0;
+    color: $Dark-Shade-100;
+    background-color: #fff;
+  }
+  .input__checkbox-item {
+    display: block;
+    @include Body-text();
+    letter-spacing: 0;
+    position: relative;
+    color: $Dark-Shade-50;
+    min-width: 192px;
+    height: 30.3px;
+    cursor: pointer;
+    input + .input__checkbox {
+      position: absolute;
+      left: -30px;
+      height: 20px;
+      width: 20px;
+      border: 1px solid $Dark-Shade-25;
+      border-radius: 4px;
+      cursor: pointer;
     }
-    .input__checkbox-item {
-        display: block;
-        @include Body-text();
-        letter-spacing: 0;
-        position: relative;
-        color: $Dark-Shade-50;
-        min-width: 192px;
-        height: 30.3px;
-        cursor: pointer;
-        input + .input__checkbox {
-            position: absolute;
-            left: -30px;
-            height: 20px;
-            width: 20px;
-            border: 1px solid $Dark-Shade-25;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-        input:checked + .input__checkbox {
-            border: 1px solid $Purple;
-            background: url('./img/Vector.png') no-repeat center;
-        }
+    input:checked + .input__checkbox {
+      border: 1px solid $Purple;
+      background: url('./img/Vector.png') no-repeat center;
     }
+  }
 }

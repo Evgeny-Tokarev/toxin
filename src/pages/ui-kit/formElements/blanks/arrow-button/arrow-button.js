@@ -21,6 +21,7 @@ export default class ArrowButton {
     this.$wrapper = $input.closest(
       '.js-input_type_expandable' || '.js-input_type_sub',
     );
+    console.log(this.$wrapper);
     this.isDatepicker = this.$wrapper.hasClass('js-input_type_ddd');
     this.$input = $input;
     this.btnAct()($input);
@@ -57,12 +58,11 @@ export default class ArrowButton {
   createButton($parent) {
     this.button = document.createElement('button');
     this.button.className = 'input__arrow-button js-input__arrow-button';
-    this.button.innerHTML = `<span class="input__button-icon js-input__button-icon" type="null" tabindex="-1">${this.text}</span>`;
+    this.button.innerHTML = `<span class="input__button-icon js-input__button-icon" type="null">${this.text}</span>`;
     $parent.append(this.button);
   }
 
   openMenu($input) {
-    console.log(this.$wrapper);
     this.$wrapper.addClass('js-input_expanded input_expanded');
     $input.find('input').focus();
   }

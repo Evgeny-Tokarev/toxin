@@ -14,7 +14,7 @@
     "no-console": 0,
     "class-methods-use-this": [
       "error",
-      { "exceptMethods": ["total", "isEmpty", "submit", "vividLabel"] }
+      { "exceptMethods": ["total", "isEmpty", "submit", "handleRichLabel"] }
     ]
   },
   "env": {

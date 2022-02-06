@@ -2,59 +2,60 @@
 @import '../input-body/input-body.scss';
 
 .input_type_chkbx {
-    * {
-        box-sizing: border-box;
+  box-sizing: border-box;
+  display: flex;
+  .input__body {
+    padding: 0;
+    position: relative;
+    justify-content: space-between;
+    border: 0;
+    @include Label-text();
+    color: $Dark-Shade-100;
+    .input__placeholder {
+      height: 44px;
+      line-height: 44px;
     }
+  }
+  .input__body:hover {
+    border: 0;
+  }
+  fieldset.input__description {
+    border: 0;
+    margin: 0;
+    padding: 0;
     display: flex;
-    .input__body {
-        position: relative;
-        justify-content: space-between;
-        @include Label-text();
-        color: $Dark-Shade-100;
-        .input__placeholder {
-            height: 44px;
-            line-height: 44px;
-        }
+    justify-content: space-between;
+    @include Label-text();
+    color: $Dark-Shade-100;
+    background-color: #fff;
+  }
+  .input__checkbox-item {
+    display: flex;
+    @include Body-text();
+    letter-spacing: 0;
+    position: relative;
+    color: $Dark-Shade-50;
+    margin-left: 30px;
+    min-height: 30.3px;
+    padding-top: 1.5px;
+    cursor: pointer;
+    input {
+      opacity: 0;
+      margin: 0;
+      position: absolute;
+      left: -30px;
+      height: 20px;
+      width: 20px;
     }
-}
-.input_type_chkbx {
-    fieldset.input__description {
-        border: 0;
-        margin: 0;
-        padding: 0;
-        display: flex;
-        justify-content: space-between;
-        @include Label-text();
-        color: $Dark-Shade-100;
-        background-color: #fff;
+    input + .input__checkbox {
+      position: absolute;
+      margin: 0;
+      left: -30px;
+      top: -1px;
+      height: 20px;
+      width: 20px;
+      border: 1px solid $Dark-Shade-25;
+      cursor: pointer;
     }
-    .input__checkbox-item {
-        display: flex;
-        @include Body-text();
-        letter-spacing: 0;
-        position: relative;
-        color: $Dark-Shade-50;
-        margin-left: 30px;
-        min-height: 30.3px;
-        padding-bottom: 2px;
-        cursor: pointer;
-        input {
-            // border: 0;
-            opacity: 0;
-            margin: 0;
-            position: absolute;
-            left: -30px;
-            height: 20px;
-            width: 20px;
-        }
-        input + .input__checkbox {
-            position: absolute;
-            margin: 0;
-            left: -30px;
-            height: 20px;
-            width: 20px;
-            border: 1px solid $Dark-Shade-25;
-            cursor: pointer;
-        }
-    }
+  }
 }

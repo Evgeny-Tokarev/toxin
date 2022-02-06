@@ -4,7 +4,7 @@ include dropdown/dropdown.pug
 include date-dropdown/date-dropdown.pug
 include subscription-text-field/subscription-text-field.pug
 include expandable-checkbox/expandable-checkbox.pug
-//- include advantage-item/advantage-item.pug
+include advantage-item/advantage-item.pug
 //- include checkbox-buttons/checkbox-buttons.pug
 //- include radio-buttons/radio-buttons.pug
 //- include toggle/toggle.pug
@@ -34,8 +34,8 @@ section.form-elements
     +dropdown({class: "input_type_266 input_type_expandable input_expanded", left_heading:"dropdown", right_heading: "expanded",inner_text: "Конфигурация номера", items: {"спальни":2,"кровати":2, "ванные комнаты":0}})
     +expandable-checkbox({class: "input_type_266",inner_text: "expandable checkbox list",input_type: "checkbox", items: {"Завтрак":false,"Письменный стол":true, "Стул для кормления":true,"Кроватка": true,"Телевизор":false,"Шампунь":false}})
     +expandable-checkbox({class: "input_type_266 input_expanded", inner_text: "expandable checkbox list",input_type: "checkbox", items: {"Завтрак":false,"Письменный стол":true, "Стул для кормления":true,"Кроватка": true,"Телевизор":false,"Шампунь":false}})
-  //-   +advantage-item({icon: "insert_emoticon", title: "Комфорт", text: "Шумопоглощающие стены"})
-  //-   +advantage-item({icon: "location_city", title: "Удобство", text: "Окно в каждой из спален"})
+    +advantage-item({icon: "insert_emoticon", title: "Комфорт", text: "Шумопоглощающие стены"})
+    +advantage-item({icon: "location_city", title: "Удобство", text: "Окно в каждой из спален"})
   //- .col
   //-   +checkbox-buttons({class: "_type_cbb input_type_222",inner_text: "checkbox buttons",input_type: "checkbox", items: {"Можно курить":false,"Можно с питомцами":true, "Можно пригласить гостей (до 10 человек)":true}})
   //-   +radio-buttons({class: "input_type_rb",inner_text: "radio buttons",input_type: "radio", items: {"Мужчина":true,"Женщина":false}})
