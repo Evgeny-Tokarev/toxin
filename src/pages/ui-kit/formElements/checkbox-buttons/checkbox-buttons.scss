@@ -2,25 +2,26 @@
 @import '../blanks/checkbox/checkbox.scss';
 
 .input_type_cbb {
-    * {
-        box-sizing: border-box;
+  * {
+    box-sizing: border-box;
+  }
+  .input__body {
+    flex-direction: column;
+    fieldset.input__description {
+      flex-direction: column;
     }
-    .input__body {
-        flex-direction: column;
-        fieldset.input__description {
-            padding-top: 2px;
-            flex-direction: column;
-        }
-        .input__checkbox-item {
-            padding-bottom: 3px;
-            line-height: 18px;
-            input + .input__checkbox {
-                border-radius: 4px;
-            }
-            input:checked + .input__checkbox {
-                border: 1px solid $Purple;
-                background: url('./img/Vector.png') no-repeat center;
-            }
-        }
+    .input__checkbox-item {
+      display: block;
+      height: 31px;
+      line-height: 18px;
+      input + .input__checkbox {
+        border-radius: 4px;
+        top: 1px;
+      }
+      input:checked + .input__checkbox {
+        border: 1px solid $Purple;
+        background: url('./img/Vector.png') no-repeat center;
+      }
     }
+  }
 }
