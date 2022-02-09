@@ -23,7 +23,6 @@ export default class Checkbox {
     this.$checkboxBody = this.$wrapper.find('.js-input__body');
     this.isRich = !!this.$wrapper.hasClass('js-input_type_rb');
     const button = new ArrowButton();
-    console.log(button);
     button.init(this.$checkboxBody);
     if (this.isRich) {
       this.handleRichLabel($(this).find('input[checked]'));

@@ -10,47 +10,45 @@ export default class ArrowButton {
     this.action = action;
   }
 
-  btnAct() {
+  getBtnAct() {
     return this.action && typeof this.action === 'function'
       ? this.action.bind(this)
-      : this.expandList.bind(this);
+      : this.handleExpand.bind(this);
   }
 
   init($input) {
     this.createButton($input);
     this.$wrapper = $input.closest(
-      '.js-input_type_expandable' || '.js-input_type_sub',
+      '.js-input_type_expandable, .js-input_type_sub, .js-input_type_ecb',
     );
-    console.log(this.$wrapper);
     this.isDatepicker = this.$wrapper.hasClass('js-input_type_ddd');
     this.$input = $input;
-    this.btnAct()($input);
+    this.getBtnAct()($input);
   }
 
-  expandList($input) {
-    const self = this;
+  handleExpand($input) {
     $(this.button).on('mousedown', (e) => {
       if (
         ($(e.target).hasClass('js-input__arrow-button') ||
           $(e.target).hasClass('js-input__button-icon')) &&
-        !self.$wrapper.hasClass('js-input_expanded')
+        !this.$wrapper.hasClass('js-input_expanded')
       ) {
         e.preventDefault();
-        self.openMenu($input);
+        this.openMenu($input);
       } else if (
         $(e.target).hasClass('js-input__arrow-button') ||
         $(e.target).hasClass('js-input__button-icon')
       ) {
-        self.closeMenu($input);
+        this.closeMenu($input);
       }
     });
     $(document).on('click', (e) => {
       if (
-        self.$wrapper.hasClass('js-input_expanded') &&
-        !self.$wrapper.has(e.target).length &&
+        this.$wrapper.hasClass('js-input_expanded') &&
+        !this.$wrapper.has(e.target).length &&
         !this.isDatepicker
       ) {
-        self.closeMenu($input);
+        this.closeMenu($input);
       }
     });
   }
@@ -58,7 +56,7 @@ export default class ArrowButton {
   createButton($parent) {
     this.button = document.createElement('button');
     this.button.className = 'input__arrow-button js-input__arrow-button';
-    this.button.innerHTML = `<span class="input__button-icon js-input__button-icon" type="null">${this.text}</span>`;
+    this.button.innerHTML = `<span class="input__button-icon js-input__button-icon">${this.text}</span>`;
     $parent.append(this.button);
   }
 
